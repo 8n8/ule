@@ -34,7 +34,7 @@ Flag dev {
 }
 
 
-Executable elm
+Executable ule
         ghc-options: -O2 -rtsopts -threaded "-with-rtsopts=-N -qg -A128m"
         -- add -eventlog for (elm make src/Main.elm +RTS -l; threadscope elm.eventlog)
         -- https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/
@@ -201,7 +201,6 @@ Executable elm
 
     Build-depends:
         ansi-terminal,
-        ansi-wl-pprint < 1,
         base,
         binary,
         bytestring,
@@ -217,7 +216,6 @@ Executable elm
         http-client,
         http-client-tls,
         http-types,
-        language-glsl,
         mtl,
         network,
         parsec,

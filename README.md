@@ -1,22 +1,18 @@
-# Elm
+# Ule
 
-A delightful language for reliable webapps.
+A fork of the Elm compiler. The top priority is backwards compatibility with Elm 0.19.1.
 
-Check out the [Home Page](http://elm-lang.org/), [Try Online](http://elm-lang.org/try), or [The Official Guide](http://guide.elm-lang.org/)
+## Build from source
 
+This is the only way to install it.
 
-<br>
+1. install the Haskell tool stack: https://docs.haskellstack.org/en/stable/#how-to-install-stack
+2. clone this repository and run `stack install` in the root of it - it will take a few minutes
+3. add `export PATH=$HOME/.local/bin:$PATH` to your `.bashrc` or `.zshrc` file and restart your terminal
+4. you should now be able to run `ule` exactly as you would run `elm`
 
-## Install
+## Run the tests
 
-✨ [Install](https://guide.elm-lang.org/install/elm.html) ✨
+There is a basic snapshot test to check that Ule generates the same JS as Elm would for a hello world program.
 
-For multiple versions, previous versions, and uninstallation, see the instructions [here](https://github.com/elm/compiler/blob/master/installers/README.md).
-
-<br>
-
-## Help
-
-If you are stuck, ask around on [the Elm slack channel][slack]. Folks are friendly and happy to help with questions!
-
-[slack]: http://elmlang.herokuapp.com/
+The script to run it is: `./test.sh`.
