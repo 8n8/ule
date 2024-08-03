@@ -31,3 +31,4 @@ function snapshot_test() {
 snapshot_test helloWorld
 snapshot_test elm-spa-example
 snapshot_test dietvis
+snapshot_test elm-shared-state

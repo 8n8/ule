@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Elm Shared State</title>
+	<style>
+		html,head,body { padding:0; margin:0; }
+		body {
+			font-family: calibri, helvetica, arial, sans-serif;
+			background-color: #fff9cc;
+		}
+	</style>
+</head>
+<body>
+	<div id="app"></div>
+	<script src="elm.js"></script>
+	<script>
+	Elm.Main.init({
+		node: document.getElementById('app'),
+		flags: {
+			currentTime: Date.now()
+		}
+	});
+	</script>
+</body>
+</html>
