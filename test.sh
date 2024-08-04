@@ -2,7 +2,7 @@
 
 set -e
 
-stack build --fast
+stack install --fast
 
 pushd test/helloWorld
 ./test.sh
@@ -17,5 +17,9 @@ pushd test/elm-spa-example
 popd
 
 pushd test/elm-shared-state
+./test.sh
+popd
+
+pushd test/elm-css
 ./test.sh
 popd
