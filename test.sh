@@ -23,3 +23,7 @@ popd
 pushd test/elm-css
 ./test.sh
 popd
+
+pushd test/elm-pages
+./test.sh
+popd
