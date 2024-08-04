@@ -25,3 +25,4 @@ oneTest elm-spa-example
 oneTest elm-shared-state
 oneTest elm-css
 oneTest elm-pages
+oneTest elm-review

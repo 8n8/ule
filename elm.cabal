@@ -199,6 +199,12 @@ Executable ule
         Type.UnionFind
         Paths_elm
 
+        -- Libraries vendored so I could use the latest Stackage snapshot
+        Language.GLSL.Parser
+        Language.GLSL.Syntax
+        Text.PrettyPrint.ANSI.Leijen
+        Text.PrettyPrint.ANSI.Leijen.Internal
+
     Build-depends:
         ansi-terminal,
         base,
