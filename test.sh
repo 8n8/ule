@@ -32,6 +32,9 @@ pushd test/helloWorld
 ./test.sh
 popd
 
+pushd test/dietvis
+./test.sh
+popd
+
 snapshot_test elm-spa-example
-snapshot_test dietvis
 snapshot_test elm-shared-state
