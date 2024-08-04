@@ -4,26 +4,24 @@ set -e
 
 stack install --fast
 
-pushd test/helloWorld
-./test.sh
-popd
+GREEN='\033[1;32m'
+NC='\033[0m'
+RED='\033[1;31m'
 
-pushd test/dietvis
-./test.sh
-popd
+function oneTest() {
+    echo -n "$1 "
+    pushd "test/$1" > /dev/null
+    if ./test.sh > /dev/null; then
+        echo -e "${GREEN}PASS${NC}"
+    else
+        echo -e "${RED}FAIL${NC}"
+    fi
+    popd > /dev/null
+}
 
-pushd test/elm-spa-example
-./test.sh
-popd
-
-pushd test/elm-shared-state
-./test.sh
-popd
-
-pushd test/elm-css
-./test.sh
-popd
-
-pushd test/elm-pages
-./test.sh
-popd
+oneTest helloWorld
+oneTest dietvis
+oneTest elm-spa-example
+oneTest elm-shared-state
+oneTest elm-css
+oneTest elm-pages
