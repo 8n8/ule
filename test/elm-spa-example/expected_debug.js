@@ -77,7 +77,7 @@ function A9(fun, a, b, c, d, e, f, g, h, i) {
   return fun.a === 9 ? fun.f(a, b, c, d, e, f, g, h, i) : fun(a)(b)(c)(d)(e)(f)(g)(h)(i);
 }
 
-
+console.warn('Compiled in DEV mode. Follow the advice at https://elm-lang.org/0.19.1/optimize for better performance and smaller assets.');
 
 
 // EQUALITY
@@ -113,7 +113,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 		return false;
 	}
 
-	/**_UNUSED/
+	/**/
 	if (x.$ === 'Set_elm_builtin')
 	{
 		x = $elm$core$Set$toList(x);
@@ -126,7 +126,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 	}
 	//*/
 
-	/**/
+	/**_UNUSED/
 	if (x.$ < 0)
 	{
 		x = $elm$core$Dict$toList(x);
@@ -161,7 +161,7 @@ function _Utils_cmp(x, y, ord)
 		return x === y ? /*EQ*/ 0 : x < y ? /*LT*/ -1 : /*GT*/ 1;
 	}
 
-	/**_UNUSED/
+	/**/
 	if (x instanceof String)
 	{
 		var a = x.valueOf();
@@ -170,10 +170,10 @@ function _Utils_cmp(x, y, ord)
 	}
 	//*/
 
-	/**/
+	/**_UNUSED/
 	if (!x.$)
 	//*/
-	/**_UNUSED/
+	/**/
 	if (x.$[0] === '#')
 	//*/
 	{
@@ -203,17 +203,17 @@ var _Utils_compare = F2(function(x, y)
 
 // COMMON VALUES
 
-var _Utils_Tuple0 = 0;
-var _Utils_Tuple0_UNUSED = { $: '#0' };
+var _Utils_Tuple0_UNUSED = 0;
+var _Utils_Tuple0 = { $: '#0' };
 
-function _Utils_Tuple2(a, b) { return { a: a, b: b }; }
-function _Utils_Tuple2_UNUSED(a, b) { return { $: '#2', a: a, b: b }; }
+function _Utils_Tuple2_UNUSED(a, b) { return { a: a, b: b }; }
+function _Utils_Tuple2(a, b) { return { $: '#2', a: a, b: b }; }
 
-function _Utils_Tuple3(a, b, c) { return { a: a, b: b, c: c }; }
-function _Utils_Tuple3_UNUSED(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
+function _Utils_Tuple3_UNUSED(a, b, c) { return { a: a, b: b, c: c }; }
+function _Utils_Tuple3(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
 
-function _Utils_chr(c) { return c; }
-function _Utils_chr_UNUSED(c) { return new String(c); }
+function _Utils_chr_UNUSED(c) { return c; }
+function _Utils_chr(c) { return new String(c); }
 
 
 // RECORDS
@@ -264,11 +264,11 @@ function _Utils_ap(xs, ys)
 
 
 
-var _List_Nil = { $: 0 };
-var _List_Nil_UNUSED = { $: '[]' };
+var _List_Nil_UNUSED = { $: 0 };
+var _List_Nil = { $: '[]' };
 
-function _List_Cons(hd, tl) { return { $: 1, a: hd, b: tl }; }
-function _List_Cons_UNUSED(hd, tl) { return { $: '::', a: hd, b: tl }; }
+function _List_Cons_UNUSED(hd, tl) { return { $: 1, a: hd, b: tl }; }
+function _List_Cons(hd, tl) { return { $: '::', a: hd, b: tl }; }
 
 
 var _List_cons = F2(_List_Cons);
@@ -499,12 +499,12 @@ var _JsArray_appendN = F3(function(n, dest, source)
 
 // LOG
 
-var _Debug_log = F2(function(tag, value)
+var _Debug_log_UNUSED = F2(function(tag, value)
 {
 	return value;
 });
 
-var _Debug_log_UNUSED = F2(function(tag, value)
+var _Debug_log = F2(function(tag, value)
 {
 	console.log(tag + ': ' + _Debug_toString(value));
 	return value;
@@ -530,12 +530,12 @@ function _Debug_todoCase(moduleName, region, value)
 
 // TO STRING
 
-function _Debug_toString(value)
+function _Debug_toString_UNUSED(value)
 {
 	return '<internals>';
 }
 
-function _Debug_toString_UNUSED(value)
+function _Debug_toString(value)
 {
 	return _Debug_toAnsiString(false, value);
 }
@@ -706,13 +706,13 @@ function _Debug_internalColor(ansi, string)
 // CRASH
 
 
-function _Debug_crash(identifier)
+function _Debug_crash_UNUSED(identifier)
 {
 	throw new Error('https://github.com/elm/core/blob/1.0.0/hints/' + identifier + '.md');
 }
 
 
-function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
+function _Debug_crash(identifier, fact1, fact2, fact3, fact4)
 {
 	switch(identifier)
 	{
@@ -770,11 +770,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.ay.Z === region.aG.Z)
+	if (region.start.line === region.end.line)
 	{
-		return 'on line ' + region.ay.Z;
+		return 'on line ' + region.start.line;
 	}
-	return 'on lines ' + region.ay.Z + ' through ' + region.aG.Z;
+	return 'on lines ' + region.start.line + ' through ' + region.end.line;
 }
 
 
@@ -1200,7 +1200,7 @@ function _Char_toLocaleLower(char)
 
 
 
-/**_UNUSED/
+/**/
 function _Json_errorToString(error)
 {
 	return $elm$json$Json$Decode$errorToString(error);
@@ -1600,11 +1600,11 @@ var _Json_encode = F2(function(indentLevel, value)
 	return JSON.stringify(_Json_unwrap(value), null, indentLevel) + '';
 });
 
-function _Json_wrap_UNUSED(value) { return { $: 0, a: value }; }
-function _Json_unwrap_UNUSED(value) { return value.a; }
+function _Json_wrap(value) { return { $: 0, a: value }; }
+function _Json_unwrap(value) { return value.a; }
 
-function _Json_wrap(value) { return value; }
-function _Json_unwrap(value) { return value; }
+function _Json_wrap_UNUSED(value) { return value; }
+function _Json_unwrap_UNUSED(value) { return value; }
 
 function _Json_emptyArray() { return []; }
 function _Json_emptyObject() { return {}; }
@@ -1841,9 +1841,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aO,
-		impl.bi,
-		impl.be,
+		impl.init,
+		impl.update,
+		impl.subscriptions,
 		function() { return function() {} }
 	);
 });
@@ -1856,7 +1856,7 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 function _Platform_initialize(flagDecoder, args, init, update, subscriptions, stepperBuilder)
 {
 	var result = A2(_Json_run, flagDecoder, _Json_wrap(args ? args['flags'] : undefined));
-	$elm$core$Result$isOk(result) || _Debug_crash(2 /**_UNUSED/, _Json_errorToString(result.a) /**/);
+	$elm$core$Result$isOk(result) || _Debug_crash(2 /**/, _Json_errorToString(result.a) /**/);
 	var managers = {};
 	result = init(result.a);
 	var model = result.a;
@@ -2255,7 +2255,7 @@ function _Platform_setupIncomingPort(name, sendToApp)
 //
 
 
-function _Platform_export(exports)
+function _Platform_export_UNUSED(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsProd(scope['Elm'], exports)
@@ -2276,7 +2276,7 @@ function _Platform_mergeExportsProd(obj, exports)
 }
 
 
-function _Platform_export_UNUSED(exports)
+function _Platform_export(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsDebug('Elm', scope['Elm'], exports)
@@ -2316,10 +2316,10 @@ var _VirtualDom_init = F4(function(virtualNode, flagDecoder, debugMetadata, args
 {
 	// NOTE: this function needs _Platform_export available to work
 
-	/**/
+	/**_UNUSED/
 	var node = args['node'];
 	//*/
-	/**_UNUSED/
+	/**/
 	var node = args && args['node'] ? args['node'] : _Debug_crash(0);
 	//*/
 
@@ -2574,24 +2574,24 @@ function _VirtualDom_noInnerHtmlOrFormAction(key)
 	return key == 'innerHTML' || key == 'formAction' ? 'data-' + key : key;
 }
 
-function _VirtualDom_noJavaScriptUri(value)
+function _VirtualDom_noJavaScriptUri_UNUSED(value)
 {
 	return /^javascript:/i.test(value.replace(/\s/g,'')) ? '' : value;
 }
 
-function _VirtualDom_noJavaScriptUri_UNUSED(value)
+function _VirtualDom_noJavaScriptUri(value)
 {
 	return /^javascript:/i.test(value.replace(/\s/g,''))
 		? 'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'
 		: value;
 }
 
-function _VirtualDom_noJavaScriptOrHtmlUri(value)
+function _VirtualDom_noJavaScriptOrHtmlUri_UNUSED(value)
 {
 	return /^\s*(javascript:|data:text\/html)/i.test(value) ? '' : value;
 }
 
-function _VirtualDom_noJavaScriptOrHtmlUri_UNUSED(value)
+function _VirtualDom_noJavaScriptOrHtmlUri(value)
 {
 	return /^\s*(javascript:|data:text\/html)/i.test(value)
 		? 'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'
@@ -2643,9 +2643,9 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		y: func(record.y),
-		az: record.az,
-		av: record.av
+		message: func(record.message),
+		stopPropagation: record.stopPropagation,
+		preventDefault: record.preventDefault
 	}
 });
 
@@ -2913,11 +2913,11 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.y;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.az;
+		var message = !tag ? value : tag < 3 ? value.a : value.message;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.stopPropagation;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.av) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.preventDefault) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3863,15 +3863,15 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aO,
-		impl.bi,
-		impl.be,
+		impl.init,
+		impl.update,
+		impl.subscriptions,
 		function(sendToApp, initialModel) {
-			var view = impl.bj;
-			/**/
+			var view = impl.view;
+			/**_UNUSED/
 			var domNode = args['node'];
 			//*/
-			/**_UNUSED/
+			/**/
 			var domNode = args && args['node'] ? args['node'] : _Debug_crash(0);
 			//*/
 			var currNode = _VirtualDom_virtualize(domNode);
@@ -3899,12 +3899,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aO,
-		impl.bi,
-		impl.be,
+		impl.init,
+		impl.update,
+		impl.subscriptions,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.ax && impl.ax(sendToApp)
-			var view = impl.bj;
+			var divertHrefToApp = impl.setup && impl.setup(sendToApp)
+			var view = impl.view;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3912,12 +3912,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.X);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.body);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.bT) && (_VirtualDom_doc.title = title = doc.bT);
+				(title !== doc.title) && (_VirtualDom_doc.title = title = doc.title);
 			});
 		}
 	);
@@ -3968,12 +3968,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.aY;
-	var onUrlRequest = impl.aZ;
+	var onUrlChange = impl.onUrlChange;
+	var onUrlRequest = impl.onUrlRequest;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		ax: function(sendToApp)
+		setup: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -3989,9 +3989,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.a2 === next.a2
-							&& curr.aM === next.aM
-							&& curr.a$.a === next.a$.a
+							&& curr.protocol === next.protocol
+							&& curr.host === next.host
+							&& curr.port_.a === next.port_.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -3999,13 +3999,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		aO: function(flags)
+		init: function(flags)
 		{
-			return A3(impl.aO, flags, _Browser_getUrl(), key);
+			return A3(impl.init, flags, _Browser_getUrl(), key);
 		},
-		bj: impl.bj,
-		bi: impl.bi,
-		be: impl.be
+		view: impl.view,
+		update: impl.update,
+		subscriptions: impl.subscriptions
 	});
 }
 
@@ -4071,17 +4071,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { bF: 'hidden', Y: 'visibilitychange' }
+		? { hidden: 'hidden', change: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { bF: 'mozHidden', Y: 'mozvisibilitychange' }
+		? { hidden: 'mozHidden', change: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { bF: 'msHidden', Y: 'msvisibilitychange' }
+		? { hidden: 'msHidden', change: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { bF: 'webkitHidden', Y: 'webkitvisibilitychange' }
-		: { bF: 'hidden', Y: 'visibilitychange' };
+		? { hidden: 'webkitHidden', change: 'webkitvisibilitychange' }
+		: { hidden: 'hidden', change: 'visibilitychange' };
 }
 
 
@@ -4162,12 +4162,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		a9: _Browser_getScene(),
-		bk: {
-			as: _Browser_window.pageXOffset,
-			at: _Browser_window.pageYOffset,
-			V: _Browser_doc.documentElement.clientWidth,
-			P: _Browser_doc.documentElement.clientHeight
+		scene: _Browser_getScene(),
+		viewport: {
+			x: _Browser_window.pageXOffset,
+			y: _Browser_window.pageYOffset,
+			width: _Browser_doc.documentElement.clientWidth,
+			height: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4177,8 +4177,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		V: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		P: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		width: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		height: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4201,15 +4201,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			a9: {
-				V: node.scrollWidth,
-				P: node.scrollHeight
+			scene: {
+				width: node.scrollWidth,
+				height: node.scrollHeight
 			},
-			bk: {
-				as: node.scrollLeft,
-				at: node.scrollTop,
-				V: node.clientWidth,
-				P: node.clientHeight
+			viewport: {
+				x: node.scrollLeft,
+				y: node.scrollTop,
+				width: node.clientWidth,
+				height: node.clientHeight
 			}
 		};
 	});
@@ -4239,18 +4239,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			a9: _Browser_getScene(),
-			bk: {
-				as: x,
-				at: y,
-				V: _Browser_doc.documentElement.clientWidth,
-				P: _Browser_doc.documentElement.clientHeight
+			scene: _Browser_getScene(),
+			viewport: {
+				x: x,
+				y: y,
+				width: _Browser_doc.documentElement.clientWidth,
+				height: _Browser_doc.documentElement.clientHeight
 			},
-			bx: {
-				as: x + rect.left,
-				at: y + rect.top,
-				V: rect.width,
-				P: rect.height
+			element: {
+				x: x + rect.left,
+				y: y + rect.top,
+				width: rect.width,
+				height: rect.height
 			}
 		};
 	});
@@ -4435,21 +4435,21 @@ var _Http_toTask = F2(function(request, maybeProgress)
 			callback(_Scheduler_fail($elm$http$Http$Timeout));
 		});
 		xhr.addEventListener('load', function() {
-			callback(_Http_handleResponse(xhr, request.ai.a));
+			callback(_Http_handleResponse(xhr, request.expect.a));
 		});
 
 		try
 		{
-			xhr.open(request.al, request.ap, true);
+			xhr.open(request.method, request.url, true);
 		}
 		catch (e)
 		{
-			return callback(_Scheduler_fail($elm$http$Http$BadUrl(request.ap)));
+			return callback(_Scheduler_fail($elm$http$Http$BadUrl(request.url)));
 		}
 
 		_Http_configureRequest(xhr, request);
 
-		var body = request.X;
+		var body = request.body;
 		xhr.send($elm$http$Http$Internal$isStringBody(body)
 			? (xhr.setRequestHeader('Content-Type', body.a), body.b)
 			: body.a
@@ -4472,23 +4472,23 @@ function _Http_configureProgress(xhr, maybeProgress)
 			return;
 		}
 		_Scheduler_rawSpawn(maybeProgress.a({
-			bp: event.loaded,
-			bq: event.total
+			bytes: event.loaded,
+			bytesExpected: event.total
 		}));
 	});
 }
 
 function _Http_configureRequest(xhr, request)
 {
-	for (var headers = request.ak; headers.b; headers = headers.b) // WHILE_CONS
+	for (var headers = request.headers; headers.b; headers = headers.b) // WHILE_CONS
 	{
 		xhr.setRequestHeader(headers.a.a, headers.a.b);
 	}
 
-	xhr.responseType = request.ai.b;
-	xhr.withCredentials = request.ar;
+	xhr.responseType = request.expect.b;
+	xhr.withCredentials = request.withCredentials;
 
-	$elm$core$Maybe$isJust(request.ao) && (xhr.timeout = request.ao.a);
+	$elm$core$Maybe$isJust(request.timeout) && (xhr.timeout = request.timeout.a);
 }
 
 
@@ -4520,10 +4520,10 @@ function _Http_handleResponse(xhr, responseToResult)
 function _Http_toResponse(xhr)
 {
 	return {
-		ap: xhr.responseURL,
-		e: { bs: xhr.status, y: xhr.statusText },
-		ak: _Http_parseHeaders(xhr.getAllResponseHeaders()),
-		X: xhr.response
+		url: xhr.responseURL,
+		status: { code: xhr.status, message: xhr.statusText },
+		headers: _Http_parseHeaders(xhr.getAllResponseHeaders()),
+		body: xhr.response
 	};
 }
 
@@ -4735,9 +4735,9 @@ function _Markdown_formatOptions(options)
 {
 	function toHighlight(code, lang)
 	{
-		if (!lang && $elm$core$Maybe$isJust(options.aF))
+		if (!lang && $elm$core$Maybe$isJust(options.defaultHighlighting))
 		{
-			lang = options.aF.a;
+			lang = options.defaultHighlighting.a;
 		}
 
 		if (typeof hljs !== 'undefined' && lang && hljs.listLanguages().indexOf(lang) >= 0)
@@ -4748,29 +4748,29 @@ function _Markdown_formatOptions(options)
 		return code;
 	}
 
-	var gfm = options.bE.a;
+	var gfm = options.githubFlavored.a;
 
 	return {
 		highlight: toHighlight,
 		gfm: gfm,
-		tables: gfm && gfm.bR,
-		breaks: gfm && gfm.bo,
-		sanitize: options.bP,
-		smartypants: options.bQ
+		tables: gfm && gfm.tables,
+		breaks: gfm && gfm.breaks,
+		sanitize: options.sanitize,
+		smartypants: options.smartypants
 	};
 }
 var $author$project$Main$ChangedUrl = function (a) {
-	return {$: 0, a: a};
+	return {$: 'ChangedUrl', a: a};
 };
 var $author$project$Main$ClickedLink = function (a) {
-	return {$: 1, a: a};
+	return {$: 'ClickedLink', a: a};
 };
 var $elm$core$Result$Err = function (a) {
-	return {$: 1, a: a};
+	return {$: 'Err', a: a};
 };
 var $elm$core$Result$andThen = F2(
 	function (callback, result) {
-		if (!result.$) {
+		if (result.$ === 'Ok') {
 			var value = result.a;
 			return callback(value);
 		} else {
@@ -4782,15 +4782,15 @@ var $elm$core$Basics$apR = F2(
 	function (x, f) {
 		return f(x);
 	});
-var $elm$core$Basics$EQ = 1;
-var $elm$core$Basics$GT = 2;
-var $elm$core$Basics$LT = 0;
+var $elm$core$Basics$EQ = {$: 'EQ'};
+var $elm$core$Basics$GT = {$: 'GT'};
+var $elm$core$Basics$LT = {$: 'LT'};
 var $elm$core$List$cons = _List_cons;
 var $elm$core$Dict$foldr = F3(
 	function (func, acc, t) {
 		foldr:
 		while (true) {
-			if (t.$ === -2) {
+			if (t.$ === 'RBEmpty_elm_builtin') {
 				return acc;
 			} else {
 				var key = t.b;
@@ -4835,7 +4835,7 @@ var $elm$core$Dict$keys = function (dict) {
 		dict);
 };
 var $elm$core$Set$toList = function (_v0) {
-	var dict = _v0;
+	var dict = _v0.a;
 	return $elm$core$Dict$keys(dict);
 };
 var $elm$core$Elm$JsArray$foldr = _JsArray_foldr;
@@ -4845,7 +4845,7 @@ var $elm$core$Array$foldr = F3(
 		var tail = _v0.d;
 		var helper = F2(
 			function (node, acc) {
-				if (!node.$) {
+				if (node.$ === 'SubTree') {
 					var subTree = node.a;
 					return A3($elm$core$Elm$JsArray$foldr, helper, acc, subTree);
 				} else {
@@ -4864,28 +4864,28 @@ var $elm$core$Array$toList = function (array) {
 };
 var $elm$json$Json$Decode$Failure = F2(
 	function (a, b) {
-		return {$: 3, a: a, b: b};
+		return {$: 'Failure', a: a, b: b};
 	});
 var $elm$json$Json$Decode$Field = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'Field', a: a, b: b};
 	});
 var $elm$json$Json$Decode$Index = F2(
 	function (a, b) {
-		return {$: 1, a: a, b: b};
+		return {$: 'Index', a: a, b: b};
 	});
 var $elm$core$Result$Ok = function (a) {
-	return {$: 0, a: a};
+	return {$: 'Ok', a: a};
 };
 var $elm$json$Json$Decode$OneOf = function (a) {
-	return {$: 2, a: a};
+	return {$: 'OneOf', a: a};
 };
-var $elm$core$Basics$False = 1;
+var $elm$core$Basics$False = {$: 'False'};
 var $elm$core$Basics$add = _Basics_add;
 var $elm$core$Maybe$Just = function (a) {
-	return {$: 0, a: a};
+	return {$: 'Just', a: a};
 };
-var $elm$core$Maybe$Nothing = {$: 1};
+var $elm$core$Maybe$Nothing = {$: 'Nothing'};
 var $elm$core$String$all = _String_all;
 var $elm$core$Basics$and = _Basics_and;
 var $elm$core$Basics$append = _Utils_append;
@@ -5010,12 +5010,12 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 		errorToStringHelp:
 		while (true) {
 			switch (error.$) {
-				case 0:
+				case 'Field':
 					var f = error.a;
 					var err = error.b;
 					var isSimple = function () {
 						var _v1 = $elm$core$String$uncons(f);
-						if (_v1.$ === 1) {
+						if (_v1.$ === 'Nothing') {
 							return false;
 						} else {
 							var _v2 = _v1.a;
@@ -5030,7 +5030,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 1:
+				case 'Index':
 					var i = error.a;
 					var err = error.b;
 					var indexName = '[' + ($elm$core$String$fromInt(i) + ']');
@@ -5039,7 +5039,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 2:
+				case 'OneOf':
 					var errors = error.a;
 					if (!errors.b) {
 						return 'Ran into a Json.Decode.oneOf with no possibilities' + function () {
@@ -5103,7 +5103,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 var $elm$core$Array$branchFactor = 32;
 var $elm$core$Array$Array_elm_builtin = F4(
 	function (a, b, c, d) {
-		return {$: 0, a: a, b: b, c: c, d: d};
+		return {$: 'Array_elm_builtin', a: a, b: b, c: c, d: d};
 	});
 var $elm$core$Elm$JsArray$empty = _JsArray_empty;
 var $elm$core$Basics$ceiling = _Basics_ceiling;
@@ -5118,7 +5118,7 @@ var $elm$core$Array$shiftStep = $elm$core$Basics$ceiling(
 var $elm$core$Array$empty = A4($elm$core$Array$Array_elm_builtin, 0, $elm$core$Array$shiftStep, $elm$core$Elm$JsArray$empty, $elm$core$Elm$JsArray$empty);
 var $elm$core$Elm$JsArray$initialize = _JsArray_initialize;
 var $elm$core$Array$Leaf = function (a) {
-	return {$: 1, a: a};
+	return {$: 'Leaf', a: a};
 };
 var $elm$core$Basics$apL = F2(
 	function (f, x) {
@@ -5134,7 +5134,7 @@ var $elm$core$Basics$max = F2(
 	});
 var $elm$core$Basics$mul = _Basics_mul;
 var $elm$core$Array$SubTree = function (a) {
-	return {$: 0, a: a};
+	return {$: 'SubTree', a: a};
 };
 var $elm$core$Elm$JsArray$initializeFromList = _JsArray_initializeFromList;
 var $elm$core$Array$compressNodes = F2(
@@ -5181,25 +5181,25 @@ var $elm$core$Array$treeFromBuilder = F2(
 	});
 var $elm$core$Array$builderToArray = F2(
 	function (reverseNodeList, builder) {
-		if (!builder.f) {
+		if (!builder.nodeListSize) {
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.h),
+				$elm$core$Elm$JsArray$length(builder.tail),
 				$elm$core$Array$shiftStep,
 				$elm$core$Elm$JsArray$empty,
-				builder.h);
+				builder.tail);
 		} else {
-			var treeLen = builder.f * $elm$core$Array$branchFactor;
+			var treeLen = builder.nodeListSize * $elm$core$Array$branchFactor;
 			var depth = $elm$core$Basics$floor(
 				A2($elm$core$Basics$logBase, $elm$core$Array$branchFactor, treeLen - 1));
-			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.i) : builder.i;
-			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.f);
+			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.nodeList) : builder.nodeList;
+			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.nodeListSize);
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.h) + treeLen,
+				$elm$core$Elm$JsArray$length(builder.tail) + treeLen,
 				A2($elm$core$Basics$max, 5, depth * $elm$core$Array$shiftStep),
 				tree,
-				builder.h);
+				builder.tail);
 		}
 	});
 var $elm$core$Basics$idiv = _Basics_idiv;
@@ -5212,7 +5212,7 @@ var $elm$core$Array$initializeHelp = F5(
 				return A2(
 					$elm$core$Array$builderToArray,
 					false,
-					{i: nodeList, f: (len / $elm$core$Array$branchFactor) | 0, h: tail});
+					{nodeList: nodeList, nodeListSize: (len / $elm$core$Array$branchFactor) | 0, tail: tail});
 			} else {
 				var leaf = $elm$core$Array$Leaf(
 					A3($elm$core$Elm$JsArray$initialize, $elm$core$Array$branchFactor, fromIndex, fn));
@@ -5242,9 +5242,9 @@ var $elm$core$Array$initialize = F2(
 			return A5($elm$core$Array$initializeHelp, fn, initialFromIndex, len, _List_Nil, tail);
 		}
 	});
-var $elm$core$Basics$True = 0;
+var $elm$core$Basics$True = {$: 'True'};
 var $elm$core$Result$isOk = function (result) {
-	if (!result.$) {
+	if (result.$ === 'Ok') {
 		return true;
 	} else {
 		return false;
@@ -5255,31 +5255,33 @@ var $elm$json$Json$Decode$map2 = _Json_map2;
 var $elm$json$Json$Decode$succeed = _Json_succeed;
 var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 	switch (handler.$) {
-		case 0:
+		case 'Normal':
 			return 0;
-		case 1:
+		case 'MayStopPropagation':
 			return 1;
-		case 2:
+		case 'MayPreventDefault':
 			return 2;
 		default:
 			return 3;
 	}
 };
 var $elm$browser$Browser$External = function (a) {
-	return {$: 1, a: a};
+	return {$: 'External', a: a};
 };
 var $elm$browser$Browser$Internal = function (a) {
-	return {$: 0, a: a};
+	return {$: 'Internal', a: a};
 };
 var $elm$core$Basics$identity = function (x) {
 	return x;
 };
-var $elm$browser$Browser$Dom$NotFound = $elm$core$Basics$identity;
-var $elm$url$Url$Http = 0;
-var $elm$url$Url$Https = 1;
+var $elm$browser$Browser$Dom$NotFound = function (a) {
+	return {$: 'NotFound', a: a};
+};
+var $elm$url$Url$Http = {$: 'Http'};
+var $elm$url$Url$Https = {$: 'Https'};
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {bD: fragment, aM: host, bM: path, a$: port_, a2: protocol, a3: query};
+		return {fragment: fragment, host: host, path: path, port_: port_, protocol: protocol, query: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5315,7 +5317,7 @@ var $elm$url$Url$chompBeforePath = F5(
 					var i = _v0.a;
 					var _v1 = $elm$core$String$toInt(
 						A2($elm$core$String$dropLeft, i + 1, str));
-					if (_v1.$ === 1) {
+					if (_v1.$ === 'Nothing') {
 						return $elm$core$Maybe$Nothing;
 					} else {
 						var port_ = _v1;
@@ -5398,24 +5400,26 @@ var $elm$core$String$startsWith = _String_startsWith;
 var $elm$url$Url$fromString = function (str) {
 	return A2($elm$core$String$startsWith, 'http://', str) ? A2(
 		$elm$url$Url$chompAfterProtocol,
-		0,
+		$elm$url$Url$Http,
 		A2($elm$core$String$dropLeft, 7, str)) : (A2($elm$core$String$startsWith, 'https://', str) ? A2(
 		$elm$url$Url$chompAfterProtocol,
-		1,
+		$elm$url$Url$Https,
 		A2($elm$core$String$dropLeft, 8, str)) : $elm$core$Maybe$Nothing);
 };
 var $elm$core$Basics$never = function (_v0) {
 	never:
 	while (true) {
-		var nvr = _v0;
+		var nvr = _v0.a;
 		var $temp$_v0 = nvr;
 		_v0 = $temp$_v0;
 		continue never;
 	}
 };
-var $elm$core$Task$Perform = $elm$core$Basics$identity;
+var $elm$core$Task$Perform = function (a) {
+	return {$: 'Perform', a: a};
+};
 var $elm$core$Task$succeed = _Scheduler_succeed;
-var $elm$core$Task$init = $elm$core$Task$succeed(0);
+var $elm$core$Task$init = $elm$core$Task$succeed(_Utils_Tuple0);
 var $elm$core$List$foldrHelper = F4(
 	function (fn, acc, ctr, ls) {
 		if (!ls.b) {
@@ -5521,7 +5525,7 @@ var $elm$core$Task$sequence = function (tasks) {
 var $elm$core$Platform$sendToApp = _Platform_sendToApp;
 var $elm$core$Task$spawnCmd = F2(
 	function (router, _v0) {
-		var task = _v0;
+		var task = _v0.a;
 		return _Scheduler_spawn(
 			A2(
 				$elm$core$Task$andThen,
@@ -5533,7 +5537,7 @@ var $elm$core$Task$onEffects = F3(
 		return A2(
 			$elm$core$Task$map,
 			function (_v0) {
-				return 0;
+				return _Utils_Tuple0;
 			},
 			$elm$core$Task$sequence(
 				A2(
@@ -5543,30 +5547,34 @@ var $elm$core$Task$onEffects = F3(
 	});
 var $elm$core$Task$onSelfMsg = F3(
 	function (_v0, _v1, _v2) {
-		return $elm$core$Task$succeed(0);
+		return $elm$core$Task$succeed(_Utils_Tuple0);
 	});
 var $elm$core$Task$cmdMap = F2(
 	function (tagger, _v0) {
-		var task = _v0;
-		return A2($elm$core$Task$map, tagger, task);
+		var task = _v0.a;
+		return $elm$core$Task$Perform(
+			A2($elm$core$Task$map, tagger, task));
 	});
 _Platform_effectManagers['Task'] = _Platform_createManager($elm$core$Task$init, $elm$core$Task$onEffects, $elm$core$Task$onSelfMsg, $elm$core$Task$cmdMap);
 var $elm$core$Task$command = _Platform_leaf('Task');
 var $elm$core$Task$perform = F2(
 	function (toMessage, task) {
 		return $elm$core$Task$command(
-			A2($elm$core$Task$map, toMessage, task));
+			$elm$core$Task$Perform(
+				A2($elm$core$Task$map, toMessage, task)));
 	});
 var $elm$browser$Browser$application = _Browser_application;
 var $elm$json$Json$Decode$decodeString = _Json_runOnString;
 var $elm$json$Json$Decode$decodeValue = _Json_run;
 var $author$project$Api$Cred = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'Cred', a: a, b: b};
 	});
-var $author$project$Username$Username = $elm$core$Basics$identity;
+var $author$project$Username$Username = function (a) {
+	return {$: 'Username', a: a};
+};
 var $elm$json$Json$Decode$string = _Json_decodeString;
-var $author$project$Username$decoder = A2($elm$json$Json$Decode$map, $elm$core$Basics$identity, $elm$json$Json$Decode$string);
+var $author$project$Username$decoder = A2($elm$json$Json$Decode$map, $author$project$Username$Username, $elm$json$Json$Decode$string);
 var $NoRedInk$elm_json_decode_pipeline$Json$Decode$Pipeline$custom = $elm$json$Json$Decode$map2($elm$core$Basics$apR);
 var $elm$json$Json$Decode$field = _Json_decodeField;
 var $NoRedInk$elm_json_decode_pipeline$Json$Decode$Pipeline$required = F3(
@@ -5602,7 +5610,7 @@ var $author$project$Api$storageDecoder = function (viewerDecoder) {
 		$author$project$Api$decoderFromCred(viewerDecoder));
 };
 var $elm$core$Result$toMaybe = function (result) {
-	if (!result.$) {
+	if (result.$ === 'Ok') {
 		var v = result.a;
 		return $elm$core$Maybe$Just(v);
 	} else {
@@ -5619,16 +5627,18 @@ var $author$project$Api$application = F2(
 						$elm$json$Json$Decode$decodeString(
 							$author$project$Api$storageDecoder(viewerDecoder)),
 						A2($elm$json$Json$Decode$decodeValue, $elm$json$Json$Decode$string, flags)));
-				return A3(config.aO, maybeViewer, url, navKey);
+				return A3(config.init, maybeViewer, url, navKey);
 			});
 		return $elm$browser$Browser$application(
-			{aO: init, aY: config.aY, aZ: config.aZ, be: config.be, bi: config.bi, bj: config.bj});
+			{init: init, onUrlChange: config.onUrlChange, onUrlRequest: config.onUrlRequest, subscriptions: config.subscriptions, update: config.update, view: config.view});
 	});
 var $author$project$Viewer$Viewer = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'Viewer', a: a, b: b};
 	});
-var $author$project$Avatar$Avatar = $elm$core$Basics$identity;
+var $author$project$Avatar$Avatar = function (a) {
+	return {$: 'Avatar', a: a};
+};
 var $elm$json$Json$Decode$null = _Json_decodeNull;
 var $elm$json$Json$Decode$oneOf = _Json_oneOf;
 var $elm$json$Json$Decode$nullable = function (decoder) {
@@ -5641,81 +5651,81 @@ var $elm$json$Json$Decode$nullable = function (decoder) {
 };
 var $author$project$Avatar$decoder = A2(
 	$elm$json$Json$Decode$map,
-	$elm$core$Basics$identity,
+	$author$project$Avatar$Avatar,
 	$elm$json$Json$Decode$nullable($elm$json$Json$Decode$string));
 var $author$project$Viewer$decoder = A2(
 	$NoRedInk$elm_json_decode_pipeline$Json$Decode$Pipeline$custom,
 	A2($elm$json$Json$Decode$field, 'image', $author$project$Avatar$decoder),
 	$elm$json$Json$Decode$succeed($author$project$Viewer$Viewer));
 var $author$project$Main$Redirect = function (a) {
-	return {$: 0, a: a};
+	return {$: 'Redirect', a: a};
 };
 var $author$project$Main$Article = function (a) {
-	return {$: 7, a: a};
+	return {$: 'Article', a: a};
 };
 var $author$project$Main$Editor = F2(
 	function (a, b) {
-		return {$: 8, a: a, b: b};
+		return {$: 'Editor', a: a, b: b};
 	});
 var $author$project$Main$GotArticleMsg = function (a) {
-	return {$: 7, a: a};
+	return {$: 'GotArticleMsg', a: a};
 };
 var $author$project$Main$GotEditorMsg = function (a) {
-	return {$: 8, a: a};
+	return {$: 'GotEditorMsg', a: a};
 };
 var $author$project$Main$GotHomeMsg = function (a) {
-	return {$: 2, a: a};
+	return {$: 'GotHomeMsg', a: a};
 };
 var $author$project$Main$GotLoginMsg = function (a) {
-	return {$: 4, a: a};
+	return {$: 'GotLoginMsg', a: a};
 };
 var $author$project$Main$GotProfileMsg = function (a) {
-	return {$: 6, a: a};
+	return {$: 'GotProfileMsg', a: a};
 };
 var $author$project$Main$GotRegisterMsg = function (a) {
-	return {$: 5, a: a};
+	return {$: 'GotRegisterMsg', a: a};
 };
 var $author$project$Main$GotSettingsMsg = function (a) {
-	return {$: 3, a: a};
+	return {$: 'GotSettingsMsg', a: a};
 };
 var $author$project$Main$Home = function (a) {
-	return {$: 2, a: a};
+	return {$: 'Home', a: a};
 };
-var $author$project$Route$Home = {$: 0};
+var $author$project$Route$Home = {$: 'Home'};
 var $author$project$Main$Login = function (a) {
-	return {$: 4, a: a};
+	return {$: 'Login', a: a};
 };
 var $author$project$Main$NotFound = function (a) {
-	return {$: 1, a: a};
+	return {$: 'NotFound', a: a};
 };
 var $author$project$Main$Profile = F2(
 	function (a, b) {
-		return {$: 6, a: a, b: b};
+		return {$: 'Profile', a: a, b: b};
 	});
 var $author$project$Main$Register = function (a) {
-	return {$: 5, a: a};
+	return {$: 'Register', a: a};
 };
 var $author$project$Main$Settings = function (a) {
-	return {$: 3, a: a};
+	return {$: 'Settings', a: a};
 };
 var $author$project$Page$Article$CompletedLoadArticle = function (a) {
-	return {$: 9, a: a};
+	return {$: 'CompletedLoadArticle', a: a};
 };
 var $author$project$Page$Article$CompletedLoadComments = function (a) {
-	return {$: 10, a: a};
+	return {$: 'CompletedLoadComments', a: a};
 };
 var $author$project$Page$Article$GotTimeZone = function (a) {
-	return {$: 16, a: a};
+	return {$: 'GotTimeZone', a: a};
 };
-var $author$project$Page$Article$Loading = {$: 0};
-var $author$project$Page$Article$PassedSlowLoadThreshold = {$: 18};
+var $author$project$Page$Article$Loading = {$: 'Loading'};
+var $author$project$Page$Article$PassedSlowLoadThreshold = {$: 'PassedSlowLoadThreshold'};
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $author$project$Viewer$cred = function (_v0) {
 	var val = _v0.b;
 	return val;
 };
 var $author$project$Session$cred = function (session) {
-	if (!session.$) {
+	if (session.$ === 'LoggedIn') {
 		var val = session.b;
 		return $elm$core$Maybe$Just(
 			$author$project$Viewer$cred(val));
@@ -5724,10 +5734,12 @@ var $author$project$Session$cred = function (session) {
 	}
 };
 var $author$project$Article$Slug$toString = function (_v0) {
-	var str = _v0;
+	var str = _v0.a;
 	return str;
 };
-var $author$project$Api$Endpoint$Endpoint = $elm$core$Basics$identity;
+var $author$project$Api$Endpoint$Endpoint = function (a) {
+	return {$: 'Endpoint', a: a};
+};
 var $elm$url$Url$Builder$toQueryPair = function (_v0) {
 	var key = _v0.a;
 	var value = _v0.b;
@@ -5749,11 +5761,12 @@ var $elm$url$Url$Builder$crossOrigin = F3(
 	});
 var $author$project$Api$Endpoint$url = F2(
 	function (paths, queryParams) {
-		return A3(
-			$elm$url$Url$Builder$crossOrigin,
-			'https://conduit.productionready.io',
-			A2($elm$core$List$cons, 'api', paths),
-			queryParams);
+		return $author$project$Api$Endpoint$Endpoint(
+			A3(
+				$elm$url$Url$Builder$crossOrigin,
+				'https://conduit.productionready.io',
+				A2($elm$core$List$cons, 'api', paths),
+				queryParams));
 	});
 var $author$project$Api$Endpoint$article = function (slug) {
 	return A2(
@@ -5767,35 +5780,41 @@ var $author$project$Api$Endpoint$article = function (slug) {
 };
 var $author$project$Article$Article = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'Article', a: a, b: b};
 	});
-var $author$project$Article$Full = $elm$core$Basics$identity;
-var $author$project$Article$Body$Body = $elm$core$Basics$identity;
-var $author$project$Article$Body$decoder = A2($elm$json$Json$Decode$map, $elm$core$Basics$identity, $elm$json$Json$Decode$string);
+var $author$project$Article$Full = function (a) {
+	return {$: 'Full', a: a};
+};
+var $author$project$Article$Body$Body = function (a) {
+	return {$: 'Body', a: a};
+};
+var $author$project$Article$Body$decoder = A2($elm$json$Json$Decode$map, $author$project$Article$Body$Body, $elm$json$Json$Decode$string);
 var $author$project$Article$Internals = F3(
 	function (slug, author, metadata) {
-		return {ag: author, aV: metadata, bb: slug};
+		return {author: author, metadata: metadata, slug: slug};
 	});
-var $author$project$Article$Slug$Slug = $elm$core$Basics$identity;
-var $author$project$Article$Slug$decoder = A2($elm$json$Json$Decode$map, $elm$core$Basics$identity, $elm$json$Json$Decode$string);
+var $author$project$Article$Slug$Slug = function (a) {
+	return {$: 'Slug', a: a};
+};
+var $author$project$Article$Slug$decoder = A2($elm$json$Json$Decode$map, $author$project$Article$Slug$Slug, $elm$json$Json$Decode$string);
 var $elm$json$Json$Decode$andThen = _Json_andThen;
 var $author$project$Author$IsNotFollowing = function (a) {
-	return {$: 1, a: a};
+	return {$: 'IsNotFollowing', a: a};
 };
 var $author$project$Author$IsViewer = F2(
 	function (a, b) {
-		return {$: 2, a: a, b: b};
+		return {$: 'IsViewer', a: a, b: b};
 	});
 var $author$project$Author$UnfollowedAuthor = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'UnfollowedAuthor', a: a, b: b};
 	});
 var $author$project$Author$FollowedAuthor = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'FollowedAuthor', a: a, b: b};
 	});
 var $author$project$Author$IsFollowing = function (a) {
-	return {$: 0, a: a};
+	return {$: 'IsFollowing', a: a};
 };
 var $author$project$Author$authorFromFollowing = F3(
 	function (prof, uname, isFollowing) {
@@ -5818,13 +5837,13 @@ var $NoRedInk$elm_json_decode_pipeline$Json$Decode$Pipeline$optionalDecoder = F3
 		};
 		var handleResult = function (input) {
 			var _v0 = A2($elm$json$Json$Decode$decodeValue, pathDecoder, input);
-			if (!_v0.$) {
+			if (_v0.$ === 'Ok') {
 				var rawValue = _v0.a;
 				var _v1 = A2(
 					$elm$json$Json$Decode$decodeValue,
 					nullOr(valDecoder),
 					rawValue);
-				if (!_v1.$) {
+				if (_v1.$ === 'Ok') {
 					var finalResult = _v1.a;
 					return $elm$json$Json$Decode$succeed(finalResult);
 				} else {
@@ -5867,7 +5886,7 @@ var $author$project$Author$decodeFromPair = F2(
 	function (maybeCred, _v0) {
 		var prof = _v0.a;
 		var uname = _v0.b;
-		if (maybeCred.$ === 1) {
+		if (maybeCred.$ === 'Nothing') {
 			return $elm$json$Json$Decode$succeed(
 				$author$project$Author$IsNotFollowing(
 					A2($author$project$Author$UnfollowedAuthor, uname, prof)));
@@ -5881,12 +5900,14 @@ var $author$project$Author$decodeFromPair = F2(
 	});
 var $author$project$Profile$Internals = F2(
 	function (bio, avatar) {
-		return {J: avatar, K: bio};
+		return {avatar: avatar, bio: bio};
 	});
-var $author$project$Profile$Profile = $elm$core$Basics$identity;
+var $author$project$Profile$Profile = function (a) {
+	return {$: 'Profile', a: a};
+};
 var $author$project$Profile$decoder = A2(
 	$elm$json$Json$Decode$map,
-	$elm$core$Basics$identity,
+	$author$project$Profile$Profile,
 	A3(
 		$NoRedInk$elm_json_decode_pipeline$Json$Decode$Pipeline$required,
 		'image',
@@ -5915,80 +5936,86 @@ var $author$project$Author$decoder = function (maybeCred) {
 };
 var $author$project$Article$Metadata = F6(
 	function (description, title, tags, createdAt, favorited, favoritesCount) {
-		return {bv: createdAt, bw: description, bB: favorited, bC: favoritesCount, bS: tags, bT: title};
+		return {createdAt: createdAt, description: description, favorited: favorited, favoritesCount: favoritesCount, tags: tags, title: title};
 	});
 var $elm$parser$Parser$deadEndsToString = function (deadEnds) {
 	return 'TODO deadEndsToString';
 };
 var $elm$parser$Parser$Advanced$Bad = F2(
 	function (a, b) {
-		return {$: 1, a: a, b: b};
+		return {$: 'Bad', a: a, b: b};
 	});
 var $elm$parser$Parser$Advanced$Good = F3(
 	function (a, b, c) {
-		return {$: 0, a: a, b: b, c: c};
+		return {$: 'Good', a: a, b: b, c: c};
 	});
-var $elm$parser$Parser$Advanced$Parser = $elm$core$Basics$identity;
+var $elm$parser$Parser$Advanced$Parser = function (a) {
+	return {$: 'Parser', a: a};
+};
 var $elm$parser$Parser$Advanced$andThen = F2(
 	function (callback, _v0) {
-		var parseA = _v0;
-		return function (s0) {
-			var _v1 = parseA(s0);
-			if (_v1.$ === 1) {
-				var p = _v1.a;
-				var x = _v1.b;
-				return A2($elm$parser$Parser$Advanced$Bad, p, x);
-			} else {
-				var p1 = _v1.a;
-				var a = _v1.b;
-				var s1 = _v1.c;
-				var _v2 = callback(a);
-				var parseB = _v2;
-				var _v3 = parseB(s1);
-				if (_v3.$ === 1) {
-					var p2 = _v3.a;
-					var x = _v3.b;
-					return A2($elm$parser$Parser$Advanced$Bad, p1 || p2, x);
+		var parseA = _v0.a;
+		return $elm$parser$Parser$Advanced$Parser(
+			function (s0) {
+				var _v1 = parseA(s0);
+				if (_v1.$ === 'Bad') {
+					var p = _v1.a;
+					var x = _v1.b;
+					return A2($elm$parser$Parser$Advanced$Bad, p, x);
 				} else {
-					var p2 = _v3.a;
-					var b = _v3.b;
-					var s2 = _v3.c;
-					return A3($elm$parser$Parser$Advanced$Good, p1 || p2, b, s2);
+					var p1 = _v1.a;
+					var a = _v1.b;
+					var s1 = _v1.c;
+					var _v2 = callback(a);
+					var parseB = _v2.a;
+					var _v3 = parseB(s1);
+					if (_v3.$ === 'Bad') {
+						var p2 = _v3.a;
+						var x = _v3.b;
+						return A2($elm$parser$Parser$Advanced$Bad, p1 || p2, x);
+					} else {
+						var p2 = _v3.a;
+						var b = _v3.b;
+						var s2 = _v3.c;
+						return A3($elm$parser$Parser$Advanced$Good, p1 || p2, b, s2);
+					}
 				}
-			}
-		};
+			});
 	});
 var $elm$parser$Parser$andThen = $elm$parser$Parser$Advanced$andThen;
-var $elm$parser$Parser$ExpectingEnd = {$: 10};
+var $elm$parser$Parser$ExpectingEnd = {$: 'ExpectingEnd'};
 var $elm$parser$Parser$Advanced$AddRight = F2(
 	function (a, b) {
-		return {$: 1, a: a, b: b};
+		return {$: 'AddRight', a: a, b: b};
 	});
-var $elm$parser$Parser$Advanced$Empty = {$: 0};
+var $elm$parser$Parser$Advanced$Empty = {$: 'Empty'};
 var $elm$parser$Parser$Advanced$Problem = F4(
 	function (row, col, problem, contextStack) {
-		return {aD: col, bu: contextStack, a0: problem, a7: row};
+		return {col: col, contextStack: contextStack, problem: problem, row: row};
 	});
 var $elm$parser$Parser$Advanced$fromState = F2(
 	function (s, x) {
 		return A2(
 			$elm$parser$Parser$Advanced$AddRight,
 			$elm$parser$Parser$Advanced$Empty,
-			A4($elm$parser$Parser$Advanced$Problem, s.a7, s.aD, x, s.c));
+			A4($elm$parser$Parser$Advanced$Problem, s.row, s.col, x, s.context));
 	});
 var $elm$parser$Parser$Advanced$end = function (x) {
-	return function (s) {
-		return _Utils_eq(
-			$elm$core$String$length(s.a),
-			s.b) ? A3($elm$parser$Parser$Advanced$Good, false, 0, s) : A2(
-			$elm$parser$Parser$Advanced$Bad,
-			false,
-			A2($elm$parser$Parser$Advanced$fromState, s, x));
-	};
+	return $elm$parser$Parser$Advanced$Parser(
+		function (s) {
+			return _Utils_eq(
+				$elm$core$String$length(s.src),
+				s.offset) ? A3($elm$parser$Parser$Advanced$Good, false, _Utils_Tuple0, s) : A2(
+				$elm$parser$Parser$Advanced$Bad,
+				false,
+				A2($elm$parser$Parser$Advanced$fromState, s, x));
+		});
 };
 var $elm$parser$Parser$end = $elm$parser$Parser$Advanced$end($elm$parser$Parser$ExpectingEnd);
-var $elm$time$Time$Posix = $elm$core$Basics$identity;
-var $elm$time$Time$millisToPosix = $elm$core$Basics$identity;
+var $elm$time$Time$Posix = function (a) {
+	return {$: 'Posix', a: a};
+};
+var $elm$time$Time$millisToPosix = $elm$time$Time$Posix;
 var $rtfeldman$elm_iso8601_date_strings$Iso8601$fromParts = F6(
 	function (monthYearDayMs, hour, minute, second, ms, utcOffsetMinutes) {
 		return $elm$time$Time$millisToPosix((((monthYearDayMs + (((hour * 60) * 60) * 1000)) + (((minute - utcOffsetMinutes) * 60) * 1000)) + (second * 1000)) + ms);
@@ -5999,35 +6026,36 @@ var $elm$core$Basics$always = F2(
 	});
 var $elm$parser$Parser$Advanced$map2 = F3(
 	function (func, _v0, _v1) {
-		var parseA = _v0;
-		var parseB = _v1;
-		return function (s0) {
-			var _v2 = parseA(s0);
-			if (_v2.$ === 1) {
-				var p = _v2.a;
-				var x = _v2.b;
-				return A2($elm$parser$Parser$Advanced$Bad, p, x);
-			} else {
-				var p1 = _v2.a;
-				var a = _v2.b;
-				var s1 = _v2.c;
-				var _v3 = parseB(s1);
-				if (_v3.$ === 1) {
-					var p2 = _v3.a;
-					var x = _v3.b;
-					return A2($elm$parser$Parser$Advanced$Bad, p1 || p2, x);
+		var parseA = _v0.a;
+		var parseB = _v1.a;
+		return $elm$parser$Parser$Advanced$Parser(
+			function (s0) {
+				var _v2 = parseA(s0);
+				if (_v2.$ === 'Bad') {
+					var p = _v2.a;
+					var x = _v2.b;
+					return A2($elm$parser$Parser$Advanced$Bad, p, x);
 				} else {
-					var p2 = _v3.a;
-					var b = _v3.b;
-					var s2 = _v3.c;
-					return A3(
-						$elm$parser$Parser$Advanced$Good,
-						p1 || p2,
-						A2(func, a, b),
-						s2);
+					var p1 = _v2.a;
+					var a = _v2.b;
+					var s1 = _v2.c;
+					var _v3 = parseB(s1);
+					if (_v3.$ === 'Bad') {
+						var p2 = _v3.a;
+						var x = _v3.b;
+						return A2($elm$parser$Parser$Advanced$Bad, p1 || p2, x);
+					} else {
+						var p2 = _v3.a;
+						var b = _v3.b;
+						var s2 = _v3.c;
+						return A3(
+							$elm$parser$Parser$Advanced$Good,
+							p1 || p2,
+							A2(func, a, b),
+							s2);
+					}
 				}
-			}
-		};
+			});
 	});
 var $elm$parser$Parser$Advanced$ignorer = F2(
 	function (keepParser, ignoreParser) {
@@ -6041,24 +6069,25 @@ var $elm$parser$Parser$Advanced$keeper = F2(
 var $elm$parser$Parser$keeper = $elm$parser$Parser$Advanced$keeper;
 var $elm$parser$Parser$Advanced$map = F2(
 	function (func, _v0) {
-		var parse = _v0;
-		return function (s0) {
-			var _v1 = parse(s0);
-			if (!_v1.$) {
-				var p = _v1.a;
-				var a = _v1.b;
-				var s1 = _v1.c;
-				return A3(
-					$elm$parser$Parser$Advanced$Good,
-					p,
-					func(a),
-					s1);
-			} else {
-				var p = _v1.a;
-				var x = _v1.b;
-				return A2($elm$parser$Parser$Advanced$Bad, p, x);
-			}
-		};
+		var parse = _v0.a;
+		return $elm$parser$Parser$Advanced$Parser(
+			function (s0) {
+				var _v1 = parse(s0);
+				if (_v1.$ === 'Good') {
+					var p = _v1.a;
+					var a = _v1.b;
+					var s1 = _v1.c;
+					return A3(
+						$elm$parser$Parser$Advanced$Good,
+						p,
+						func(a),
+						s1);
+				} else {
+					var p = _v1.a;
+					var x = _v1.b;
+					return A2($elm$parser$Parser$Advanced$Bad, p, x);
+				}
+			});
 	});
 var $elm$parser$Parser$map = $elm$parser$Parser$Advanced$map;
 var $elm$parser$Parser$Advanced$isSubChar = _Parser_isSubChar;
@@ -6069,13 +6098,13 @@ var $elm$parser$Parser$Advanced$chompWhileHelp = F5(
 	function (isGood, offset, row, col, s0) {
 		chompWhileHelp:
 		while (true) {
-			var newOffset = A3($elm$parser$Parser$Advanced$isSubChar, isGood, offset, s0.a);
+			var newOffset = A3($elm$parser$Parser$Advanced$isSubChar, isGood, offset, s0.src);
 			if (_Utils_eq(newOffset, -1)) {
 				return A3(
 					$elm$parser$Parser$Advanced$Good,
-					_Utils_cmp(s0.b, offset) < 0,
-					0,
-					{aD: col, c: s0.c, d: s0.d, b: offset, a7: row, a: s0.a});
+					_Utils_cmp(s0.offset, offset) < 0,
+					_Utils_Tuple0,
+					{col: col, context: s0.context, indent: s0.indent, offset: offset, row: row, src: s0.src});
 			} else {
 				if (_Utils_eq(newOffset, -2)) {
 					var $temp$isGood = isGood,
@@ -6106,58 +6135,62 @@ var $elm$parser$Parser$Advanced$chompWhileHelp = F5(
 		}
 	});
 var $elm$parser$Parser$Advanced$chompWhile = function (isGood) {
-	return function (s) {
-		return A5($elm$parser$Parser$Advanced$chompWhileHelp, isGood, s.b, s.a7, s.aD, s);
-	};
+	return $elm$parser$Parser$Advanced$Parser(
+		function (s) {
+			return A5($elm$parser$Parser$Advanced$chompWhileHelp, isGood, s.offset, s.row, s.col, s);
+		});
 };
 var $elm$parser$Parser$chompWhile = $elm$parser$Parser$Advanced$chompWhile;
 var $elm$parser$Parser$Advanced$mapChompedString = F2(
 	function (func, _v0) {
-		var parse = _v0;
-		return function (s0) {
-			var _v1 = parse(s0);
-			if (_v1.$ === 1) {
-				var p = _v1.a;
-				var x = _v1.b;
-				return A2($elm$parser$Parser$Advanced$Bad, p, x);
-			} else {
-				var p = _v1.a;
-				var a = _v1.b;
-				var s1 = _v1.c;
-				return A3(
-					$elm$parser$Parser$Advanced$Good,
-					p,
-					A2(
-						func,
-						A3($elm$core$String$slice, s0.b, s1.b, s0.a),
-						a),
-					s1);
-			}
-		};
+		var parse = _v0.a;
+		return $elm$parser$Parser$Advanced$Parser(
+			function (s0) {
+				var _v1 = parse(s0);
+				if (_v1.$ === 'Bad') {
+					var p = _v1.a;
+					var x = _v1.b;
+					return A2($elm$parser$Parser$Advanced$Bad, p, x);
+				} else {
+					var p = _v1.a;
+					var a = _v1.b;
+					var s1 = _v1.c;
+					return A3(
+						$elm$parser$Parser$Advanced$Good,
+						p,
+						A2(
+							func,
+							A3($elm$core$String$slice, s0.offset, s1.offset, s0.src),
+							a),
+						s1);
+				}
+			});
 	});
 var $elm$parser$Parser$Advanced$getChompedString = function (parser) {
 	return A2($elm$parser$Parser$Advanced$mapChompedString, $elm$core$Basics$always, parser);
 };
 var $elm$parser$Parser$getChompedString = $elm$parser$Parser$Advanced$getChompedString;
 var $elm$parser$Parser$Problem = function (a) {
-	return {$: 12, a: a};
+	return {$: 'Problem', a: a};
 };
 var $elm$parser$Parser$Advanced$problem = function (x) {
-	return function (s) {
-		return A2(
-			$elm$parser$Parser$Advanced$Bad,
-			false,
-			A2($elm$parser$Parser$Advanced$fromState, s, x));
-	};
+	return $elm$parser$Parser$Advanced$Parser(
+		function (s) {
+			return A2(
+				$elm$parser$Parser$Advanced$Bad,
+				false,
+				A2($elm$parser$Parser$Advanced$fromState, s, x));
+		});
 };
 var $elm$parser$Parser$problem = function (msg) {
 	return $elm$parser$Parser$Advanced$problem(
 		$elm$parser$Parser$Problem(msg));
 };
 var $elm$parser$Parser$Advanced$succeed = function (a) {
-	return function (s) {
-		return A3($elm$parser$Parser$Advanced$Good, false, a, s);
-	};
+	return $elm$parser$Parser$Advanced$Parser(
+		function (s) {
+			return A3($elm$parser$Parser$Advanced$Good, false, a, s);
+		});
 };
 var $elm$parser$Parser$succeed = $elm$parser$Parser$Advanced$succeed;
 var $rtfeldman$elm_iso8601_date_strings$Iso8601$paddedInt = function (quantity) {
@@ -6168,7 +6201,7 @@ var $rtfeldman$elm_iso8601_date_strings$Iso8601$paddedInt = function (quantity) 
 				$elm$core$String$length(str),
 				quantity)) {
 				var _v0 = $elm$core$String$toInt(str);
-				if (!_v0.$) {
+				if (_v0.$ === 'Just') {
 					var intVal = _v0.a;
 					return $elm$parser$Parser$succeed(intVal);
 				} else {
@@ -6184,11 +6217,11 @@ var $rtfeldman$elm_iso8601_date_strings$Iso8601$paddedInt = function (quantity) 
 			$elm$parser$Parser$chompWhile($elm$core$Char$isDigit)));
 };
 var $elm$parser$Parser$ExpectingSymbol = function (a) {
-	return {$: 8, a: a};
+	return {$: 'ExpectingSymbol', a: a};
 };
 var $elm$parser$Parser$Advanced$Token = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'Token', a: a, b: b};
 	});
 var $elm$parser$Parser$Advanced$isSubString = _Parser_isSubString;
 var $elm$core$Basics$not = _Basics_not;
@@ -6196,20 +6229,21 @@ var $elm$parser$Parser$Advanced$token = function (_v0) {
 	var str = _v0.a;
 	var expecting = _v0.b;
 	var progress = !$elm$core$String$isEmpty(str);
-	return function (s) {
-		var _v1 = A5($elm$parser$Parser$Advanced$isSubString, str, s.b, s.a7, s.aD, s.a);
-		var newOffset = _v1.a;
-		var newRow = _v1.b;
-		var newCol = _v1.c;
-		return _Utils_eq(newOffset, -1) ? A2(
-			$elm$parser$Parser$Advanced$Bad,
-			false,
-			A2($elm$parser$Parser$Advanced$fromState, s, expecting)) : A3(
-			$elm$parser$Parser$Advanced$Good,
-			progress,
-			0,
-			{aD: newCol, c: s.c, d: s.d, b: newOffset, a7: newRow, a: s.a});
-	};
+	return $elm$parser$Parser$Advanced$Parser(
+		function (s) {
+			var _v1 = A5($elm$parser$Parser$Advanced$isSubString, str, s.offset, s.row, s.col, s.src);
+			var newOffset = _v1.a;
+			var newRow = _v1.b;
+			var newCol = _v1.c;
+			return _Utils_eq(newOffset, -1) ? A2(
+				$elm$parser$Parser$Advanced$Bad,
+				false,
+				A2($elm$parser$Parser$Advanced$fromState, s, expecting)) : A3(
+				$elm$parser$Parser$Advanced$Good,
+				progress,
+				_Utils_Tuple0,
+				{col: newCol, context: s.context, indent: s.indent, offset: newOffset, row: newRow, src: s.src});
+		});
 };
 var $elm$parser$Parser$Advanced$symbol = $elm$parser$Parser$Advanced$token;
 var $elm$parser$Parser$symbol = function (str) {
@@ -6304,7 +6338,7 @@ var $rtfeldman$elm_iso8601_date_strings$Iso8601$monthYearDayInMs = A2(
 		$rtfeldman$elm_iso8601_date_strings$Iso8601$paddedInt(2)));
 var $elm$parser$Parser$Advanced$Append = F2(
 	function (a, b) {
-		return {$: 2, a: a, b: b};
+		return {$: 'Append', a: a, b: b};
 	});
 var $elm$parser$Parser$Advanced$oneOfHelp = F3(
 	function (s0, bag, parsers) {
@@ -6313,10 +6347,10 @@ var $elm$parser$Parser$Advanced$oneOfHelp = F3(
 			if (!parsers.b) {
 				return A2($elm$parser$Parser$Advanced$Bad, false, bag);
 			} else {
-				var parse = parsers.a;
+				var parse = parsers.a.a;
 				var remainingParsers = parsers.b;
 				var _v1 = parse(s0);
-				if (!_v1.$) {
+				if (_v1.$ === 'Good') {
 					var step = _v1;
 					return step;
 				} else {
@@ -6339,9 +6373,10 @@ var $elm$parser$Parser$Advanced$oneOfHelp = F3(
 		}
 	});
 var $elm$parser$Parser$Advanced$oneOf = function (parsers) {
-	return function (s) {
-		return A3($elm$parser$Parser$Advanced$oneOfHelp, s, $elm$parser$Parser$Advanced$Empty, parsers);
-	};
+	return $elm$parser$Parser$Advanced$Parser(
+		function (s) {
+			return A3($elm$parser$Parser$Advanced$oneOfHelp, s, $elm$parser$Parser$Advanced$Empty, parsers);
+		});
 };
 var $elm$parser$Parser$oneOf = $elm$parser$Parser$Advanced$oneOf;
 var $rtfeldman$elm_iso8601_date_strings$Iso8601$utcOffsetMinutesFromParts = F3(
@@ -6438,19 +6473,19 @@ var $rtfeldman$elm_iso8601_date_strings$Iso8601$iso8601 = A2(
 	$rtfeldman$elm_iso8601_date_strings$Iso8601$monthYearDayInMs);
 var $elm$parser$Parser$DeadEnd = F3(
 	function (row, col, problem) {
-		return {aD: col, a0: problem, a7: row};
+		return {col: col, problem: problem, row: row};
 	});
 var $elm$parser$Parser$problemToDeadEnd = function (p) {
-	return A3($elm$parser$Parser$DeadEnd, p.a7, p.aD, p.a0);
+	return A3($elm$parser$Parser$DeadEnd, p.row, p.col, p.problem);
 };
 var $elm$parser$Parser$Advanced$bagToList = F2(
 	function (bag, list) {
 		bagToList:
 		while (true) {
 			switch (bag.$) {
-				case 0:
+				case 'Empty':
 					return list;
-				case 1:
+				case 'AddRight':
 					var bag1 = bag.a;
 					var x = bag.b;
 					var $temp$bag = bag1,
@@ -6471,10 +6506,10 @@ var $elm$parser$Parser$Advanced$bagToList = F2(
 	});
 var $elm$parser$Parser$Advanced$run = F2(
 	function (_v0, src) {
-		var parse = _v0;
+		var parse = _v0.a;
 		var _v1 = parse(
-			{aD: 1, c: _List_Nil, d: 1, b: 0, a7: 1, a: src});
-		if (!_v1.$) {
+			{col: 1, context: _List_Nil, indent: 1, offset: 0, row: 1, src: src});
+		if (_v1.$ === 'Good') {
 			var value = _v1.b;
 			return $elm$core$Result$Ok(value);
 		} else {
@@ -6486,7 +6521,7 @@ var $elm$parser$Parser$Advanced$run = F2(
 var $elm$parser$Parser$run = F2(
 	function (parser, source) {
 		var _v0 = A2($elm$parser$Parser$Advanced$run, parser, source);
-		if (!_v0.$) {
+		if (_v0.$ === 'Ok') {
 			var a = _v0.a;
 			return $elm$core$Result$Ok(a);
 		} else {
@@ -6502,7 +6537,7 @@ var $rtfeldman$elm_iso8601_date_strings$Iso8601$decoder = A2(
 	$elm$json$Json$Decode$andThen,
 	function (str) {
 		var _v0 = $rtfeldman$elm_iso8601_date_strings$Iso8601$toTime(str);
-		if (_v0.$ === 1) {
+		if (_v0.$ === 'Err') {
 			var deadEnds = _v0.a;
 			return $elm$json$Json$Decode$fail(
 				$elm$parser$Parser$deadEndsToString(deadEnds));
@@ -6516,7 +6551,7 @@ var $elm$json$Json$Decode$int = _Json_decodeInt;
 var $elm$json$Json$Decode$list = _Json_decodeList;
 var $elm$core$Maybe$withDefault = F2(
 	function (_default, maybe) {
-		if (!maybe.$) {
+		if (maybe.$ === 'Just') {
 			var value = maybe.a;
 			return value;
 		} else {
@@ -6569,7 +6604,7 @@ var $author$project$Article$fullDecoder = function (maybeCred) {
 	return A3(
 		$NoRedInk$elm_json_decode_pipeline$Json$Decode$Pipeline$required,
 		'body',
-		A2($elm$json$Json$Decode$map, $elm$core$Basics$identity, $author$project$Article$Body$decoder),
+		A2($elm$json$Json$Decode$map, $author$project$Article$Full, $author$project$Article$Body$decoder),
 		A2(
 			$NoRedInk$elm_json_decode_pipeline$Json$Decode$Pipeline$custom,
 			$author$project$Article$internalsDecoder(maybeCred),
@@ -6577,41 +6612,41 @@ var $author$project$Article$fullDecoder = function (maybeCred) {
 };
 var $elm$http$Http$Internal$Header = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'Header', a: a, b: b};
 	});
 var $elm$http$Http$header = $elm$http$Http$Internal$Header;
 var $author$project$Api$credHeader = function (_v0) {
 	var str = _v0.b;
 	return A2($elm$http$Http$header, 'authorization', 'Token ' + str);
 };
-var $elm$http$Http$Internal$EmptyBody = {$: 0};
+var $elm$http$Http$Internal$EmptyBody = {$: 'EmptyBody'};
 var $elm$http$Http$emptyBody = $elm$http$Http$Internal$EmptyBody;
 var $elm$http$Http$BadPayload = F2(
 	function (a, b) {
-		return {$: 4, a: a, b: b};
+		return {$: 'BadPayload', a: a, b: b};
 	});
 var $elm$http$Http$BadStatus = function (a) {
-	return {$: 3, a: a};
+	return {$: 'BadStatus', a: a};
 };
 var $elm$http$Http$BadUrl = function (a) {
-	return {$: 0, a: a};
+	return {$: 'BadUrl', a: a};
 };
 var $elm$http$Http$Internal$FormDataBody = function (a) {
-	return {$: 2, a: a};
+	return {$: 'FormDataBody', a: a};
 };
-var $elm$http$Http$NetworkError = {$: 2};
-var $elm$http$Http$Timeout = {$: 1};
-var $elm$core$Dict$RBEmpty_elm_builtin = {$: -2};
+var $elm$http$Http$NetworkError = {$: 'NetworkError'};
+var $elm$http$Http$Timeout = {$: 'Timeout'};
+var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
 var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
 var $elm$core$Maybe$isJust = function (maybe) {
-	if (!maybe.$) {
+	if (maybe.$ === 'Just') {
 		return true;
 	} else {
 		return false;
 	}
 };
 var $elm$http$Http$Internal$isStringBody = function (body) {
-	if (body.$ === 1) {
+	if (body.$ === 'StringBody') {
 		return true;
 	} else {
 		return false;
@@ -6619,7 +6654,7 @@ var $elm$http$Http$Internal$isStringBody = function (body) {
 };
 var $elm$core$Result$map = F2(
 	function (func, ra) {
-		if (!ra.$) {
+		if (ra.$ === 'Ok') {
 			var a = ra.a;
 			return $elm$core$Result$Ok(
 				func(a));
@@ -6633,7 +6668,7 @@ var $elm$core$Dict$get = F2(
 	function (targetKey, dict) {
 		get:
 		while (true) {
-			if (dict.$ === -2) {
+			if (dict.$ === 'RBEmpty_elm_builtin') {
 				return $elm$core$Maybe$Nothing;
 			} else {
 				var key = dict.b;
@@ -6641,14 +6676,14 @@ var $elm$core$Dict$get = F2(
 				var left = dict.d;
 				var right = dict.e;
 				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
-				switch (_v1) {
-					case 0:
+				switch (_v1.$) {
+					case 'LT':
 						var $temp$targetKey = targetKey,
 							$temp$dict = left;
 						targetKey = $temp$targetKey;
 						dict = $temp$dict;
 						continue get;
-					case 1:
+					case 'EQ':
 						return $elm$core$Maybe$Just(value);
 					default:
 						var $temp$targetKey = targetKey,
@@ -6660,21 +6695,21 @@ var $elm$core$Dict$get = F2(
 			}
 		}
 	});
-var $elm$core$Dict$Black = 1;
+var $elm$core$Dict$Black = {$: 'Black'};
 var $elm$core$Dict$RBNode_elm_builtin = F5(
 	function (a, b, c, d, e) {
-		return {$: -1, a: a, b: b, c: c, d: d, e: e};
+		return {$: 'RBNode_elm_builtin', a: a, b: b, c: c, d: d, e: e};
 	});
-var $elm$core$Dict$Red = 0;
+var $elm$core$Dict$Red = {$: 'Red'};
 var $elm$core$Dict$balance = F5(
 	function (color, key, value, left, right) {
-		if ((right.$ === -1) && (!right.a)) {
+		if ((right.$ === 'RBNode_elm_builtin') && (right.a.$ === 'Red')) {
 			var _v1 = right.a;
 			var rK = right.b;
 			var rV = right.c;
 			var rLeft = right.d;
 			var rRight = right.e;
-			if ((left.$ === -1) && (!left.a)) {
+			if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) {
 				var _v3 = left.a;
 				var lK = left.b;
 				var lV = left.c;
@@ -6682,22 +6717,22 @@ var $elm$core$Dict$balance = F5(
 				var lRight = left.e;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					0,
+					$elm$core$Dict$Red,
 					key,
 					value,
-					A5($elm$core$Dict$RBNode_elm_builtin, 1, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, 1, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, rK, rV, rLeft, rRight));
 			} else {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
 					color,
 					rK,
 					rV,
-					A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, left, rLeft),
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, left, rLeft),
 					rRight);
 			}
 		} else {
-			if ((((left.$ === -1) && (!left.a)) && (left.d.$ === -1)) && (!left.d.a)) {
+			if ((((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) && (left.d.$ === 'RBNode_elm_builtin')) && (left.d.a.$ === 'Red')) {
 				var _v5 = left.a;
 				var lK = left.b;
 				var lV = left.c;
@@ -6710,11 +6745,11 @@ var $elm$core$Dict$balance = F5(
 				var lRight = left.e;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					0,
+					$elm$core$Dict$Red,
 					lK,
 					lV,
-					A5($elm$core$Dict$RBNode_elm_builtin, 1, llK, llV, llLeft, llRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, 1, key, value, lRight, right));
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, llK, llV, llLeft, llRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, key, value, lRight, right));
 			} else {
 				return A5($elm$core$Dict$RBNode_elm_builtin, color, key, value, left, right);
 			}
@@ -6722,8 +6757,8 @@ var $elm$core$Dict$balance = F5(
 	});
 var $elm$core$Dict$insertHelp = F3(
 	function (key, value, dict) {
-		if (dict.$ === -2) {
-			return A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
+		if (dict.$ === 'RBEmpty_elm_builtin') {
+			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
 		} else {
 			var nColor = dict.a;
 			var nKey = dict.b;
@@ -6731,8 +6766,8 @@ var $elm$core$Dict$insertHelp = F3(
 			var nLeft = dict.d;
 			var nRight = dict.e;
 			var _v1 = A2($elm$core$Basics$compare, key, nKey);
-			switch (_v1) {
-				case 0:
+			switch (_v1.$) {
+				case 'LT':
 					return A5(
 						$elm$core$Dict$balance,
 						nColor,
@@ -6740,7 +6775,7 @@ var $elm$core$Dict$insertHelp = F3(
 						nValue,
 						A3($elm$core$Dict$insertHelp, key, value, nLeft),
 						nRight);
-				case 1:
+				case 'EQ':
 					return A5($elm$core$Dict$RBNode_elm_builtin, nColor, nKey, value, nLeft, nRight);
 				default:
 					return A5(
@@ -6756,13 +6791,13 @@ var $elm$core$Dict$insertHelp = F3(
 var $elm$core$Dict$insert = F3(
 	function (key, value, dict) {
 		var _v0 = A3($elm$core$Dict$insertHelp, key, value, dict);
-		if ((_v0.$ === -1) && (!_v0.a)) {
+		if ((_v0.$ === 'RBNode_elm_builtin') && (_v0.a.$ === 'Red')) {
 			var _v1 = _v0.a;
 			var k = _v0.b;
 			var v = _v0.c;
 			var l = _v0.d;
 			var r = _v0.e;
-			return A5($elm$core$Dict$RBNode_elm_builtin, 1, k, v, l, r);
+			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, k, v, l, r);
 		} else {
 			var x = _v0;
 			return x;
@@ -6771,7 +6806,7 @@ var $elm$core$Dict$insert = F3(
 var $elm$core$Dict$getMin = function (dict) {
 	getMin:
 	while (true) {
-		if ((dict.$ === -1) && (dict.d.$ === -1)) {
+		if ((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) {
 			var left = dict.d;
 			var $temp$dict = left;
 			dict = $temp$dict;
@@ -6782,8 +6817,8 @@ var $elm$core$Dict$getMin = function (dict) {
 	}
 };
 var $elm$core$Dict$moveRedLeft = function (dict) {
-	if (((dict.$ === -1) && (dict.d.$ === -1)) && (dict.e.$ === -1)) {
-		if ((dict.e.d.$ === -1) && (!dict.e.d.a)) {
+	if (((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) && (dict.e.$ === 'RBNode_elm_builtin')) {
+		if ((dict.e.d.$ === 'RBNode_elm_builtin') && (dict.e.d.a.$ === 'Red')) {
 			var clr = dict.a;
 			var k = dict.b;
 			var v = dict.c;
@@ -6806,17 +6841,17 @@ var $elm$core$Dict$moveRedLeft = function (dict) {
 			var rRight = _v2.e;
 			return A5(
 				$elm$core$Dict$RBNode_elm_builtin,
-				0,
+				$elm$core$Dict$Red,
 				rlK,
 				rlV,
 				A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					1,
+					$elm$core$Dict$Black,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
 					rlL),
-				A5($elm$core$Dict$RBNode_elm_builtin, 1, rK, rV, rlR, rRight));
+				A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, rK, rV, rlR, rRight));
 		} else {
 			var clr = dict.a;
 			var k = dict.b;
@@ -6833,22 +6868,22 @@ var $elm$core$Dict$moveRedLeft = function (dict) {
 			var rV = _v5.c;
 			var rLeft = _v5.d;
 			var rRight = _v5.e;
-			if (clr === 1) {
+			if (clr.$ === 'Black') {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					1,
+					$elm$core$Dict$Black,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
 			} else {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					1,
+					$elm$core$Dict$Black,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
 			}
 		}
 	} else {
@@ -6856,8 +6891,8 @@ var $elm$core$Dict$moveRedLeft = function (dict) {
 	}
 };
 var $elm$core$Dict$moveRedRight = function (dict) {
-	if (((dict.$ === -1) && (dict.d.$ === -1)) && (dict.e.$ === -1)) {
-		if ((dict.d.d.$ === -1) && (!dict.d.d.a)) {
+	if (((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) && (dict.e.$ === 'RBNode_elm_builtin')) {
+		if ((dict.d.d.$ === 'RBNode_elm_builtin') && (dict.d.d.a.$ === 'Red')) {
 			var clr = dict.a;
 			var k = dict.b;
 			var v = dict.c;
@@ -6880,17 +6915,17 @@ var $elm$core$Dict$moveRedRight = function (dict) {
 			var rRight = _v4.e;
 			return A5(
 				$elm$core$Dict$RBNode_elm_builtin,
-				0,
+				$elm$core$Dict$Red,
 				lK,
 				lV,
-				A5($elm$core$Dict$RBNode_elm_builtin, 1, llK, llV, llLeft, llRight),
+				A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, llK, llV, llLeft, llRight),
 				A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					1,
+					$elm$core$Dict$Black,
 					k,
 					v,
 					lRight,
-					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight)));
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight)));
 		} else {
 			var clr = dict.a;
 			var k = dict.b;
@@ -6907,22 +6942,22 @@ var $elm$core$Dict$moveRedRight = function (dict) {
 			var rV = _v6.c;
 			var rLeft = _v6.d;
 			var rRight = _v6.e;
-			if (clr === 1) {
+			if (clr.$ === 'Black') {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					1,
+					$elm$core$Dict$Black,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
 			} else {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					1,
+					$elm$core$Dict$Black,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
 			}
 		}
 	} else {
@@ -6931,7 +6966,7 @@ var $elm$core$Dict$moveRedRight = function (dict) {
 };
 var $elm$core$Dict$removeHelpPrepEQGT = F7(
 	function (targetKey, dict, color, key, value, left, right) {
-		if ((left.$ === -1) && (!left.a)) {
+		if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) {
 			var _v1 = left.a;
 			var lK = left.b;
 			var lV = left.c;
@@ -6943,13 +6978,13 @@ var $elm$core$Dict$removeHelpPrepEQGT = F7(
 				lK,
 				lV,
 				lLeft,
-				A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, lRight, right));
+				A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, lRight, right));
 		} else {
 			_v2$2:
 			while (true) {
-				if ((right.$ === -1) && (right.a === 1)) {
-					if (right.d.$ === -1) {
-						if (right.d.a === 1) {
+				if ((right.$ === 'RBNode_elm_builtin') && (right.a.$ === 'Black')) {
+					if (right.d.$ === 'RBNode_elm_builtin') {
+						if (right.d.a.$ === 'Black') {
 							var _v3 = right.a;
 							var _v4 = right.d;
 							var _v5 = _v4.a;
@@ -6970,7 +7005,7 @@ var $elm$core$Dict$removeHelpPrepEQGT = F7(
 		}
 	});
 var $elm$core$Dict$removeMin = function (dict) {
-	if ((dict.$ === -1) && (dict.d.$ === -1)) {
+	if ((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) {
 		var color = dict.a;
 		var key = dict.b;
 		var value = dict.c;
@@ -6978,8 +7013,8 @@ var $elm$core$Dict$removeMin = function (dict) {
 		var lColor = left.a;
 		var lLeft = left.d;
 		var right = dict.e;
-		if (lColor === 1) {
-			if ((lLeft.$ === -1) && (!lLeft.a)) {
+		if (lColor.$ === 'Black') {
+			if ((lLeft.$ === 'RBNode_elm_builtin') && (lLeft.a.$ === 'Red')) {
 				var _v3 = lLeft.a;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
@@ -6990,7 +7025,7 @@ var $elm$core$Dict$removeMin = function (dict) {
 					right);
 			} else {
 				var _v4 = $elm$core$Dict$moveRedLeft(dict);
-				if (_v4.$ === -1) {
+				if (_v4.$ === 'RBNode_elm_builtin') {
 					var nColor = _v4.a;
 					var nKey = _v4.b;
 					var nValue = _v4.c;
@@ -7022,7 +7057,7 @@ var $elm$core$Dict$removeMin = function (dict) {
 };
 var $elm$core$Dict$removeHelp = F2(
 	function (targetKey, dict) {
-		if (dict.$ === -2) {
+		if (dict.$ === 'RBEmpty_elm_builtin') {
 			return $elm$core$Dict$RBEmpty_elm_builtin;
 		} else {
 			var color = dict.a;
@@ -7031,10 +7066,10 @@ var $elm$core$Dict$removeHelp = F2(
 			var left = dict.d;
 			var right = dict.e;
 			if (_Utils_cmp(targetKey, key) < 0) {
-				if ((left.$ === -1) && (left.a === 1)) {
+				if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Black')) {
 					var _v4 = left.a;
 					var lLeft = left.d;
-					if ((lLeft.$ === -1) && (!lLeft.a)) {
+					if ((lLeft.$ === 'RBNode_elm_builtin') && (lLeft.a.$ === 'Red')) {
 						var _v6 = lLeft.a;
 						return A5(
 							$elm$core$Dict$RBNode_elm_builtin,
@@ -7045,7 +7080,7 @@ var $elm$core$Dict$removeHelp = F2(
 							right);
 					} else {
 						var _v7 = $elm$core$Dict$moveRedLeft(dict);
-						if (_v7.$ === -1) {
+						if (_v7.$ === 'RBNode_elm_builtin') {
 							var nColor = _v7.a;
 							var nKey = _v7.b;
 							var nValue = _v7.c;
@@ -7081,7 +7116,7 @@ var $elm$core$Dict$removeHelp = F2(
 	});
 var $elm$core$Dict$removeHelpEQGT = F2(
 	function (targetKey, dict) {
-		if (dict.$ === -1) {
+		if (dict.$ === 'RBNode_elm_builtin') {
 			var color = dict.a;
 			var key = dict.b;
 			var value = dict.c;
@@ -7089,7 +7124,7 @@ var $elm$core$Dict$removeHelpEQGT = F2(
 			var right = dict.e;
 			if (_Utils_eq(targetKey, key)) {
 				var _v1 = $elm$core$Dict$getMin(right);
-				if (_v1.$ === -1) {
+				if (_v1.$ === 'RBNode_elm_builtin') {
 					var minKey = _v1.b;
 					var minValue = _v1.c;
 					return A5(
@@ -7118,13 +7153,13 @@ var $elm$core$Dict$removeHelpEQGT = F2(
 var $elm$core$Dict$remove = F2(
 	function (key, dict) {
 		var _v0 = A2($elm$core$Dict$removeHelp, key, dict);
-		if ((_v0.$ === -1) && (!_v0.a)) {
+		if ((_v0.$ === 'RBNode_elm_builtin') && (_v0.a.$ === 'Red')) {
 			var _v1 = _v0.a;
 			var k = _v0.b;
 			var v = _v0.c;
 			var l = _v0.d;
 			var r = _v0.e;
-			return A5($elm$core$Dict$RBNode_elm_builtin, 1, k, v, l, r);
+			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, k, v, l, r);
 		} else {
 			var x = _v0;
 			return x;
@@ -7134,7 +7169,7 @@ var $elm$core$Dict$update = F3(
 	function (targetKey, alter, dictionary) {
 		var _v0 = alter(
 			A2($elm$core$Dict$get, targetKey, dictionary));
-		if (!_v0.$) {
+		if (_v0.$ === 'Just') {
 			var value = _v0.a;
 			return A3($elm$core$Dict$insert, targetKey, value, dictionary);
 		} else {
@@ -7145,8 +7180,8 @@ var $elm$http$Http$expectStringResponse = _Http_expectStringResponse;
 var $elm$http$Http$expectJson = function (decoder) {
 	return $elm$http$Http$expectStringResponse(
 		function (response) {
-			var _v0 = A2($elm$json$Json$Decode$decodeString, decoder, response.X);
-			if (_v0.$ === 1) {
+			var _v0 = A2($elm$json$Json$Decode$decodeString, decoder, response.body);
+			if (_v0.$ === 'Err') {
 				var decodeError = _v0.a;
 				return $elm$core$Result$Err(
 					$elm$json$Json$Decode$errorToString(decodeError));
@@ -7156,32 +7191,34 @@ var $elm$http$Http$expectJson = function (decoder) {
 			}
 		});
 };
-var $elm$http$Http$Internal$Request = $elm$core$Basics$identity;
-var $elm$http$Http$request = $elm$core$Basics$identity;
+var $elm$http$Http$Internal$Request = function (a) {
+	return {$: 'Request', a: a};
+};
+var $elm$http$Http$request = $elm$http$Http$Internal$Request;
 var $author$project$Api$Endpoint$unwrap = function (_v0) {
-	var str = _v0;
+	var str = _v0.a;
 	return str;
 };
 var $author$project$Api$Endpoint$request = function (config) {
 	return $elm$http$Http$request(
 		{
-			X: config.X,
-			ai: config.ai,
-			ak: config.ak,
-			al: config.al,
-			ao: config.ao,
-			ap: $author$project$Api$Endpoint$unwrap(config.ap),
-			ar: config.ar
+			body: config.body,
+			expect: config.expect,
+			headers: config.headers,
+			method: config.method,
+			timeout: config.timeout,
+			url: $author$project$Api$Endpoint$unwrap(config.url),
+			withCredentials: config.withCredentials
 		});
 };
 var $author$project$Api$get = F3(
 	function (url, maybeCred, decoder) {
 		return $author$project$Api$Endpoint$request(
 			{
-				X: $elm$http$Http$emptyBody,
-				ai: $elm$http$Http$expectJson(decoder),
-				ak: function () {
-					if (!maybeCred.$) {
+				body: $elm$http$Http$emptyBody,
+				expect: $elm$http$Http$expectJson(decoder),
+				headers: function () {
+					if (maybeCred.$ === 'Just') {
 						var cred = maybeCred.a;
 						return _List_fromArray(
 							[
@@ -7191,10 +7228,10 @@ var $author$project$Api$get = F3(
 						return _List_Nil;
 					}
 				}(),
-				al: 'GET',
-				ao: $elm$core$Maybe$Nothing,
-				ap: url,
-				ar: false
+				method: 'GET',
+				timeout: $elm$core$Maybe$Nothing,
+				url: url,
+				withCredentials: false
 			});
 	});
 var $author$project$Article$fetch = F2(
@@ -7209,17 +7246,17 @@ var $author$project$Article$fetch = F2(
 				$author$project$Article$fullDecoder(maybeCred)));
 	});
 var $elm$time$Time$Name = function (a) {
-	return {$: 0, a: a};
+	return {$: 'Name', a: a};
 };
 var $elm$time$Time$Offset = function (a) {
-	return {$: 1, a: a};
+	return {$: 'Offset', a: a};
 };
 var $elm$time$Time$Zone = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'Zone', a: a, b: b};
 	});
 var $elm$time$Time$customZone = $elm$time$Time$Zone;
-var $elm$time$Time$here = _Time_here(0);
+var $elm$time$Time$here = _Time_here(_Utils_Tuple0);
 var $author$project$Api$Endpoint$comments = function (slug) {
 	return A2(
 		$author$project$Api$Endpoint$url,
@@ -7231,17 +7268,21 @@ var $author$project$Api$Endpoint$comments = function (slug) {
 			]),
 		_List_Nil);
 };
-var $author$project$Article$Comment$Comment = $elm$core$Basics$identity;
+var $author$project$Article$Comment$Comment = function (a) {
+	return {$: 'Comment', a: a};
+};
 var $author$project$Article$Comment$Internals = F4(
 	function (id, body, createdAt, author) {
-		return {ag: author, X: body, bv: createdAt, aN: id};
+		return {author: author, body: body, createdAt: createdAt, id: id};
 	});
-var $author$project$CommentId$CommentId = $elm$core$Basics$identity;
-var $author$project$CommentId$decoder = A2($elm$json$Json$Decode$map, $elm$core$Basics$identity, $elm$json$Json$Decode$int);
+var $author$project$CommentId$CommentId = function (a) {
+	return {$: 'CommentId', a: a};
+};
+var $author$project$CommentId$decoder = A2($elm$json$Json$Decode$map, $author$project$CommentId$CommentId, $elm$json$Json$Decode$int);
 var $author$project$Article$Comment$decoder = function (maybeCred) {
 	return A2(
 		$elm$json$Json$Decode$map,
-		$elm$core$Basics$identity,
+		$author$project$Article$Comment$Comment,
 		A3(
 			$NoRedInk$elm_json_decode_pipeline$Json$Decode$Pipeline$required,
 			'author',
@@ -7281,22 +7322,23 @@ var $elm$core$Task$onError = _Scheduler_onError;
 var $elm$core$Task$attempt = F2(
 	function (resultToMessage, task) {
 		return $elm$core$Task$command(
-			A2(
-				$elm$core$Task$onError,
+			$elm$core$Task$Perform(
 				A2(
-					$elm$core$Basics$composeL,
-					A2($elm$core$Basics$composeL, $elm$core$Task$succeed, resultToMessage),
-					$elm$core$Result$Err),
-				A2(
-					$elm$core$Task$andThen,
+					$elm$core$Task$onError,
 					A2(
 						$elm$core$Basics$composeL,
 						A2($elm$core$Basics$composeL, $elm$core$Task$succeed, resultToMessage),
-						$elm$core$Result$Ok),
-					task)));
+						$elm$core$Result$Err),
+					A2(
+						$elm$core$Task$andThen,
+						A2(
+							$elm$core$Basics$composeL,
+							A2($elm$core$Basics$composeL, $elm$core$Task$succeed, resultToMessage),
+							$elm$core$Result$Ok),
+						task))));
 	});
 var $elm$http$Http$toTask = function (_v0) {
-	var request_ = _v0;
+	var request_ = _v0.a;
 	return A2(_Http_toTask, request_, $elm$core$Maybe$Nothing);
 };
 var $elm$http$Http$send = F2(
@@ -7313,7 +7355,7 @@ var $author$project$Page$Article$init = F2(
 	function (session, slug) {
 		var maybeCred = $author$project$Session$cred(session);
 		return _Utils_Tuple2(
-			{r: $author$project$Page$Article$Loading, l: $author$project$Page$Article$Loading, M: _List_Nil, aw: session, T: $elm$time$Time$utc},
+			{article: $author$project$Page$Article$Loading, comments: $author$project$Page$Article$Loading, errors: _List_Nil, session: session, timeZone: $elm$time$Time$utc},
 			$elm$core$Platform$Cmd$batch(
 				_List_fromArray(
 					[
@@ -7335,19 +7377,19 @@ var $author$project$Page$Article$init = F2(
 					])));
 	});
 var $author$project$Page$Home$CompletedFeedLoad = function (a) {
-	return {$: 3, a: a};
+	return {$: 'CompletedFeedLoad', a: a};
 };
 var $author$project$Page$Home$CompletedTagsLoad = function (a) {
-	return {$: 4, a: a};
+	return {$: 'CompletedTagsLoad', a: a};
 };
-var $author$project$Page$Home$GlobalFeed = {$: 1};
+var $author$project$Page$Home$GlobalFeed = {$: 'GlobalFeed'};
 var $author$project$Page$Home$GotTimeZone = function (a) {
-	return {$: 5, a: a};
+	return {$: 'GotTimeZone', a: a};
 };
-var $author$project$Page$Home$Loading = {$: 0};
-var $author$project$Page$Home$PassedSlowLoadThreshold = {$: 8};
+var $author$project$Page$Home$Loading = {$: 'Loading'};
+var $author$project$Page$Home$PassedSlowLoadThreshold = {$: 'PassedSlowLoadThreshold'};
 var $author$project$Page$Home$YourFeed = function (a) {
-	return {$: 0, a: a};
+	return {$: 'YourFeed', a: a};
 };
 var $author$project$Api$Endpoint$articles = function (params) {
 	return A2(
@@ -7357,10 +7399,13 @@ var $author$project$Api$Endpoint$articles = function (params) {
 		params);
 };
 var $author$project$Page$Home$articlesPerPage = 10;
-var $author$project$PaginatedList$PaginatedList = $elm$core$Basics$identity;
+var $author$project$PaginatedList$PaginatedList = function (a) {
+	return {$: 'PaginatedList', a: a};
+};
 var $author$project$PaginatedList$fromList = F2(
 	function (totalCount, list) {
-		return {bg: totalCount, aq: list};
+		return $author$project$PaginatedList$PaginatedList(
+			{total: totalCount, values: list});
 	});
 var $author$project$Article$Feed$pageCountDecoder = function (resultsPerPage) {
 	return A2(
@@ -7370,7 +7415,7 @@ var $author$project$Article$Feed$pageCountDecoder = function (resultsPerPage) {
 		},
 		$elm$json$Json$Decode$int);
 };
-var $author$project$Article$Preview = 0;
+var $author$project$Article$Preview = {$: 'Preview'};
 var $elm$core$Basics$composeR = F3(
 	function (f, g, x) {
 		return g(
@@ -7380,7 +7425,7 @@ var $NoRedInk$elm_json_decode_pipeline$Json$Decode$Pipeline$hardcoded = A2($elm$
 var $author$project$Article$previewDecoder = function (maybeCred) {
 	return A2(
 		$NoRedInk$elm_json_decode_pipeline$Json$Decode$Pipeline$hardcoded,
-		0,
+		$author$project$Article$Preview,
 		A2(
 			$NoRedInk$elm_json_decode_pipeline$Json$Decode$Pipeline$custom,
 			$author$project$Article$internalsDecoder(maybeCred),
@@ -7406,14 +7451,17 @@ var $author$project$Api$Endpoint$feed = function (params) {
 			['articles', 'feed']),
 		params);
 };
-var $author$project$Article$Feed$Model = $elm$core$Basics$identity;
+var $author$project$Article$Feed$Model = function (a) {
+	return {$: 'Model', a: a};
+};
 var $author$project$Article$Feed$init = F2(
 	function (session, articles) {
-		return {I: articles, M: _List_Nil, aR: false, aw: session};
+		return $author$project$Article$Feed$Model(
+			{articles: articles, errors: _List_Nil, isLoading: false, session: session});
 	});
 var $elm$url$Url$Builder$QueryParameter = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'QueryParameter', a: a, b: b};
 	});
 var $elm$url$Url$percentEncode = _Url_percentEncode;
 var $elm$url$Url$Builder$string = F2(
@@ -7424,8 +7472,8 @@ var $elm$url$Url$Builder$string = F2(
 			$elm$url$Url$percentEncode(value));
 	});
 var $author$project$PaginatedList$params = function (_v0) {
-	var resultsPerPage = _v0.bN;
-	var page = _v0.bL;
+	var resultsPerPage = _v0.resultsPerPage;
+	var page = _v0.page;
 	var offset = (page - 1) * resultsPerPage;
 	return _List_fromArray(
 		[
@@ -7440,25 +7488,25 @@ var $author$project$PaginatedList$params = function (_v0) {
 		]);
 };
 var $author$project$Article$Tag$toString = function (_v0) {
-	var slug = _v0;
+	var slug = _v0.a;
 	return slug;
 };
 var $author$project$Page$Home$fetchFeed = F3(
 	function (session, feedTabs, page) {
 		var params = $author$project$PaginatedList$params(
-			{bL: page, bN: $author$project$Page$Home$articlesPerPage});
+			{page: page, resultsPerPage: $author$project$Page$Home$articlesPerPage});
 		var maybeCred = $author$project$Session$cred(session);
 		var decoder = A2($author$project$Article$Feed$decoder, maybeCred, $author$project$Page$Home$articlesPerPage);
 		var request = function () {
 			switch (feedTabs.$) {
-				case 0:
+				case 'YourFeed':
 					var cred = feedTabs.a;
 					return A3(
 						$author$project$Api$get,
 						$author$project$Api$Endpoint$feed(params),
 						maybeCred,
 						decoder);
-				case 1:
+				case 'GlobalFeed':
 					return A3(
 						$author$project$Api$get,
 						$author$project$Api$Endpoint$articles(params),
@@ -7483,8 +7531,10 @@ var $author$project$Page$Home$fetchFeed = F3(
 			$author$project$Article$Feed$init(session),
 			$elm$http$Http$toTask(request));
 	});
-var $author$project$Article$Tag$Tag = $elm$core$Basics$identity;
-var $author$project$Article$Tag$decoder = A2($elm$json$Json$Decode$map, $elm$core$Basics$identity, $elm$json$Json$Decode$string);
+var $author$project$Article$Tag$Tag = function (a) {
+	return {$: 'Tag', a: a};
+};
+var $author$project$Article$Tag$decoder = A2($elm$json$Json$Decode$map, $author$project$Article$Tag$Tag, $elm$json$Json$Decode$string);
 var $author$project$Api$Endpoint$tags = A2(
 	$author$project$Api$Endpoint$url,
 	_List_fromArray(
@@ -7502,7 +7552,7 @@ var $author$project$Page$Home$init = function (session) {
 	var loadTags = $elm$http$Http$toTask($author$project$Article$Tag$list);
 	var feedTab = function () {
 		var _v1 = $author$project$Session$cred(session);
-		if (!_v1.$) {
+		if (_v1.$ === 'Just') {
 			var cred = _v1.a;
 			return $author$project$Page$Home$YourFeed(cred);
 		} else {
@@ -7510,7 +7560,7 @@ var $author$project$Page$Home$init = function (session) {
 		}
 	}();
 	return _Utils_Tuple2(
-		{t: $author$project$Page$Home$Loading, aj: 1, N: feedTab, aw: session, bS: $author$project$Page$Home$Loading, T: $elm$time$Time$utc},
+		{feed: $author$project$Page$Home$Loading, feedPage: 1, feedTab: feedTab, session: session, tags: $author$project$Page$Home$Loading, timeZone: $elm$time$Time$utc},
 		$elm$core$Platform$Cmd$batch(
 			_List_fromArray(
 				[
@@ -7532,26 +7582,26 @@ var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Page$Login$init = function (session) {
 	return _Utils_Tuple2(
 		{
-			O: {x: '', A: ''},
-			G: _List_Nil,
-			aw: session
+			form: {email: '', password: ''},
+			problems: _List_Nil,
+			session: session
 		},
 		$elm$core$Platform$Cmd$none);
 };
 var $author$project$Page$Profile$CompletedAuthorLoad = function (a) {
-	return {$: 6, a: a};
+	return {$: 'CompletedAuthorLoad', a: a};
 };
 var $author$project$Page$Profile$GotTimeZone = function (a) {
-	return {$: 8, a: a};
+	return {$: 'GotTimeZone', a: a};
 };
 var $author$project$Page$Profile$Loading = function (a) {
-	return {$: 0, a: a};
+	return {$: 'Loading', a: a};
 };
-var $author$project$Page$Profile$PassedSlowLoadThreshold = {$: 11};
-var $author$project$Page$Profile$MyArticles = 0;
-var $author$project$Page$Profile$defaultFeedTab = 0;
+var $author$project$Page$Profile$PassedSlowLoadThreshold = {$: 'PassedSlowLoadThreshold'};
+var $author$project$Page$Profile$MyArticles = {$: 'MyArticles'};
+var $author$project$Page$Profile$defaultFeedTab = $author$project$Page$Profile$MyArticles;
 var $author$project$Username$toString = function (_v0) {
-	var username = _v0;
+	var username = _v0.a;
 	return username;
 };
 var $author$project$Api$Endpoint$profiles = function (uname) {
@@ -7576,7 +7626,7 @@ var $author$project$Author$fetch = F2(
 				$author$project$Author$decoder(maybeCred)));
 	});
 var $author$project$Page$Profile$CompletedFeedLoad = function (a) {
-	return {$: 7, a: a};
+	return {$: 'CompletedFeedLoad', a: a};
 };
 var $author$project$Page$Profile$articlesPerPage = 5;
 var $elm$core$Task$fail = _Scheduler_fail;
@@ -7591,7 +7641,7 @@ var $author$project$Page$Profile$fetchFeed = F4(
 	function (session, feedTabs, username, page) {
 		var maybeCred = $author$project$Session$cred(session);
 		var firstParam = function () {
-			if (!feedTabs) {
+			if (feedTabs.$ === 'MyArticles') {
 				return A2(
 					$elm$url$Url$Builder$string,
 					'author',
@@ -7607,7 +7657,7 @@ var $author$project$Page$Profile$fetchFeed = F4(
 			$elm$core$List$cons,
 			firstParam,
 			$author$project$PaginatedList$params(
-				{bL: page, bN: $author$project$Page$Profile$articlesPerPage}));
+				{page: page, resultsPerPage: $author$project$Page$Profile$articlesPerPage}));
 		var expect = A2($author$project$Article$Feed$decoder, maybeCred, $author$project$Page$Profile$articlesPerPage);
 		return A2(
 			$elm$core$Task$attempt,
@@ -7630,13 +7680,13 @@ var $author$project$Page$Profile$init = F2(
 		var maybeCred = $author$project$Session$cred(session);
 		return _Utils_Tuple2(
 			{
-				ag: $author$project$Page$Profile$Loading(username),
-				M: _List_Nil,
-				t: $author$project$Page$Profile$Loading(username),
-				aj: 1,
-				N: $author$project$Page$Profile$defaultFeedTab,
-				aw: session,
-				T: $elm$time$Time$utc
+				author: $author$project$Page$Profile$Loading(username),
+				errors: _List_Nil,
+				feed: $author$project$Page$Profile$Loading(username),
+				feedPage: 1,
+				feedTab: $author$project$Page$Profile$defaultFeedTab,
+				session: session,
+				timeZone: $elm$time$Time$utc
 			},
 			$elm$core$Platform$Cmd$batch(
 				_List_fromArray(
@@ -7662,20 +7712,20 @@ var $author$project$Page$Profile$init = F2(
 var $author$project$Page$Register$init = function (session) {
 	return _Utils_Tuple2(
 		{
-			O: {x: '', A: '', C: ''},
-			G: _List_Nil,
-			aw: session
+			form: {email: '', password: '', username: ''},
+			problems: _List_Nil,
+			session: session
 		},
 		$elm$core$Platform$Cmd$none);
 };
 var $author$project$Page$Settings$CompletedFormLoad = function (a) {
-	return {$: 6, a: a};
+	return {$: 'CompletedFormLoad', a: a};
 };
-var $author$project$Page$Settings$Loading = {$: 0};
-var $author$project$Page$Settings$PassedSlowLoadThreshold = {$: 9};
+var $author$project$Page$Settings$Loading = {$: 'Loading'};
+var $author$project$Page$Settings$PassedSlowLoadThreshold = {$: 'PassedSlowLoadThreshold'};
 var $author$project$Page$Settings$Form = F5(
 	function (avatar, bio, email, username, password) {
-		return {J: avatar, K: bio, x: email, A: password, C: username};
+		return {avatar: avatar, bio: bio, email: email, password: password, username: username};
 	});
 var $author$project$Page$Settings$formDecoder = A2(
 	$NoRedInk$elm_json_decode_pipeline$Json$Decode$Pipeline$hardcoded,
@@ -7710,7 +7760,7 @@ var $author$project$Api$Endpoint$user = A2(
 	_List_Nil);
 var $author$project$Page$Settings$init = function (session) {
 	return _Utils_Tuple2(
-		{G: _List_Nil, aw: session, e: $author$project$Page$Settings$Loading},
+		{problems: _List_Nil, session: session, status: $author$project$Page$Settings$Loading},
 		$elm$core$Platform$Cmd$batch(
 			_List_fromArray(
 				[
@@ -7731,18 +7781,18 @@ var $author$project$Page$Settings$init = function (session) {
 				])));
 };
 var $author$project$Page$Article$Editor$CompletedArticleLoad = function (a) {
-	return {$: 7, a: a};
+	return {$: 'CompletedArticleLoad', a: a};
 };
 var $author$project$Page$Article$Editor$Loading = function (a) {
-	return {$: 0, a: a};
+	return {$: 'Loading', a: a};
 };
-var $author$project$Page$Article$Editor$PassedSlowLoadThreshold = {$: 9};
+var $author$project$Page$Article$Editor$PassedSlowLoadThreshold = {$: 'PassedSlowLoadThreshold'};
 var $author$project$Page$Article$Editor$initEdit = F2(
 	function (session, slug) {
 		return _Utils_Tuple2(
 			{
-				aw: session,
-				e: $author$project$Page$Article$Editor$Loading(slug)
+				session: session,
+				status: $author$project$Page$Article$Editor$Loading(slug)
 			},
 			$elm$core$Platform$Cmd$batch(
 				_List_fromArray(
@@ -7770,22 +7820,22 @@ var $author$project$Page$Article$Editor$initEdit = F2(
 	});
 var $author$project$Page$Article$Editor$EditingNew = F2(
 	function (a, b) {
-		return {$: 5, a: a, b: b};
+		return {$: 'EditingNew', a: a, b: b};
 	});
 var $author$project$Page$Article$Editor$initNew = function (session) {
 	return _Utils_Tuple2(
 		{
-			aw: session,
-			e: A2(
+			session: session,
+			status: A2(
 				$author$project$Page$Article$Editor$EditingNew,
 				_List_Nil,
-				{X: '', bw: '', bS: '', bT: ''})
+				{body: '', description: '', tags: '', title: ''})
 		},
 		$elm$core$Platform$Cmd$none);
 };
 var $elm$core$Maybe$destruct = F3(
 	function (_default, func, maybe) {
-		if (!maybe.$) {
+		if (maybe.$ === 'Just') {
 			var a = maybe.a;
 			return func(a);
 		} else {
@@ -7800,7 +7850,7 @@ var $author$project$Api$storeCache = _Platform_outgoingPort(
 	});
 var $author$project$Api$logout = $author$project$Api$storeCache($elm$core$Maybe$Nothing);
 var $author$project$Session$navKey = function (session) {
-	if (!session.$) {
+	if (session.$ === 'LoggedIn') {
 		var key = session.a;
 		return key;
 	} else {
@@ -7811,37 +7861,37 @@ var $author$project$Session$navKey = function (session) {
 var $elm$browser$Browser$Navigation$replaceUrl = _Browser_replaceUrl;
 var $author$project$Route$routeToPieces = function (page) {
 	switch (page.$) {
-		case 0:
+		case 'Home':
 			return _List_Nil;
-		case 1:
+		case 'Root':
 			return _List_Nil;
-		case 2:
+		case 'Login':
 			return _List_fromArray(
 				['login']);
-		case 3:
+		case 'Logout':
 			return _List_fromArray(
 				['logout']);
-		case 4:
+		case 'Register':
 			return _List_fromArray(
 				['register']);
-		case 5:
+		case 'Settings':
 			return _List_fromArray(
 				['settings']);
-		case 6:
+		case 'Article':
 			var slug = page.a;
 			return _List_fromArray(
 				[
 					'article',
 					$author$project$Article$Slug$toString(slug)
 				]);
-		case 7:
+		case 'Profile':
 			var username = page.a;
 			return _List_fromArray(
 				[
 					'profile',
 					$author$project$Username$toString(username)
 				]);
-		case 8:
+		case 'NewArticle':
 			return _List_fromArray(
 				['editor']);
 		default:
@@ -7867,50 +7917,50 @@ var $author$project$Route$replaceUrl = F2(
 			$author$project$Route$routeToString(route));
 	});
 var $author$project$Page$Article$toSession = function (model) {
-	return model.aw;
+	return model.session;
 };
 var $author$project$Page$Article$Editor$toSession = function (model) {
-	return model.aw;
+	return model.session;
 };
 var $author$project$Page$Home$toSession = function (model) {
-	return model.aw;
+	return model.session;
 };
 var $author$project$Page$Login$toSession = function (model) {
-	return model.aw;
+	return model.session;
 };
 var $author$project$Page$Profile$toSession = function (model) {
-	return model.aw;
+	return model.session;
 };
 var $author$project$Page$Register$toSession = function (model) {
-	return model.aw;
+	return model.session;
 };
 var $author$project$Page$Settings$toSession = function (model) {
-	return model.aw;
+	return model.session;
 };
 var $author$project$Main$toSession = function (page) {
 	switch (page.$) {
-		case 0:
+		case 'Redirect':
 			var session = page.a;
 			return session;
-		case 1:
+		case 'NotFound':
 			var session = page.a;
 			return session;
-		case 2:
+		case 'Home':
 			var home = page.a;
 			return $author$project$Page$Home$toSession(home);
-		case 3:
+		case 'Settings':
 			var settings = page.a;
 			return $author$project$Page$Settings$toSession(settings);
-		case 4:
+		case 'Login':
 			var login = page.a;
 			return $author$project$Page$Login$toSession(login);
-		case 5:
+		case 'Register':
 			var register = page.a;
 			return $author$project$Page$Register$toSession(register);
-		case 6:
+		case 'Profile':
 			var profile = page.b;
 			return $author$project$Page$Profile$toSession(profile);
-		case 7:
+		case 'Article':
 			var article = page.a;
 			return $author$project$Page$Article$toSession(article);
 		default:
@@ -7930,13 +7980,13 @@ var $author$project$Main$updateWith = F4(
 var $author$project$Main$changeRouteTo = F2(
 	function (maybeRoute, model) {
 		var session = $author$project$Main$toSession(model);
-		if (maybeRoute.$ === 1) {
+		if (maybeRoute.$ === 'Nothing') {
 			return _Utils_Tuple2(
 				$author$project$Main$NotFound(session),
 				$elm$core$Platform$Cmd$none);
 		} else {
 			switch (maybeRoute.a.$) {
-				case 1:
+				case 'Root':
 					var _v1 = maybeRoute.a;
 					return _Utils_Tuple2(
 						model,
@@ -7944,10 +7994,10 @@ var $author$project$Main$changeRouteTo = F2(
 							$author$project$Route$replaceUrl,
 							$author$project$Session$navKey(session),
 							$author$project$Route$Home));
-				case 3:
+				case 'Logout':
 					var _v2 = maybeRoute.a;
 					return _Utils_Tuple2(model, $author$project$Api$logout);
-				case 8:
+				case 'NewArticle':
 					var _v3 = maybeRoute.a;
 					return A4(
 						$author$project$Main$updateWith,
@@ -7955,7 +8005,7 @@ var $author$project$Main$changeRouteTo = F2(
 						$author$project$Main$GotEditorMsg,
 						model,
 						$author$project$Page$Article$Editor$initNew(session));
-				case 9:
+				case 'EditArticle':
 					var slug = maybeRoute.a.a;
 					return A4(
 						$author$project$Main$updateWith,
@@ -7964,7 +8014,7 @@ var $author$project$Main$changeRouteTo = F2(
 						$author$project$Main$GotEditorMsg,
 						model,
 						A2($author$project$Page$Article$Editor$initEdit, session, slug));
-				case 5:
+				case 'Settings':
 					var _v4 = maybeRoute.a;
 					return A4(
 						$author$project$Main$updateWith,
@@ -7972,7 +8022,7 @@ var $author$project$Main$changeRouteTo = F2(
 						$author$project$Main$GotSettingsMsg,
 						model,
 						$author$project$Page$Settings$init(session));
-				case 0:
+				case 'Home':
 					var _v5 = maybeRoute.a;
 					return A4(
 						$author$project$Main$updateWith,
@@ -7980,7 +8030,7 @@ var $author$project$Main$changeRouteTo = F2(
 						$author$project$Main$GotHomeMsg,
 						model,
 						$author$project$Page$Home$init(session));
-				case 2:
+				case 'Login':
 					var _v6 = maybeRoute.a;
 					return A4(
 						$author$project$Main$updateWith,
@@ -7988,7 +8038,7 @@ var $author$project$Main$changeRouteTo = F2(
 						$author$project$Main$GotLoginMsg,
 						model,
 						$author$project$Page$Login$init(session));
-				case 4:
+				case 'Register':
 					var _v7 = maybeRoute.a;
 					return A4(
 						$author$project$Main$updateWith,
@@ -7996,7 +8046,7 @@ var $author$project$Main$changeRouteTo = F2(
 						$author$project$Main$GotRegisterMsg,
 						model,
 						$author$project$Page$Register$init(session));
-				case 7:
+				case 'Profile':
 					var username = maybeRoute.a.a;
 					return A4(
 						$author$project$Main$updateWith,
@@ -8017,7 +8067,7 @@ var $author$project$Main$changeRouteTo = F2(
 	});
 var $elm$url$Url$Parser$State = F5(
 	function (visited, unvisited, params, frag, value) {
-		return {D: frag, F: params, B: unvisited, v: value, H: visited};
+		return {frag: frag, params: params, unvisited: unvisited, value: value, visited: visited};
 	});
 var $elm$url$Url$Parser$getFirstMatch = function (states) {
 	getFirstMatch:
@@ -8027,12 +8077,12 @@ var $elm$url$Url$Parser$getFirstMatch = function (states) {
 		} else {
 			var state = states.a;
 			var rest = states.b;
-			var _v1 = state.B;
+			var _v1 = state.unvisited;
 			if (!_v1.b) {
-				return $elm$core$Maybe$Just(state.v);
+				return $elm$core$Maybe$Just(state.value);
 			} else {
 				if ((_v1.a === '') && (!_v1.b.b)) {
-					return $elm$core$Maybe$Just(state.v);
+					return $elm$core$Maybe$Just(state.value);
 				} else {
 					var $temp$states = rest;
 					states = $temp$states;
@@ -8070,7 +8120,7 @@ var $elm$url$Url$Parser$preparePath = function (path) {
 };
 var $elm$url$Url$Parser$addToParametersHelp = F2(
 	function (value, maybeList) {
-		if (maybeList.$ === 1) {
+		if (maybeList.$ === 'Nothing') {
 			return $elm$core$Maybe$Just(
 				_List_fromArray(
 					[value]));
@@ -8089,12 +8139,12 @@ var $elm$url$Url$Parser$addParam = F2(
 			var _v1 = _v0.b;
 			var rawValue = _v1.a;
 			var _v2 = $elm$url$Url$percentDecode(rawKey);
-			if (_v2.$ === 1) {
+			if (_v2.$ === 'Nothing') {
 				return dict;
 			} else {
 				var key = _v2.a;
 				var _v3 = $elm$url$Url$percentDecode(rawValue);
-				if (_v3.$ === 1) {
+				if (_v3.$ === 'Nothing') {
 					return dict;
 				} else {
 					var value = _v3.a;
@@ -8110,7 +8160,7 @@ var $elm$url$Url$Parser$addParam = F2(
 		}
 	});
 var $elm$url$Url$Parser$prepareQuery = function (maybeQuery) {
-	if (maybeQuery.$ === 1) {
+	if (maybeQuery.$ === 'Nothing') {
 		return $elm$core$Dict$empty;
 	} else {
 		var qry = maybeQuery.a;
@@ -8123,39 +8173,41 @@ var $elm$url$Url$Parser$prepareQuery = function (maybeQuery) {
 };
 var $elm$url$Url$Parser$parse = F2(
 	function (_v0, url) {
-		var parser = _v0;
+		var parser = _v0.a;
 		return $elm$url$Url$Parser$getFirstMatch(
 			parser(
 				A5(
 					$elm$url$Url$Parser$State,
 					_List_Nil,
-					$elm$url$Url$Parser$preparePath(url.bM),
-					$elm$url$Url$Parser$prepareQuery(url.a3),
-					url.bD,
+					$elm$url$Url$Parser$preparePath(url.path),
+					$elm$url$Url$Parser$prepareQuery(url.query),
+					url.fragment,
 					$elm$core$Basics$identity)));
 	});
 var $author$project$Route$Article = function (a) {
-	return {$: 6, a: a};
+	return {$: 'Article', a: a};
 };
 var $author$project$Route$EditArticle = function (a) {
-	return {$: 9, a: a};
+	return {$: 'EditArticle', a: a};
 };
-var $author$project$Route$Login = {$: 2};
-var $author$project$Route$Logout = {$: 3};
-var $author$project$Route$NewArticle = {$: 8};
+var $author$project$Route$Login = {$: 'Login'};
+var $author$project$Route$Logout = {$: 'Logout'};
+var $author$project$Route$NewArticle = {$: 'NewArticle'};
 var $author$project$Route$Profile = function (a) {
-	return {$: 7, a: a};
+	return {$: 'Profile', a: a};
 };
-var $author$project$Route$Register = {$: 4};
-var $author$project$Route$Settings = {$: 5};
-var $elm$url$Url$Parser$Parser = $elm$core$Basics$identity;
+var $author$project$Route$Register = {$: 'Register'};
+var $author$project$Route$Settings = {$: 'Settings'};
+var $elm$url$Url$Parser$Parser = function (a) {
+	return {$: 'Parser', a: a};
+};
 var $elm$url$Url$Parser$mapState = F2(
 	function (func, _v0) {
-		var value = _v0.v;
-		var frag = _v0.D;
-		var params = _v0.F;
-		var unvisited = _v0.B;
-		var visited = _v0.H;
+		var visited = _v0.visited;
+		var unvisited = _v0.unvisited;
+		var params = _v0.params;
+		var frag = _v0.frag;
+		var value = _v0.value;
 		return A5(
 			$elm$url$Url$Parser$State,
 			visited,
@@ -8166,19 +8218,20 @@ var $elm$url$Url$Parser$mapState = F2(
 	});
 var $elm$url$Url$Parser$map = F2(
 	function (subValue, _v0) {
-		var parseArg = _v0;
-		return function (_v1) {
-			var value = _v1.v;
-			var frag = _v1.D;
-			var params = _v1.F;
-			var unvisited = _v1.B;
-			var visited = _v1.H;
-			return A2(
-				$elm$core$List$map,
-				$elm$url$Url$Parser$mapState(value),
-				parseArg(
-					A5($elm$url$Url$Parser$State, visited, unvisited, params, frag, subValue)));
-		};
+		var parseArg = _v0.a;
+		return $elm$url$Url$Parser$Parser(
+			function (_v1) {
+				var visited = _v1.visited;
+				var unvisited = _v1.unvisited;
+				var params = _v1.params;
+				var frag = _v1.frag;
+				var value = _v1.value;
+				return A2(
+					$elm$core$List$map,
+					$elm$url$Url$Parser$mapState(value),
+					parseArg(
+						A5($elm$url$Url$Parser$State, visited, unvisited, params, frag, subValue)));
+			});
 	});
 var $elm$core$List$append = F2(
 	function (xs, ys) {
@@ -8197,99 +8250,106 @@ var $elm$core$List$concatMap = F2(
 			A2($elm$core$List$map, f, list));
 	});
 var $elm$url$Url$Parser$oneOf = function (parsers) {
-	return function (state) {
-		return A2(
-			$elm$core$List$concatMap,
-			function (_v0) {
-				var parser = _v0;
-				return parser(state);
-			},
-			parsers);
-	};
-};
-var $elm$url$Url$Parser$s = function (str) {
-	return function (_v0) {
-		var value = _v0.v;
-		var frag = _v0.D;
-		var params = _v0.F;
-		var unvisited = _v0.B;
-		var visited = _v0.H;
-		if (!unvisited.b) {
-			return _List_Nil;
-		} else {
-			var next = unvisited.a;
-			var rest = unvisited.b;
-			return _Utils_eq(next, str) ? _List_fromArray(
-				[
-					A5(
-					$elm$url$Url$Parser$State,
-					A2($elm$core$List$cons, next, visited),
-					rest,
-					params,
-					frag,
-					value)
-				]) : _List_Nil;
-		}
-	};
-};
-var $elm$url$Url$Parser$slash = F2(
-	function (_v0, _v1) {
-		var parseBefore = _v0;
-		var parseAfter = _v1;
-		return function (state) {
+	return $elm$url$Url$Parser$Parser(
+		function (state) {
 			return A2(
 				$elm$core$List$concatMap,
-				parseAfter,
-				parseBefore(state));
-		};
-	});
-var $elm$url$Url$Parser$top = function (state) {
-	return _List_fromArray(
-		[state]);
+				function (_v0) {
+					var parser = _v0.a;
+					return parser(state);
+				},
+				parsers);
+		});
 };
-var $elm$url$Url$Parser$custom = F2(
-	function (tipe, stringToSomething) {
-		return function (_v0) {
-			var value = _v0.v;
-			var frag = _v0.D;
-			var params = _v0.F;
-			var unvisited = _v0.B;
-			var visited = _v0.H;
+var $elm$url$Url$Parser$s = function (str) {
+	return $elm$url$Url$Parser$Parser(
+		function (_v0) {
+			var visited = _v0.visited;
+			var unvisited = _v0.unvisited;
+			var params = _v0.params;
+			var frag = _v0.frag;
+			var value = _v0.value;
 			if (!unvisited.b) {
 				return _List_Nil;
 			} else {
 				var next = unvisited.a;
 				var rest = unvisited.b;
-				var _v2 = stringToSomething(next);
-				if (!_v2.$) {
-					var nextValue = _v2.a;
-					return _List_fromArray(
-						[
-							A5(
-							$elm$url$Url$Parser$State,
-							A2($elm$core$List$cons, next, visited),
-							rest,
-							params,
-							frag,
-							value(nextValue))
-						]);
-				} else {
-					return _List_Nil;
-				}
+				return _Utils_eq(next, str) ? _List_fromArray(
+					[
+						A5(
+						$elm$url$Url$Parser$State,
+						A2($elm$core$List$cons, next, visited),
+						rest,
+						params,
+						frag,
+						value)
+					]) : _List_Nil;
 			}
-		};
+		});
+};
+var $elm$url$Url$Parser$slash = F2(
+	function (_v0, _v1) {
+		var parseBefore = _v0.a;
+		var parseAfter = _v1.a;
+		return $elm$url$Url$Parser$Parser(
+			function (state) {
+				return A2(
+					$elm$core$List$concatMap,
+					parseAfter,
+					parseBefore(state));
+			});
+	});
+var $elm$url$Url$Parser$top = $elm$url$Url$Parser$Parser(
+	function (state) {
+		return _List_fromArray(
+			[state]);
+	});
+var $elm$url$Url$Parser$custom = F2(
+	function (tipe, stringToSomething) {
+		return $elm$url$Url$Parser$Parser(
+			function (_v0) {
+				var visited = _v0.visited;
+				var unvisited = _v0.unvisited;
+				var params = _v0.params;
+				var frag = _v0.frag;
+				var value = _v0.value;
+				if (!unvisited.b) {
+					return _List_Nil;
+				} else {
+					var next = unvisited.a;
+					var rest = unvisited.b;
+					var _v2 = stringToSomething(next);
+					if (_v2.$ === 'Just') {
+						var nextValue = _v2.a;
+						return _List_fromArray(
+							[
+								A5(
+								$elm$url$Url$Parser$State,
+								A2($elm$core$List$cons, next, visited),
+								rest,
+								params,
+								frag,
+								value(nextValue))
+							]);
+					} else {
+						return _List_Nil;
+					}
+				}
+			});
 	});
 var $author$project$Article$Slug$urlParser = A2(
 	$elm$url$Url$Parser$custom,
 	'SLUG',
 	function (str) {
-		return $elm$core$Maybe$Just(str);
+		return $elm$core$Maybe$Just(
+			$author$project$Article$Slug$Slug(str));
 	});
 var $author$project$Username$urlParser = A2(
 	$elm$url$Url$Parser$custom,
 	'USERNAME',
 	function (str) {
-		return $elm$core$Maybe$Just(str);
+		return $elm$core$Maybe$Just(
+			$author$project$Username$Username(str));
 	});
 var $author$project$Route$parser = $elm$url$Url$Parser$oneOf(
 	_List_fromArray(
@@ -8344,20 +8404,20 @@ var $author$project$Route$fromUrl = function (url) {
 		_Utils_update(
 			url,
 			{
-				bD: $elm$core$Maybe$Nothing,
-				bM: A2($elm$core$Maybe$withDefault, '', url.bD)
+				fragment: $elm$core$Maybe$Nothing,
+				path: A2($elm$core$Maybe$withDefault, '', url.fragment)
 			}));
 };
 var $author$project$Session$Guest = function (a) {
-	return {$: 1, a: a};
+	return {$: 'Guest', a: a};
 };
 var $author$project$Session$LoggedIn = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'LoggedIn', a: a, b: b};
 	});
 var $author$project$Session$fromViewer = F2(
 	function (key, maybeViewer) {
-		if (!maybeViewer.$) {
+		if (maybeViewer.$ === 'Just') {
 			var viewerVal = maybeViewer.a;
 			return A2($author$project$Session$LoggedIn, key, viewerVal);
 		} else {
@@ -8373,7 +8433,7 @@ var $author$project$Main$init = F3(
 				A2($author$project$Session$fromViewer, navKey, maybeViewer)));
 	});
 var $author$project$Main$GotSession = function (a) {
-	return {$: 9, a: a};
+	return {$: 'GotSession', a: a};
 };
 var $author$project$Api$decodeFromChange = F2(
 	function (viewerDecoder, val) {
@@ -8406,109 +8466,109 @@ var $elm$core$Platform$Sub$map = _Platform_map;
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $author$project$Page$Article$GotSession = function (a) {
-	return {$: 17, a: a};
+	return {$: 'GotSession', a: a};
 };
 var $author$project$Page$Article$subscriptions = function (model) {
 	return A2(
 		$author$project$Session$changes,
 		$author$project$Page$Article$GotSession,
-		$author$project$Session$navKey(model.aw));
+		$author$project$Session$navKey(model.session));
 };
 var $author$project$Page$Article$Editor$GotSession = function (a) {
-	return {$: 8, a: a};
+	return {$: 'GotSession', a: a};
 };
 var $author$project$Page$Article$Editor$subscriptions = function (model) {
 	return A2(
 		$author$project$Session$changes,
 		$author$project$Page$Article$Editor$GotSession,
-		$author$project$Session$navKey(model.aw));
+		$author$project$Session$navKey(model.session));
 };
 var $author$project$Page$Home$GotSession = function (a) {
-	return {$: 7, a: a};
+	return {$: 'GotSession', a: a};
 };
 var $author$project$Page$Home$subscriptions = function (model) {
 	return A2(
 		$author$project$Session$changes,
 		$author$project$Page$Home$GotSession,
-		$author$project$Session$navKey(model.aw));
+		$author$project$Session$navKey(model.session));
 };
 var $author$project$Page$Login$GotSession = function (a) {
-	return {$: 4, a: a};
+	return {$: 'GotSession', a: a};
 };
 var $author$project$Page$Login$subscriptions = function (model) {
 	return A2(
 		$author$project$Session$changes,
 		$author$project$Page$Login$GotSession,
-		$author$project$Session$navKey(model.aw));
+		$author$project$Session$navKey(model.session));
 };
 var $author$project$Page$Profile$GotSession = function (a) {
-	return {$: 10, a: a};
+	return {$: 'GotSession', a: a};
 };
 var $author$project$Page$Profile$subscriptions = function (model) {
 	return A2(
 		$author$project$Session$changes,
 		$author$project$Page$Profile$GotSession,
-		$author$project$Session$navKey(model.aw));
+		$author$project$Session$navKey(model.session));
 };
 var $author$project$Page$Register$GotSession = function (a) {
-	return {$: 5, a: a};
+	return {$: 'GotSession', a: a};
 };
 var $author$project$Page$Register$subscriptions = function (model) {
 	return A2(
 		$author$project$Session$changes,
 		$author$project$Page$Register$GotSession,
-		$author$project$Session$navKey(model.aw));
+		$author$project$Session$navKey(model.session));
 };
 var $author$project$Page$Settings$GotSession = function (a) {
-	return {$: 8, a: a};
+	return {$: 'GotSession', a: a};
 };
 var $author$project$Page$Settings$subscriptions = function (model) {
 	return A2(
 		$author$project$Session$changes,
 		$author$project$Page$Settings$GotSession,
-		$author$project$Session$navKey(model.aw));
+		$author$project$Session$navKey(model.session));
 };
 var $author$project$Main$subscriptions = function (model) {
 	switch (model.$) {
-		case 1:
+		case 'NotFound':
 			return $elm$core$Platform$Sub$none;
-		case 0:
+		case 'Redirect':
 			return A2(
 				$author$project$Session$changes,
 				$author$project$Main$GotSession,
 				$author$project$Session$navKey(
 					$author$project$Main$toSession(model)));
-		case 3:
+		case 'Settings':
 			var settings = model.a;
 			return A2(
 				$elm$core$Platform$Sub$map,
 				$author$project$Main$GotSettingsMsg,
 				$author$project$Page$Settings$subscriptions(settings));
-		case 2:
+		case 'Home':
 			var home = model.a;
 			return A2(
 				$elm$core$Platform$Sub$map,
 				$author$project$Main$GotHomeMsg,
 				$author$project$Page$Home$subscriptions(home));
-		case 4:
+		case 'Login':
 			var login = model.a;
 			return A2(
 				$elm$core$Platform$Sub$map,
 				$author$project$Main$GotLoginMsg,
 				$author$project$Page$Login$subscriptions(login));
-		case 5:
+		case 'Register':
 			var register = model.a;
 			return A2(
 				$elm$core$Platform$Sub$map,
 				$author$project$Main$GotRegisterMsg,
 				$author$project$Page$Register$subscriptions(register));
-		case 6:
+		case 'Profile':
 			var profile = model.b;
 			return A2(
 				$elm$core$Platform$Sub$map,
 				$author$project$Main$GotProfileMsg,
 				$author$project$Page$Profile$subscriptions(profile));
-		case 7:
+		case 'Article':
 			var article = model.a;
 			return A2(
 				$elm$core$Platform$Sub$map,
@@ -8526,7 +8586,7 @@ var $elm$browser$Browser$Navigation$load = _Browser_load;
 var $elm$browser$Browser$Navigation$pushUrl = _Browser_pushUrl;
 var $elm$url$Url$addPort = F2(
 	function (maybePort, starter) {
-		if (maybePort.$ === 1) {
+		if (maybePort.$ === 'Nothing') {
 			return starter;
 		} else {
 			var port_ = maybePort.a;
@@ -8535,7 +8595,7 @@ var $elm$url$Url$addPort = F2(
 	});
 var $elm$url$Url$addPrefixed = F3(
 	function (prefix, maybeSegment, starter) {
-		if (maybeSegment.$ === 1) {
+		if (maybeSegment.$ === 'Nothing') {
 			return starter;
 		} else {
 			var segment = maybeSegment.a;
@@ -8546,8 +8606,8 @@ var $elm$url$Url$addPrefixed = F3(
 	});
 var $elm$url$Url$toString = function (url) {
 	var http = function () {
-		var _v0 = url.a2;
-		if (!_v0) {
+		var _v0 = url.protocol;
+		if (_v0.$ === 'Http') {
 			return 'http://';
 		} else {
 			return 'https://';
@@ -8556,47 +8616,47 @@ var $elm$url$Url$toString = function (url) {
 	return A3(
 		$elm$url$Url$addPrefixed,
 		'#',
-		url.bD,
+		url.fragment,
 		A3(
 			$elm$url$Url$addPrefixed,
 			'?',
-			url.a3,
+			url.query,
 			_Utils_ap(
 				A2(
 					$elm$url$Url$addPort,
-					url.a$,
-					_Utils_ap(http, url.aM)),
-				url.bM)));
+					url.port_,
+					_Utils_ap(http, url.host)),
+				url.path)));
 };
 var $author$project$Page$Article$CompletedDeleteArticle = function (a) {
-	return {$: 11, a: a};
+	return {$: 'CompletedDeleteArticle', a: a};
 };
 var $author$project$Page$Article$CompletedDeleteComment = F2(
 	function (a, b) {
-		return {$: 12, a: a, b: b};
+		return {$: 'CompletedDeleteComment', a: a, b: b};
 	});
 var $author$project$Page$Article$CompletedFollowChange = function (a) {
-	return {$: 14, a: a};
+	return {$: 'CompletedFollowChange', a: a};
 };
 var $author$project$Page$Article$CompletedPostComment = function (a) {
-	return {$: 15, a: a};
+	return {$: 'CompletedPostComment', a: a};
 };
 var $author$project$Page$Article$Editing = function (a) {
-	return {$: 0, a: a};
+	return {$: 'Editing', a: a};
 };
-var $author$project$Page$Article$Failed = {$: 3};
+var $author$project$Page$Article$Failed = {$: 'Failed'};
 var $author$project$Page$Article$Loaded = function (a) {
-	return {$: 2, a: a};
+	return {$: 'Loaded', a: a};
 };
-var $author$project$Page$Article$LoadingSlowly = {$: 1};
+var $author$project$Page$Article$LoadingSlowly = {$: 'LoadingSlowly'};
 var $author$project$Page$Article$Sending = function (a) {
-	return {$: 1, a: a};
+	return {$: 'Sending', a: a};
 };
 var $author$project$Api$addServerError = function (list) {
 	return A2($elm$core$List$cons, 'Server error', list);
 };
 var $author$project$CommentId$toString = function (_v0) {
-	var id = _v0;
+	var id = _v0.a;
 	return $elm$core$String$fromInt(id);
 };
 var $author$project$Api$Endpoint$comment = F2(
@@ -8616,16 +8676,16 @@ var $author$project$Api$delete = F4(
 	function (url, cred, body, decoder) {
 		return $author$project$Api$Endpoint$request(
 			{
-				X: body,
-				ai: $elm$http$Http$expectJson(decoder),
-				ak: _List_fromArray(
+				body: body,
+				expect: $elm$http$Http$expectJson(decoder),
+				headers: _List_fromArray(
 					[
 						$author$project$Api$credHeader(cred)
 					]),
-				al: 'DELETE',
-				ao: $elm$core$Maybe$Nothing,
-				ap: url,
-				ar: false
+				method: 'DELETE',
+				timeout: $elm$core$Maybe$Nothing,
+				url: url,
+				withCredentials: false
 			});
 	});
 var $author$project$Article$Comment$delete = F3(
@@ -8635,7 +8695,7 @@ var $author$project$Article$Comment$delete = F3(
 			A2($author$project$Api$Endpoint$comment, articleSlug, commentId),
 			cred,
 			$elm$http$Http$emptyBody,
-			$elm$json$Json$Decode$succeed(0));
+			$elm$json$Json$Decode$succeed(_Utils_Tuple0));
 	});
 var $author$project$Page$Article$delete = F2(
 	function (slug, cred) {
@@ -8644,17 +8704,20 @@ var $author$project$Page$Article$delete = F2(
 			$author$project$Api$Endpoint$article(slug),
 			cred,
 			$elm$http$Http$emptyBody,
-			$elm$json$Json$Decode$succeed(0));
+			$elm$json$Json$Decode$succeed(_Utils_Tuple0));
 	});
 var $author$project$Log$error = $elm$core$Platform$Cmd$none;
 var $author$project$Page$Article$CompletedFavoriteChange = function (a) {
-	return {$: 13, a: a};
+	return {$: 'CompletedFavoriteChange', a: a};
 };
 var $author$project$Article$fromPreview = F2(
 	function (newBody, _v0) {
 		var info = _v0.a;
 		var _v1 = _v0.b;
-		return A2($author$project$Article$Article, info, newBody);
+		return A2(
+			$author$project$Article$Article,
+			info,
+			$author$project$Article$Full(newBody));
 	});
 var $author$project$Page$Article$fave = F4(
 	function (toRequest, cred, slug, body) {
@@ -8689,10 +8752,10 @@ var $author$project$Api$post = F4(
 	function (url, maybeCred, body, decoder) {
 		return $author$project$Api$Endpoint$request(
 			{
-				X: body,
-				ai: $elm$http$Http$expectJson(decoder),
-				ak: function () {
-					if (!maybeCred.$) {
+				body: body,
+				expect: $elm$http$Http$expectJson(decoder),
+				headers: function () {
+					if (maybeCred.$ === 'Just') {
 						var cred = maybeCred.a;
 						return _List_fromArray(
 							[
@@ -8702,10 +8765,10 @@ var $author$project$Api$post = F4(
 						return _List_Nil;
 					}
 				}(),
-				al: 'POST',
-				ao: $elm$core$Maybe$Nothing,
-				ap: url,
-				ar: false
+				method: 'POST',
+				timeout: $elm$core$Maybe$Nothing,
+				url: url,
+				withCredentials: false
 			});
 	});
 var $author$project$Article$favorite = F2(
@@ -8726,7 +8789,7 @@ var $author$project$Article$mapAuthor = F2(
 			_Utils_update(
 				info,
 				{
-					ag: transform(info.ag)
+					author: transform(info.author)
 				}),
 			extras);
 	});
@@ -8740,7 +8803,7 @@ var $elm$json$Json$Encode$object = function (pairs) {
 					var v = _v0.b;
 					return A3(_Json_addField, k, v, obj);
 				}),
-			_Json_emptyObject(0),
+			_Json_emptyObject(_Utils_Tuple0),
 			pairs));
 };
 var $elm$json$Json$Encode$string = _Json_wrap;
@@ -8761,7 +8824,7 @@ var $author$project$Article$Comment$encodeCommentBody = function (str) {
 };
 var $elm$http$Http$Internal$StringBody = F2(
 	function (a, b) {
-		return {$: 1, a: a, b: b};
+		return {$: 'StringBody', a: a, b: b};
 	});
 var $elm$http$Http$jsonBody = function (value) {
 	return A2(
@@ -8843,8 +8906,8 @@ var $elm$core$List$filter = F2(
 			list);
 	});
 var $author$project$Article$Comment$id = function (_v0) {
-	var comment = _v0;
-	return comment.aN;
+	var comment = _v0.a;
+	return comment.id;
 };
 var $author$project$Page$Article$withoutComment = F2(
 	function (id, list) {
@@ -8860,34 +8923,34 @@ var $author$project$Page$Article$withoutComment = F2(
 var $author$project$Page$Article$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
-			case 2:
+			case 'ClickedDismissErrors':
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{M: _List_Nil}),
+						{errors: _List_Nil}),
 					$elm$core$Platform$Cmd$none);
-			case 3:
+			case 'ClickedFavorite':
 				var cred = msg.a;
 				var slug = msg.b;
 				var body = msg.c;
 				return _Utils_Tuple2(
 					model,
 					A4($author$project$Page$Article$fave, $author$project$Article$favorite, cred, slug, body));
-			case 4:
+			case 'ClickedUnfavorite':
 				var cred = msg.a;
 				var slug = msg.b;
 				var body = msg.c;
 				return _Utils_Tuple2(
 					model,
 					A4($author$project$Page$Article$fave, $author$project$Article$unfavorite, cred, slug, body));
-			case 9:
-				if (!msg.a.$) {
+			case 'CompletedLoadArticle':
+				if (msg.a.$ === 'Ok') {
 					var article = msg.a.a;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
 							{
-								r: $author$project$Page$Article$Loaded(article)
+								article: $author$project$Page$Article$Loaded(article)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
@@ -8895,17 +8958,17 @@ var $author$project$Page$Article$update = F2(
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{r: $author$project$Page$Article$Failed}),
+							{article: $author$project$Page$Article$Failed}),
 						$author$project$Log$error);
 				}
-			case 10:
-				if (!msg.a.$) {
+			case 'CompletedLoadComments':
+				if (msg.a.$ === 'Ok') {
 					var comments = msg.a.a;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
 							{
-								l: $author$project$Page$Article$Loaded(
+								comments: $author$project$Page$Article$Loaded(
 									_Utils_Tuple2(
 										$author$project$Page$Article$Editing(''),
 										comments))
@@ -8916,17 +8979,17 @@ var $author$project$Page$Article$update = F2(
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{r: $author$project$Page$Article$Failed}),
+							{article: $author$project$Page$Article$Failed}),
 						$author$project$Log$error);
 				}
-			case 13:
-				if (!msg.a.$) {
+			case 'CompletedFavoriteChange':
+				if (msg.a.$ === 'Ok') {
 					var newArticle = msg.a.a;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
 							{
-								r: $author$project$Page$Article$Loaded(newArticle)
+								article: $author$project$Page$Article$Loaded(newArticle)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
@@ -8935,11 +8998,11 @@ var $author$project$Page$Article$update = F2(
 						_Utils_update(
 							model,
 							{
-								M: $author$project$Api$addServerError(model.M)
+								errors: $author$project$Api$addServerError(model.errors)
 							}),
 						$author$project$Log$error);
 				}
-			case 6:
+			case 'ClickedUnfollow':
 				var cred = msg.a;
 				var followedAuthor = msg.b;
 				return _Utils_Tuple2(
@@ -8948,7 +9011,7 @@ var $author$project$Page$Article$update = F2(
 						$elm$http$Http$send,
 						$author$project$Page$Article$CompletedFollowChange,
 						A2($author$project$Author$requestUnfollow, followedAuthor, cred)));
-			case 5:
+			case 'ClickedFollow':
 				var cred = msg.a;
 				var unfollowedAuthor = msg.b;
 				return _Utils_Tuple2(
@@ -8957,17 +9020,17 @@ var $author$project$Page$Article$update = F2(
 						$elm$http$Http$send,
 						$author$project$Page$Article$CompletedFollowChange,
 						A2($author$project$Author$requestFollow, unfollowedAuthor, cred)));
-			case 14:
-				if (!msg.a.$) {
+			case 'CompletedFollowChange':
+				if (msg.a.$ === 'Ok') {
 					var newAuthor = msg.a.a;
-					var _v1 = model.r;
-					if (_v1.$ === 2) {
+					var _v1 = model.article;
+					if (_v1.$ === 'Loaded') {
 						var article = _v1.a;
 						return _Utils_Tuple2(
 							_Utils_update(
 								model,
 								{
-									r: $author$project$Page$Article$Loaded(
+									article: $author$project$Page$Article$Loaded(
 										A2(
 											$author$project$Article$mapAuthor,
 											function (_v2) {
@@ -8985,21 +9048,21 @@ var $author$project$Page$Article$update = F2(
 						_Utils_update(
 							model,
 							{
-								M: $author$project$Api$addServerError(model.M)
+								errors: $author$project$Api$addServerError(model.errors)
 							}),
 						$author$project$Log$error);
 				}
-			case 8:
+			case 'EnteredCommentText':
 				var str = msg.a;
-				var _v3 = model.l;
-				if ((_v3.$ === 2) && (!_v3.a.a.$)) {
+				var _v3 = model.comments;
+				if ((_v3.$ === 'Loaded') && (_v3.a.a.$ === 'Editing')) {
 					var _v4 = _v3.a;
 					var comments = _v4.b;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
 							{
-								l: $author$project$Page$Article$Loaded(
+								comments: $author$project$Page$Article$Loaded(
 									_Utils_Tuple2(
 										$author$project$Page$Article$Editing(str),
 										comments))
@@ -9008,11 +9071,11 @@ var $author$project$Page$Article$update = F2(
 				} else {
 					return _Utils_Tuple2(model, $author$project$Log$error);
 				}
-			case 7:
+			case 'ClickedPostComment':
 				var cred = msg.a;
 				var slug = msg.b;
-				var _v5 = model.l;
-				if ((_v5.$ === 2) && (!_v5.a.a.$)) {
+				var _v5 = model.comments;
+				if ((_v5.$ === 'Loaded') && (_v5.a.a.$ === 'Editing')) {
 					if (_v5.a.a.a === '') {
 						var _v6 = _v5.a;
 						var comments = _v6.b;
@@ -9025,7 +9088,7 @@ var $author$project$Page$Article$update = F2(
 							_Utils_update(
 								model,
 								{
-									l: $author$project$Page$Article$Loaded(
+									comments: $author$project$Page$Article$Loaded(
 										_Utils_Tuple2(
 											$author$project$Page$Article$Sending(str),
 											comments))
@@ -9038,18 +9101,18 @@ var $author$project$Page$Article$update = F2(
 				} else {
 					return _Utils_Tuple2(model, $author$project$Log$error);
 				}
-			case 15:
-				if (!msg.a.$) {
+			case 'CompletedPostComment':
+				if (msg.a.$ === 'Ok') {
 					var comment = msg.a.a;
-					var _v8 = model.l;
-					if (_v8.$ === 2) {
+					var _v8 = model.comments;
+					if (_v8.$ === 'Loaded') {
 						var _v9 = _v8.a;
 						var comments = _v9.b;
 						return _Utils_Tuple2(
 							_Utils_update(
 								model,
 								{
-									l: $author$project$Page$Article$Loaded(
+									comments: $author$project$Page$Article$Loaded(
 										_Utils_Tuple2(
 											$author$project$Page$Article$Editing(''),
 											A2($elm$core$List$cons, comment, comments)))
@@ -9064,11 +9127,11 @@ var $author$project$Page$Article$update = F2(
 						_Utils_update(
 							model,
 							{
-								M: $author$project$Api$addServerError(model.M)
+								errors: $author$project$Api$addServerError(model.errors)
 							}),
 						$author$project$Log$error);
 				}
-			case 1:
+			case 'ClickedDeleteComment':
 				var cred = msg.a;
 				var slug = msg.b;
 				var id = msg.c;
@@ -9078,11 +9141,11 @@ var $author$project$Page$Article$update = F2(
 						$elm$http$Http$send,
 						$author$project$Page$Article$CompletedDeleteComment(id),
 						A3($author$project$Article$Comment$delete, slug, id, cred)));
-			case 12:
-				if (!msg.b.$) {
+			case 'CompletedDeleteComment':
+				if (msg.b.$ === 'Ok') {
 					var id = msg.a;
-					var _v10 = model.l;
-					if (_v10.$ === 2) {
+					var _v10 = model.comments;
+					if (_v10.$ === 'Loaded') {
 						var _v11 = _v10.a;
 						var commentText = _v11.a;
 						var comments = _v11.b;
@@ -9090,7 +9153,7 @@ var $author$project$Page$Article$update = F2(
 							_Utils_update(
 								model,
 								{
-									l: $author$project$Page$Article$Loaded(
+									comments: $author$project$Page$Article$Loaded(
 										_Utils_Tuple2(
 											commentText,
 											A2($author$project$Page$Article$withoutComment, id, comments)))
@@ -9106,11 +9169,11 @@ var $author$project$Page$Article$update = F2(
 						_Utils_update(
 							model,
 							{
-								M: $author$project$Api$addServerError(model.M)
+								errors: $author$project$Api$addServerError(model.errors)
 							}),
 						$author$project$Log$error);
 				}
-			case 0:
+			case 'ClickedDeleteArticle':
 				var cred = msg.a;
 				var slug = msg.b;
 				return _Utils_Tuple2(
@@ -9119,13 +9182,13 @@ var $author$project$Page$Article$update = F2(
 						$elm$http$Http$send,
 						$author$project$Page$Article$CompletedDeleteArticle,
 						A2($author$project$Page$Article$delete, slug, cred)));
-			case 11:
-				if (!msg.a.$) {
+			case 'CompletedDeleteArticle':
+				if (msg.a.$ === 'Ok') {
 					return _Utils_Tuple2(
 						model,
 						A2(
 							$author$project$Route$replaceUrl,
-							$author$project$Session$navKey(model.aw),
+							$author$project$Session$navKey(model.session),
 							$author$project$Route$Home));
 				} else {
 					var error = msg.a.a;
@@ -9133,31 +9196,31 @@ var $author$project$Page$Article$update = F2(
 						_Utils_update(
 							model,
 							{
-								M: $author$project$Api$addServerError(model.M)
+								errors: $author$project$Api$addServerError(model.errors)
 							}),
 						$author$project$Log$error);
 				}
-			case 16:
+			case 'GotTimeZone':
 				var tz = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{T: tz}),
+						{timeZone: tz}),
 					$elm$core$Platform$Cmd$none);
-			case 17:
+			case 'GotSession':
 				var session = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{aw: session}),
+						{session: session}),
 					A2(
 						$author$project$Route$replaceUrl,
 						$author$project$Session$navKey(session),
 						$author$project$Route$Home));
 			default:
 				var comments = function () {
-					var _v13 = model.l;
-					if (!_v13.$) {
+					var _v13 = model.comments;
+					if (_v13.$ === 'Loading') {
 						return $author$project$Page$Article$LoadingSlowly;
 					} else {
 						var other = _v13;
@@ -9165,8 +9228,8 @@ var $author$project$Page$Article$update = F2(
 					}
 				}();
 				var article = function () {
-					var _v12 = model.r;
-					if (!_v12.$) {
+					var _v12 = model.article;
+					if (_v12.$ === 'Loading') {
 						return $author$project$Page$Article$LoadingSlowly;
 					} else {
 						var other = _v12;
@@ -9176,22 +9239,22 @@ var $author$project$Page$Article$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{r: article, l: comments}),
+						{article: article, comments: comments}),
 					$elm$core$Platform$Cmd$none);
 		}
 	});
 var $author$project$Page$Article$Editor$Editing = F3(
 	function (a, b, c) {
-		return {$: 4, a: a, b: b, c: c};
+		return {$: 'Editing', a: a, b: b, c: c};
 	});
 var $author$project$Page$Article$Editor$LoadingFailed = function (a) {
-	return {$: 2, a: a};
+	return {$: 'LoadingFailed', a: a};
 };
 var $author$project$Page$Article$Editor$LoadingSlowly = function (a) {
-	return {$: 1, a: a};
+	return {$: 'LoadingSlowly', a: a};
 };
 var $author$project$Article$body = function (_v0) {
-	var extraInfo = _v0.b;
+	var extraInfo = _v0.b.a;
 	return extraInfo;
 };
 var $elm$core$Tuple$mapFirst = F2(
@@ -9204,20 +9267,20 @@ var $elm$core$Tuple$mapFirst = F2(
 	});
 var $author$project$Article$metadata = function (_v0) {
 	var internals = _v0.a;
-	return internals.aV;
+	return internals.metadata;
 };
 var $author$project$Page$Article$Editor$CompletedCreate = function (a) {
-	return {$: 5, a: a};
+	return {$: 'CompletedCreate', a: a};
 };
 var $author$project$Page$Article$Editor$CompletedEdit = function (a) {
-	return {$: 6, a: a};
+	return {$: 'CompletedEdit', a: a};
 };
 var $author$project$Page$Article$Editor$Creating = function (a) {
-	return {$: 6, a: a};
+	return {$: 'Creating', a: a};
 };
 var $author$project$Page$Article$Editor$Saving = F2(
 	function (a, b) {
-		return {$: 3, a: a, b: b};
+		return {$: 'Saving', a: a, b: b};
 	});
 var $elm$json$Json$Encode$list = F2(
 	function (func, entries) {
@@ -9225,7 +9288,7 @@ var $elm$json$Json$Encode$list = F2(
 			A3(
 				$elm$core$List$foldl,
 				_Json_addEntry(func),
-				_Json_emptyArray(0),
+				_Json_emptyArray(_Utils_Tuple0),
 				entries));
 	});
 var $elm$core$String$trim = _String_trim;
@@ -9240,25 +9303,25 @@ var $author$project$Page$Article$Editor$tagsFromString = function (str) {
 };
 var $author$project$Page$Article$Editor$create = F2(
 	function (_v0, cred) {
-		var form = _v0;
+		var form = _v0.a;
 		var article = $elm$json$Json$Encode$object(
 			_List_fromArray(
 				[
 					_Utils_Tuple2(
 					'title',
-					$elm$json$Json$Encode$string(form.bT)),
+					$elm$json$Json$Encode$string(form.title)),
 					_Utils_Tuple2(
 					'description',
-					$elm$json$Json$Encode$string(form.bw)),
+					$elm$json$Json$Encode$string(form.description)),
 					_Utils_Tuple2(
 					'body',
-					$elm$json$Json$Encode$string(form.X)),
+					$elm$json$Json$Encode$string(form.body)),
 					_Utils_Tuple2(
 					'tagList',
 					A2(
 						$elm$json$Json$Encode$list,
 						$elm$json$Json$Encode$string,
-						$author$project$Page$Article$Editor$tagsFromString(form.bS)))
+						$author$project$Page$Article$Editor$tagsFromString(form.tags)))
 				]));
 		var body = $elm$http$Http$jsonBody(
 			$elm$json$Json$Encode$object(
@@ -9281,33 +9344,33 @@ var $author$project$Api$put = F4(
 	function (url, cred, body, decoder) {
 		return $author$project$Api$Endpoint$request(
 			{
-				X: body,
-				ai: $elm$http$Http$expectJson(decoder),
-				ak: _List_fromArray(
+				body: body,
+				expect: $elm$http$Http$expectJson(decoder),
+				headers: _List_fromArray(
 					[
 						$author$project$Api$credHeader(cred)
 					]),
-				al: 'PUT',
-				ao: $elm$core$Maybe$Nothing,
-				ap: url,
-				ar: false
+				method: 'PUT',
+				timeout: $elm$core$Maybe$Nothing,
+				url: url,
+				withCredentials: false
 			});
 	});
 var $author$project$Page$Article$Editor$edit = F3(
 	function (articleSlug, _v0, cred) {
-		var form = _v0;
+		var form = _v0.a;
 		var article = $elm$json$Json$Encode$object(
 			_List_fromArray(
 				[
 					_Utils_Tuple2(
 					'title',
-					$elm$json$Json$Encode$string(form.bT)),
+					$elm$json$Json$Encode$string(form.title)),
 					_Utils_Tuple2(
 					'description',
-					$elm$json$Json$Encode$string(form.bw)),
+					$elm$json$Json$Encode$string(form.description)),
 					_Utils_Tuple2(
 					'body',
-					$elm$json$Json$Encode$string(form.X))
+					$elm$json$Json$Encode$string(form.body))
 				]));
 		var body = $elm$http$Http$jsonBody(
 			$elm$json$Json$Encode$object(
@@ -9326,35 +9389,38 @@ var $author$project$Page$Article$Editor$edit = F3(
 				$author$project$Article$fullDecoder(
 					$elm$core$Maybe$Just(cred))));
 	});
-var $author$project$Page$Article$Editor$Body = 1;
-var $author$project$Page$Article$Editor$Title = 0;
+var $author$project$Page$Article$Editor$Body = {$: 'Body'};
+var $author$project$Page$Article$Editor$Title = {$: 'Title'};
 var $author$project$Page$Article$Editor$fieldsToValidate = _List_fromArray(
-	[0, 1]);
-var $author$project$Page$Article$Editor$Trimmed = $elm$core$Basics$identity;
+	[$author$project$Page$Article$Editor$Title, $author$project$Page$Article$Editor$Body]);
+var $author$project$Page$Article$Editor$Trimmed = function (a) {
+	return {$: 'Trimmed', a: a};
+};
 var $author$project$Page$Article$Editor$trimFields = function (form) {
-	return {
-		X: $elm$core$String$trim(form.X),
-		bw: $elm$core$String$trim(form.bw),
-		bS: $elm$core$String$trim(form.bS),
-		bT: $elm$core$String$trim(form.bT)
-	};
+	return $author$project$Page$Article$Editor$Trimmed(
+		{
+			body: $elm$core$String$trim(form.body),
+			description: $elm$core$String$trim(form.description),
+			tags: $elm$core$String$trim(form.tags),
+			title: $elm$core$String$trim(form.title)
+		});
 };
 var $author$project$Page$Article$Editor$InvalidEntry = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'InvalidEntry', a: a, b: b};
 	});
 var $author$project$Page$Article$Editor$validateField = F2(
 	function (_v0, field) {
-		var form = _v0;
+		var form = _v0.a;
 		return A2(
 			$elm$core$List$map,
 			$author$project$Page$Article$Editor$InvalidEntry(field),
 			function () {
-				if (!field) {
-					return $elm$core$String$isEmpty(form.bT) ? _List_fromArray(
+				if (field.$ === 'Title') {
+					return $elm$core$String$isEmpty(form.title) ? _List_fromArray(
 						['title can\'t be blank.']) : _List_Nil;
 				} else {
-					return $elm$core$String$isEmpty(form.X) ? _List_fromArray(
+					return $elm$core$String$isEmpty(form.body) ? _List_fromArray(
 						['body can\'t be blank.']) : _List_Nil;
 				}
 			}());
@@ -9375,11 +9441,11 @@ var $author$project$Page$Article$Editor$validate = function (form) {
 var $author$project$Page$Article$Editor$save = F2(
 	function (cred, status) {
 		switch (status.$) {
-			case 4:
+			case 'Editing':
 				var slug = status.a;
 				var form = status.c;
 				var _v1 = $author$project$Page$Article$Editor$validate(form);
-				if (!_v1.$) {
+				if (_v1.$ === 'Ok') {
 					var validForm = _v1.a;
 					return _Utils_Tuple2(
 						A2($author$project$Page$Article$Editor$Saving, slug, form),
@@ -9393,10 +9459,10 @@ var $author$project$Page$Article$Editor$save = F2(
 						A3($author$project$Page$Article$Editor$Editing, slug, problems, form),
 						$elm$core$Platform$Cmd$none);
 				}
-			case 5:
+			case 'EditingNew':
 				var form = status.b;
 				var _v2 = $author$project$Page$Article$Editor$validate(form);
-				if (!_v2.$) {
+				if (_v2.$ === 'Ok') {
 					var validForm = _v2.a;
 					return _Utils_Tuple2(
 						$author$project$Page$Article$Editor$Creating(form),
@@ -9415,7 +9481,7 @@ var $author$project$Page$Article$Editor$save = F2(
 		}
 	});
 var $author$project$Page$Article$Editor$ServerError = function (a) {
-	return {$: 1, a: a};
+	return {$: 'ServerError', a: a};
 };
 var $author$project$Page$Article$Editor$savingError = F2(
 	function (error, status) {
@@ -9424,11 +9490,11 @@ var $author$project$Page$Article$Editor$savingError = F2(
 				$author$project$Page$Article$Editor$ServerError('Error saving article')
 			]);
 		switch (status.$) {
-			case 3:
+			case 'Saving':
 				var slug = status.a;
 				var form = status.b;
 				return A3($author$project$Page$Article$Editor$Editing, slug, problems, form);
-			case 6:
+			case 'Creating':
 				var form = status.a;
 				return A2($author$project$Page$Article$Editor$EditingNew, problems, form);
 			default:
@@ -9437,54 +9503,54 @@ var $author$project$Page$Article$Editor$savingError = F2(
 	});
 var $author$project$Article$slug = function (_v0) {
 	var internals = _v0.a;
-	return internals.bb;
+	return internals.slug;
 };
 var $author$project$Article$Body$toMarkdownString = function (_v0) {
-	var markdown = _v0;
+	var markdown = _v0.a;
 	return markdown;
 };
 var $author$project$Page$Article$Editor$updateForm = F2(
 	function (transform, model) {
 		var newModel = function () {
-			var _v0 = model.e;
+			var _v0 = model.status;
 			switch (_v0.$) {
-				case 0:
+				case 'Loading':
 					return model;
-				case 1:
+				case 'LoadingSlowly':
 					return model;
-				case 2:
+				case 'LoadingFailed':
 					return model;
-				case 3:
+				case 'Saving':
 					var slug = _v0.a;
 					var form = _v0.b;
 					return _Utils_update(
 						model,
 						{
-							e: A2(
+							status: A2(
 								$author$project$Page$Article$Editor$Saving,
 								slug,
 								transform(form))
 						});
-				case 4:
+				case 'Editing':
 					var slug = _v0.a;
 					var errors = _v0.b;
 					var form = _v0.c;
 					return _Utils_update(
 						model,
 						{
-							e: A3(
+							status: A3(
 								$author$project$Page$Article$Editor$Editing,
 								slug,
 								errors,
 								transform(form))
 						});
-				case 5:
+				case 'EditingNew':
 					var errors = _v0.a;
 					var form = _v0.b;
 					return _Utils_update(
 						model,
 						{
-							e: A2(
+							status: A2(
 								$author$project$Page$Article$Editor$EditingNew,
 								errors,
 								transform(form))
@@ -9494,7 +9560,7 @@ var $author$project$Page$Article$Editor$updateForm = F2(
 					return _Utils_update(
 						model,
 						{
-							e: $author$project$Page$Article$Editor$Creating(
+							status: $author$project$Page$Article$Editor$Creating(
 								transform(form))
 						});
 			}
@@ -9504,64 +9570,64 @@ var $author$project$Page$Article$Editor$updateForm = F2(
 var $author$project$Page$Article$Editor$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
-			case 0:
+			case 'ClickedSave':
 				var cred = msg.a;
 				return A2(
 					$elm$core$Tuple$mapFirst,
 					function (status) {
 						return _Utils_update(
 							model,
-							{e: status});
+							{status: status});
 					},
-					A2($author$project$Page$Article$Editor$save, cred, model.e));
-			case 4:
+					A2($author$project$Page$Article$Editor$save, cred, model.status));
+			case 'EnteredTitle':
 				var title = msg.a;
 				return A2(
 					$author$project$Page$Article$Editor$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{bT: title});
+							{title: title});
 					},
 					model);
-			case 2:
+			case 'EnteredDescription':
 				var description = msg.a;
 				return A2(
 					$author$project$Page$Article$Editor$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{bw: description});
+							{description: description});
 					},
 					model);
-			case 3:
+			case 'EnteredTags':
 				var tags = msg.a;
 				return A2(
 					$author$project$Page$Article$Editor$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{bS: tags});
+							{tags: tags});
 					},
 					model);
-			case 1:
+			case 'EnteredBody':
 				var body = msg.a;
 				return A2(
 					$author$project$Page$Article$Editor$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{X: body});
+							{body: body});
 					},
 					model);
-			case 5:
-				if (!msg.a.$) {
+			case 'CompletedCreate':
+				if (msg.a.$ === 'Ok') {
 					var article = msg.a.a;
 					return _Utils_Tuple2(
 						model,
 						A2(
 							$author$project$Route$replaceUrl,
-							$author$project$Session$navKey(model.aw),
+							$author$project$Session$navKey(model.session),
 							$author$project$Route$Article(
 								$author$project$Article$slug(article))));
 				} else {
@@ -9570,18 +9636,18 @@ var $author$project$Page$Article$Editor$update = F2(
 						_Utils_update(
 							model,
 							{
-								e: A2($author$project$Page$Article$Editor$savingError, error, model.e)
+								status: A2($author$project$Page$Article$Editor$savingError, error, model.status)
 							}),
 						$elm$core$Platform$Cmd$none);
 				}
-			case 6:
-				if (!msg.a.$) {
+			case 'CompletedEdit':
+				if (msg.a.$ === 'Ok') {
 					var article = msg.a.a;
 					return _Utils_Tuple2(
 						model,
 						A2(
 							$author$project$Route$replaceUrl,
-							$author$project$Session$navKey(model.aw),
+							$author$project$Session$navKey(model.session),
 							$author$project$Route$Article(
 								$author$project$Article$slug(article))));
 				} else {
@@ -9590,12 +9656,12 @@ var $author$project$Page$Article$Editor$update = F2(
 						_Utils_update(
 							model,
 							{
-								e: A2($author$project$Page$Article$Editor$savingError, error, model.e)
+								status: A2($author$project$Page$Article$Editor$savingError, error, model.status)
 							}),
 						$elm$core$Platform$Cmd$none);
 				}
-			case 7:
-				if (msg.a.$ === 1) {
+			case 'CompletedArticleLoad':
+				if (msg.a.$ === 'Err') {
 					var _v1 = msg.a.a;
 					var slug = _v1.a;
 					var error = _v1.b;
@@ -9603,46 +9669,46 @@ var $author$project$Page$Article$Editor$update = F2(
 						_Utils_update(
 							model,
 							{
-								e: $author$project$Page$Article$Editor$LoadingFailed(slug)
+								status: $author$project$Page$Article$Editor$LoadingFailed(slug)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
 					var article = msg.a.a;
 					var _v2 = $author$project$Article$metadata(article);
-					var tags = _v2.bS;
-					var description = _v2.bw;
-					var title = _v2.bT;
+					var tags = _v2.tags;
+					var description = _v2.description;
+					var title = _v2.title;
 					var status = A3(
 						$author$project$Page$Article$Editor$Editing,
 						$author$project$Article$slug(article),
 						_List_Nil,
 						{
-							X: $author$project$Article$Body$toMarkdownString(
+							body: $author$project$Article$Body$toMarkdownString(
 								$author$project$Article$body(article)),
-							bw: description,
-							bS: A2($elm$core$String$join, ' ', tags),
-							bT: title
+							description: description,
+							tags: A2($elm$core$String$join, ' ', tags),
+							title: title
 						});
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{e: status}),
+							{status: status}),
 						$elm$core$Platform$Cmd$none);
 				}
-			case 8:
+			case 'GotSession':
 				var session = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{aw: session}),
+						{session: session}),
 					A2(
 						$author$project$Route$replaceUrl,
 						$author$project$Session$navKey(session),
 						$author$project$Route$Home));
 			default:
 				var status = function () {
-					var _v3 = model.e;
-					if (!_v3.$) {
+					var _v3 = model.status;
+					if (_v3.$ === 'Loading') {
 						var slug = _v3.a;
 						return $author$project$Page$Article$Editor$LoadingSlowly(slug);
 					} else {
@@ -9653,35 +9719,35 @@ var $author$project$Page$Article$Editor$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{e: status}),
+						{status: status}),
 					$elm$core$Platform$Cmd$none);
 		}
 	});
-var $author$project$Page$Home$Failed = {$: 3};
+var $author$project$Page$Home$Failed = {$: 'Failed'};
 var $author$project$Page$Home$GotFeedMsg = function (a) {
-	return {$: 6, a: a};
+	return {$: 'GotFeedMsg', a: a};
 };
 var $author$project$Page$Home$Loaded = function (a) {
-	return {$: 2, a: a};
+	return {$: 'Loaded', a: a};
 };
-var $author$project$Page$Home$LoadingSlowly = {$: 1};
+var $author$project$Page$Home$LoadingSlowly = {$: 'LoadingSlowly'};
 var $author$project$Page$Home$TagFeed = function (a) {
-	return {$: 2, a: a};
+	return {$: 'TagFeed', a: a};
 };
 var $elm$browser$Browser$Dom$setViewport = _Browser_setViewport;
 var $author$project$Page$Home$scrollToTop = A2(
 	$elm$core$Task$onError,
 	function (_v0) {
-		return $elm$core$Task$succeed(0);
+		return $elm$core$Task$succeed(_Utils_Tuple0);
 	},
 	A2($elm$browser$Browser$Dom$setViewport, 0, 0));
 var $author$project$Article$Feed$CompletedFavorite = function (a) {
-	return {$: 3, a: a};
+	return {$: 'CompletedFavorite', a: a};
 };
 var $author$project$Article$Feed$fave = F4(
 	function (toRequest, cred, slug, model) {
 		return _Utils_Tuple2(
-			model,
+			$author$project$Article$Feed$Model(model),
 			A2(
 				$elm$core$Task$attempt,
 				$author$project$Article$Feed$CompletedFavorite,
@@ -9690,12 +9756,13 @@ var $author$project$Article$Feed$fave = F4(
 	});
 var $author$project$PaginatedList$map = F2(
 	function (transform, _v0) {
-		var info = _v0;
-		return _Utils_update(
-			info,
-			{
-				aq: A2($elm$core$List$map, transform, info.aq)
-			});
+		var info = _v0.a;
+		return $author$project$PaginatedList$PaginatedList(
+			_Utils_update(
+				info,
+				{
+					values: A2($elm$core$List$map, transform, info.values)
+				}));
 	});
 var $author$project$Article$Feed$replaceArticle = F2(
 	function (newArticle, oldArticle) {
@@ -9705,43 +9772,46 @@ var $author$project$Article$Feed$replaceArticle = F2(
 	});
 var $author$project$Article$Feed$update = F3(
 	function (maybeCred, msg, _v0) {
-		var model = _v0;
+		var model = _v0.a;
 		switch (msg.$) {
-			case 0:
+			case 'ClickedDismissErrors':
 				return _Utils_Tuple2(
-					_Utils_update(
-						model,
-						{M: _List_Nil}),
+					$author$project$Article$Feed$Model(
+						_Utils_update(
+							model,
+							{errors: _List_Nil})),
 					$elm$core$Platform$Cmd$none);
-			case 1:
+			case 'ClickedFavorite':
 				var cred = msg.a;
 				var slug = msg.b;
 				return A4($author$project$Article$Feed$fave, $author$project$Article$favorite, cred, slug, model);
-			case 2:
+			case 'ClickedUnfavorite':
 				var cred = msg.a;
 				var slug = msg.b;
 				return A4($author$project$Article$Feed$fave, $author$project$Article$unfavorite, cred, slug, model);
 			default:
-				if (!msg.a.$) {
+				if (msg.a.$ === 'Ok') {
 					var article = msg.a.a;
 					return _Utils_Tuple2(
-						_Utils_update(
-							model,
-							{
-								I: A2(
-									$author$project$PaginatedList$map,
-									$author$project$Article$Feed$replaceArticle(article),
-									model.I)
-							}),
+						$author$project$Article$Feed$Model(
+							_Utils_update(
+								model,
+								{
+									articles: A2(
+										$author$project$PaginatedList$map,
+										$author$project$Article$Feed$replaceArticle(article),
+										model.articles)
+								})),
 						$elm$core$Platform$Cmd$none);
 				} else {
 					var error = msg.a.a;
 					return _Utils_Tuple2(
-						_Utils_update(
-							model,
-							{
-								M: $author$project$Api$addServerError(model.M)
-							}),
+						$author$project$Article$Feed$Model(
+							_Utils_update(
+								model,
+								{
+									errors: $author$project$Api$addServerError(model.errors)
+								})),
 						$elm$core$Platform$Cmd$none);
 				}
 		}
@@ -9749,33 +9819,33 @@ var $author$project$Article$Feed$update = F3(
 var $author$project$Page$Home$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
-			case 0:
+			case 'ClickedTag':
 				var tag = msg.a;
 				var feedTab = $author$project$Page$Home$TagFeed(tag);
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{N: feedTab}),
+						{feedTab: feedTab}),
 					A2(
 						$elm$core$Task$attempt,
 						$author$project$Page$Home$CompletedFeedLoad,
-						A3($author$project$Page$Home$fetchFeed, model.aw, feedTab, 1)));
-			case 1:
+						A3($author$project$Page$Home$fetchFeed, model.session, feedTab, 1)));
+			case 'ClickedTab':
 				var tab = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{N: tab}),
+						{feedTab: tab}),
 					A2(
 						$elm$core$Task$attempt,
 						$author$project$Page$Home$CompletedFeedLoad,
-						A3($author$project$Page$Home$fetchFeed, model.aw, tab, 1)));
-			case 2:
+						A3($author$project$Page$Home$fetchFeed, model.session, tab, 1)));
+			case 'ClickedFeedPage':
 				var page = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{aj: page}),
+						{feedPage: page}),
 					A2(
 						$elm$core$Task$attempt,
 						$author$project$Page$Home$CompletedFeedLoad,
@@ -9789,15 +9859,15 @@ var $author$project$Page$Home$update = F2(
 									},
 									$author$project$Page$Home$scrollToTop);
 							},
-							A3($author$project$Page$Home$fetchFeed, model.aw, model.N, page))));
-			case 3:
-				if (!msg.a.$) {
+							A3($author$project$Page$Home$fetchFeed, model.session, model.feedTab, page))));
+			case 'CompletedFeedLoad':
+				if (msg.a.$ === 'Ok') {
 					var feed = msg.a.a;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
 							{
-								t: $author$project$Page$Home$Loaded(feed)
+								feed: $author$project$Page$Home$Loaded(feed)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
@@ -9805,17 +9875,17 @@ var $author$project$Page$Home$update = F2(
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{t: $author$project$Page$Home$Failed}),
+							{feed: $author$project$Page$Home$Failed}),
 						$elm$core$Platform$Cmd$none);
 				}
-			case 4:
-				if (!msg.a.$) {
+			case 'CompletedTagsLoad':
+				if (msg.a.$ === 'Ok') {
 					var tags = msg.a.a;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
 							{
-								bS: $author$project$Page$Home$Loaded(tags)
+								tags: $author$project$Page$Home$Loaded(tags)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
@@ -9823,18 +9893,18 @@ var $author$project$Page$Home$update = F2(
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{bS: $author$project$Page$Home$Failed}),
+							{tags: $author$project$Page$Home$Failed}),
 						$author$project$Log$error);
 				}
-			case 6:
+			case 'GotFeedMsg':
 				var subMsg = msg.a;
-				var _v2 = model.t;
+				var _v2 = model.feed;
 				switch (_v2.$) {
-					case 2:
+					case 'Loaded':
 						var feed = _v2.a;
 						var _v3 = A3(
 							$author$project$Article$Feed$update,
-							$author$project$Session$cred(model.aw),
+							$author$project$Session$cred(model.session),
 							subMsg,
 							feed);
 						var newFeed = _v3.a;
@@ -9843,34 +9913,34 @@ var $author$project$Page$Home$update = F2(
 							_Utils_update(
 								model,
 								{
-									t: $author$project$Page$Home$Loaded(newFeed)
+									feed: $author$project$Page$Home$Loaded(newFeed)
 								}),
 							A2($elm$core$Platform$Cmd$map, $author$project$Page$Home$GotFeedMsg, subCmd));
-					case 0:
+					case 'Loading':
 						return _Utils_Tuple2(model, $author$project$Log$error);
-					case 1:
+					case 'LoadingSlowly':
 						return _Utils_Tuple2(model, $author$project$Log$error);
 					default:
 						return _Utils_Tuple2(model, $author$project$Log$error);
 				}
-			case 5:
+			case 'GotTimeZone':
 				var tz = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{T: tz}),
+						{timeZone: tz}),
 					$elm$core$Platform$Cmd$none);
-			case 7:
+			case 'GotSession':
 				var session = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{aw: session}),
+						{session: session}),
 					$elm$core$Platform$Cmd$none);
 			default:
 				var tags = function () {
-					var _v5 = model.bS;
-					if (!_v5.$) {
+					var _v5 = model.tags;
+					if (_v5.$ === 'Loading') {
 						return $author$project$Page$Home$LoadingSlowly;
 					} else {
 						var other = _v5;
@@ -9878,8 +9948,8 @@ var $author$project$Page$Home$update = F2(
 					}
 				}();
 				var feed = function () {
-					var _v4 = model.t;
-					if (!_v4.$) {
+					var _v4 = model.feed;
+					if (_v4.$ === 'Loading') {
 						return $author$project$Page$Home$LoadingSlowly;
 					} else {
 						var other = _v4;
@@ -9889,15 +9959,15 @@ var $author$project$Page$Home$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{t: feed, bS: tags}),
+						{feed: feed, tags: tags}),
 					$elm$core$Platform$Cmd$none);
 		}
 	});
 var $author$project$Page$Login$CompletedLogin = function (a) {
-	return {$: 3, a: a};
+	return {$: 'CompletedLogin', a: a};
 };
 var $author$project$Page$Login$ServerError = function (a) {
-	return {$: 1, a: a};
+	return {$: 'ServerError', a: a};
 };
 var $author$project$Api$fromPair = function (_v0) {
 	var field = _v0.a;
@@ -9917,7 +9987,7 @@ var $author$project$Api$errorsDecoder = A2(
 		$elm$json$Json$Decode$list($elm$json$Json$Decode$string)));
 var $elm$core$Result$withDefault = F2(
 	function (def, result) {
-		if (!result.$) {
+		if (result.$ === 'Ok') {
 			var a = result.a;
 			return a;
 		} else {
@@ -9925,7 +9995,7 @@ var $elm$core$Result$withDefault = F2(
 		}
 	});
 var $author$project$Api$decodeErrors = function (error) {
-	if (error.$ === 3) {
+	if (error.$ === 'BadStatus') {
 		var response = error.a;
 		return A2(
 			$elm$core$Result$withDefault,
@@ -9934,7 +10004,7 @@ var $author$project$Api$decodeErrors = function (error) {
 			A2(
 				$elm$json$Json$Decode$decodeString,
 				A2($elm$json$Json$Decode$field, 'errors', $author$project$Api$errorsDecoder),
-				response.X));
+				response.body));
 	} else {
 		var err = error;
 		return _List_fromArray(
@@ -9959,16 +10029,16 @@ var $author$project$Api$login = F2(
 				$author$project$Api$decoderFromCred(decoder)));
 	});
 var $author$project$Page$Login$login = function (_v0) {
-	var form = _v0;
+	var form = _v0.a;
 	var user = $elm$json$Json$Encode$object(
 		_List_fromArray(
 			[
 				_Utils_Tuple2(
 				'email',
-				$elm$json$Json$Encode$string(form.x)),
+				$elm$json$Json$Encode$string(form.email)),
 				_Utils_Tuple2(
 				'password',
-				$elm$json$Json$Encode$string(form.A))
+				$elm$json$Json$Encode$string(form.password))
 			]));
 	var body = $elm$http$Http$jsonBody(
 		$elm$json$Json$Encode$object(
@@ -9979,8 +10049,8 @@ var $author$project$Page$Login$login = function (_v0) {
 	return A2($author$project$Api$login, body, $author$project$Viewer$decoder);
 };
 var $author$project$Avatar$encode = function (_v0) {
-	var maybeUrl = _v0;
-	if (!maybeUrl.$) {
+	var maybeUrl = _v0.a;
+	if (maybeUrl.$ === 'Just') {
 		var url = maybeUrl.a;
 		return $elm$json$Json$Encode$string(url);
 	} else {
@@ -9988,7 +10058,7 @@ var $author$project$Avatar$encode = function (_v0) {
 	}
 };
 var $author$project$Username$encode = function (_v0) {
-	var username = _v0;
+	var username = _v0.a;
 	return $elm$json$Json$Encode$string(username);
 };
 var $author$project$Api$storeCredWith = F2(
@@ -10028,37 +10098,40 @@ var $author$project$Page$Login$updateForm = F2(
 			_Utils_update(
 				model,
 				{
-					O: transform(model.O)
+					form: transform(model.form)
 				}),
 			$elm$core$Platform$Cmd$none);
 	});
-var $author$project$Page$Login$Email = 0;
-var $author$project$Page$Login$Password = 1;
+var $author$project$Page$Login$Email = {$: 'Email'};
+var $author$project$Page$Login$Password = {$: 'Password'};
 var $author$project$Page$Login$fieldsToValidate = _List_fromArray(
-	[0, 1]);
-var $author$project$Page$Login$Trimmed = $elm$core$Basics$identity;
+	[$author$project$Page$Login$Email, $author$project$Page$Login$Password]);
+var $author$project$Page$Login$Trimmed = function (a) {
+	return {$: 'Trimmed', a: a};
+};
 var $author$project$Page$Login$trimFields = function (form) {
-	return {
-		x: $elm$core$String$trim(form.x),
-		A: $elm$core$String$trim(form.A)
-	};
+	return $author$project$Page$Login$Trimmed(
+		{
+			email: $elm$core$String$trim(form.email),
+			password: $elm$core$String$trim(form.password)
+		});
 };
 var $author$project$Page$Login$InvalidEntry = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'InvalidEntry', a: a, b: b};
 	});
 var $author$project$Page$Login$validateField = F2(
 	function (_v0, field) {
-		var form = _v0;
+		var form = _v0.a;
 		return A2(
 			$elm$core$List$map,
 			$author$project$Page$Login$InvalidEntry(field),
 			function () {
-				if (!field) {
-					return $elm$core$String$isEmpty(form.x) ? _List_fromArray(
+				if (field.$ === 'Email') {
+					return $elm$core$String$isEmpty(form.email) ? _List_fromArray(
 						['email can\'t be blank.']) : _List_Nil;
 				} else {
-					return $elm$core$String$isEmpty(form.A) ? _List_fromArray(
+					return $elm$core$String$isEmpty(form.password) ? _List_fromArray(
 						['password can\'t be blank.']) : _List_Nil;
 				}
 			}());
@@ -10079,14 +10152,14 @@ var $author$project$Page$Login$validate = function (form) {
 var $author$project$Page$Login$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
-			case 0:
-				var _v1 = $author$project$Page$Login$validate(model.O);
-				if (!_v1.$) {
+			case 'SubmittedForm':
+				var _v1 = $author$project$Page$Login$validate(model.form);
+				if (_v1.$ === 'Ok') {
 					var validForm = _v1.a;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{G: _List_Nil}),
+							{problems: _List_Nil}),
 						A2(
 							$elm$http$Http$send,
 							$author$project$Page$Login$CompletedLogin,
@@ -10096,31 +10169,31 @@ var $author$project$Page$Login$update = F2(
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{G: problems}),
+							{problems: problems}),
 						$elm$core$Platform$Cmd$none);
 				}
-			case 1:
+			case 'EnteredEmail':
 				var email = msg.a;
 				return A2(
 					$author$project$Page$Login$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{x: email});
+							{email: email});
 					},
 					model);
-			case 2:
+			case 'EnteredPassword':
 				var password = msg.a;
 				return A2(
 					$author$project$Page$Login$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{A: password});
+							{password: password});
 					},
 					model);
-			case 3:
-				if (msg.a.$ === 1) {
+			case 'CompletedLogin':
+				if (msg.a.$ === 'Err') {
 					var error = msg.a.a;
 					var serverErrors = A2(
 						$elm$core$List$map,
@@ -10130,7 +10203,7 @@ var $author$project$Page$Login$update = F2(
 						_Utils_update(
 							model,
 							{
-								G: A2($elm$core$List$append, model.G, serverErrors)
+								problems: A2($elm$core$List$append, model.problems, serverErrors)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
@@ -10144,7 +10217,7 @@ var $author$project$Page$Login$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{aw: session}),
+						{session: session}),
 					A2(
 						$author$project$Route$replaceUrl,
 						$author$project$Session$navKey(session),
@@ -10152,26 +10225,26 @@ var $author$project$Page$Login$update = F2(
 		}
 	});
 var $author$project$Page$Profile$CompletedFollowChange = function (a) {
-	return {$: 5, a: a};
+	return {$: 'CompletedFollowChange', a: a};
 };
 var $author$project$Page$Profile$Failed = function (a) {
-	return {$: 3, a: a};
+	return {$: 'Failed', a: a};
 };
 var $author$project$Page$Profile$GotFeedMsg = function (a) {
-	return {$: 9, a: a};
+	return {$: 'GotFeedMsg', a: a};
 };
 var $author$project$Page$Profile$Loaded = function (a) {
-	return {$: 2, a: a};
+	return {$: 'Loaded', a: a};
 };
 var $author$project$Page$Profile$LoadingSlowly = function (a) {
-	return {$: 1, a: a};
+	return {$: 'LoadingSlowly', a: a};
 };
 var $author$project$Author$username = function (author) {
 	switch (author.$) {
-		case 2:
+		case 'IsViewer':
 			var cred = author.a;
 			return $author$project$Api$username(cred);
-		case 0:
+		case 'IsFollowing':
 			var _v1 = author.a;
 			var val = _v1.a;
 			return val;
@@ -10182,15 +10255,15 @@ var $author$project$Author$username = function (author) {
 	}
 };
 var $author$project$Page$Profile$currentUsername = function (model) {
-	var _v0 = model.ag;
+	var _v0 = model.author;
 	switch (_v0.$) {
-		case 0:
+		case 'Loading':
 			var username = _v0.a;
 			return username;
-		case 1:
+		case 'LoadingSlowly':
 			var username = _v0.a;
 			return username;
-		case 2:
+		case 'Loaded':
 			var author = _v0.a;
 			return $author$project$Author$username(author);
 		default:
@@ -10201,13 +10274,13 @@ var $author$project$Page$Profile$currentUsername = function (model) {
 var $author$project$Page$Profile$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
-			case 0:
+			case 'ClickedDismissErrors':
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{M: _List_Nil}),
+						{errors: _List_Nil}),
 					$elm$core$Platform$Cmd$none);
-			case 2:
+			case 'ClickedUnfollow':
 				var cred = msg.a;
 				var followedAuthor = msg.b;
 				return _Utils_Tuple2(
@@ -10216,7 +10289,7 @@ var $author$project$Page$Profile$update = F2(
 						$elm$http$Http$send,
 						$author$project$Page$Profile$CompletedFollowChange,
 						A2($author$project$Author$requestUnfollow, followedAuthor, cred)));
-			case 1:
+			case 'ClickedFollow':
 				var cred = msg.a;
 				var unfollowedAuthor = msg.b;
 				return _Utils_Tuple2(
@@ -10225,52 +10298,52 @@ var $author$project$Page$Profile$update = F2(
 						$elm$http$Http$send,
 						$author$project$Page$Profile$CompletedFollowChange,
 						A2($author$project$Author$requestFollow, unfollowedAuthor, cred)));
-			case 3:
+			case 'ClickedTab':
 				var tab = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{N: tab}),
+						{feedTab: tab}),
 					A4(
 						$author$project$Page$Profile$fetchFeed,
-						model.aw,
+						model.session,
 						tab,
 						$author$project$Page$Profile$currentUsername(model),
 						1));
-			case 4:
+			case 'ClickedFeedPage':
 				var page = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{aj: page}),
+						{feedPage: page}),
 					A4(
 						$author$project$Page$Profile$fetchFeed,
-						model.aw,
-						model.N,
+						model.session,
+						model.feedTab,
 						$author$project$Page$Profile$currentUsername(model),
 						page));
-			case 5:
-				if (!msg.a.$) {
+			case 'CompletedFollowChange':
+				if (msg.a.$ === 'Ok') {
 					var newAuthor = msg.a.a;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
 							{
-								ag: $author$project$Page$Profile$Loaded(newAuthor)
+								author: $author$project$Page$Profile$Loaded(newAuthor)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
 					var error = msg.a.a;
 					return _Utils_Tuple2(model, $author$project$Log$error);
 				}
-			case 6:
-				if (!msg.a.$) {
+			case 'CompletedAuthorLoad':
+				if (msg.a.$ === 'Ok') {
 					var author = msg.a.a;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
 							{
-								ag: $author$project$Page$Profile$Loaded(author)
+								author: $author$project$Page$Profile$Loaded(author)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
@@ -10281,18 +10354,18 @@ var $author$project$Page$Profile$update = F2(
 						_Utils_update(
 							model,
 							{
-								ag: $author$project$Page$Profile$Failed(username)
+								author: $author$project$Page$Profile$Failed(username)
 							}),
 						$author$project$Log$error);
 				}
-			case 7:
-				if (!msg.a.$) {
+			case 'CompletedFeedLoad':
+				if (msg.a.$ === 'Ok') {
 					var feed = msg.a.a;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
 							{
-								t: $author$project$Page$Profile$Loaded(feed)
+								feed: $author$project$Page$Profile$Loaded(feed)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
@@ -10303,19 +10376,19 @@ var $author$project$Page$Profile$update = F2(
 						_Utils_update(
 							model,
 							{
-								t: $author$project$Page$Profile$Failed(username)
+								feed: $author$project$Page$Profile$Failed(username)
 							}),
 						$author$project$Log$error);
 				}
-			case 9:
+			case 'GotFeedMsg':
 				var subMsg = msg.a;
-				var _v3 = model.t;
+				var _v3 = model.feed;
 				switch (_v3.$) {
-					case 2:
+					case 'Loaded':
 						var feed = _v3.a;
 						var _v4 = A3(
 							$author$project$Article$Feed$update,
-							$author$project$Session$cred(model.aw),
+							$author$project$Session$cred(model.session),
 							subMsg,
 							feed);
 						var newFeed = _v4.a;
@@ -10324,37 +10397,37 @@ var $author$project$Page$Profile$update = F2(
 							_Utils_update(
 								model,
 								{
-									t: $author$project$Page$Profile$Loaded(newFeed)
+									feed: $author$project$Page$Profile$Loaded(newFeed)
 								}),
 							A2($elm$core$Platform$Cmd$map, $author$project$Page$Profile$GotFeedMsg, subCmd));
-					case 0:
+					case 'Loading':
 						return _Utils_Tuple2(model, $author$project$Log$error);
-					case 1:
+					case 'LoadingSlowly':
 						return _Utils_Tuple2(model, $author$project$Log$error);
 					default:
 						return _Utils_Tuple2(model, $author$project$Log$error);
 				}
-			case 8:
+			case 'GotTimeZone':
 				var tz = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{T: tz}),
+						{timeZone: tz}),
 					$elm$core$Platform$Cmd$none);
-			case 10:
+			case 'GotSession':
 				var session = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{aw: session}),
+						{session: session}),
 					A2(
 						$author$project$Route$replaceUrl,
 						$author$project$Session$navKey(session),
 						$author$project$Route$Home));
 			default:
 				var feed = function () {
-					var _v5 = model.t;
-					if (!_v5.$) {
+					var _v5 = model.feed;
+					if (_v5.$ === 'Loading') {
 						var username = _v5.a;
 						return $author$project$Page$Profile$LoadingSlowly(username);
 					} else {
@@ -10365,15 +10438,15 @@ var $author$project$Page$Profile$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{t: feed}),
+						{feed: feed}),
 					$elm$core$Platform$Cmd$none);
 		}
 	});
 var $author$project$Page$Register$CompletedRegister = function (a) {
-	return {$: 4, a: a};
+	return {$: 'CompletedRegister', a: a};
 };
 var $author$project$Page$Register$ServerError = function (a) {
-	return {$: 1, a: a};
+	return {$: 'ServerError', a: a};
 };
 var $author$project$Api$Endpoint$users = A2(
 	$author$project$Api$Endpoint$url,
@@ -10393,19 +10466,19 @@ var $author$project$Api$register = F2(
 				$author$project$Api$decoderFromCred(decoder)));
 	});
 var $author$project$Page$Register$register = function (_v0) {
-	var form = _v0;
+	var form = _v0.a;
 	var user = $elm$json$Json$Encode$object(
 		_List_fromArray(
 			[
 				_Utils_Tuple2(
 				'username',
-				$elm$json$Json$Encode$string(form.C)),
+				$elm$json$Json$Encode$string(form.username)),
 				_Utils_Tuple2(
 				'email',
-				$elm$json$Json$Encode$string(form.x)),
+				$elm$json$Json$Encode$string(form.email)),
 				_Utils_Tuple2(
 				'password',
-				$elm$json$Json$Encode$string(form.A))
+				$elm$json$Json$Encode$string(form.password))
 			]));
 	var body = $elm$http$Http$jsonBody(
 		$elm$json$Json$Encode$object(
@@ -10421,46 +10494,49 @@ var $author$project$Page$Register$updateForm = F2(
 			_Utils_update(
 				model,
 				{
-					O: transform(model.O)
+					form: transform(model.form)
 				}),
 			$elm$core$Platform$Cmd$none);
 	});
-var $author$project$Page$Register$Email = 1;
-var $author$project$Page$Register$Password = 2;
-var $author$project$Page$Register$Username = 0;
+var $author$project$Page$Register$Email = {$: 'Email'};
+var $author$project$Page$Register$Password = {$: 'Password'};
+var $author$project$Page$Register$Username = {$: 'Username'};
 var $author$project$Page$Register$fieldsToValidate = _List_fromArray(
-	[0, 1, 2]);
-var $author$project$Page$Register$Trimmed = $elm$core$Basics$identity;
+	[$author$project$Page$Register$Username, $author$project$Page$Register$Email, $author$project$Page$Register$Password]);
+var $author$project$Page$Register$Trimmed = function (a) {
+	return {$: 'Trimmed', a: a};
+};
 var $author$project$Page$Register$trimFields = function (form) {
-	return {
-		x: $elm$core$String$trim(form.x),
-		A: $elm$core$String$trim(form.A),
-		C: $elm$core$String$trim(form.C)
-	};
+	return $author$project$Page$Register$Trimmed(
+		{
+			email: $elm$core$String$trim(form.email),
+			password: $elm$core$String$trim(form.password),
+			username: $elm$core$String$trim(form.username)
+		});
 };
 var $author$project$Page$Register$InvalidEntry = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'InvalidEntry', a: a, b: b};
 	});
 var $author$project$Viewer$minPasswordChars = 6;
 var $author$project$Page$Register$validateField = F2(
 	function (_v0, field) {
-		var form = _v0;
+		var form = _v0.a;
 		return A2(
 			$elm$core$List$map,
 			$author$project$Page$Register$InvalidEntry(field),
 			function () {
-				switch (field) {
-					case 0:
-						return $elm$core$String$isEmpty(form.C) ? _List_fromArray(
+				switch (field.$) {
+					case 'Username':
+						return $elm$core$String$isEmpty(form.username) ? _List_fromArray(
 							['username can\'t be blank.']) : _List_Nil;
-					case 1:
-						return $elm$core$String$isEmpty(form.x) ? _List_fromArray(
+					case 'Email':
+						return $elm$core$String$isEmpty(form.email) ? _List_fromArray(
 							['email can\'t be blank.']) : _List_Nil;
 					default:
-						return $elm$core$String$isEmpty(form.A) ? _List_fromArray(
+						return $elm$core$String$isEmpty(form.password) ? _List_fromArray(
 							['password can\'t be blank.']) : ((_Utils_cmp(
-							$elm$core$String$length(form.A),
+							$elm$core$String$length(form.password),
 							$author$project$Viewer$minPasswordChars) < 0) ? _List_fromArray(
 							[
 								'password must be at least ' + ($elm$core$String$fromInt($author$project$Viewer$minPasswordChars) + ' characters long.')
@@ -10484,14 +10560,14 @@ var $author$project$Page$Register$validate = function (form) {
 var $author$project$Page$Register$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
-			case 0:
-				var _v1 = $author$project$Page$Register$validate(model.O);
-				if (!_v1.$) {
+			case 'SubmittedForm':
+				var _v1 = $author$project$Page$Register$validate(model.form);
+				if (_v1.$ === 'Ok') {
 					var validForm = _v1.a;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{G: _List_Nil}),
+							{problems: _List_Nil}),
 						A2(
 							$elm$http$Http$send,
 							$author$project$Page$Register$CompletedRegister,
@@ -10501,41 +10577,41 @@ var $author$project$Page$Register$update = F2(
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{G: problems}),
+							{problems: problems}),
 						$elm$core$Platform$Cmd$none);
 				}
-			case 2:
+			case 'EnteredUsername':
 				var username = msg.a;
 				return A2(
 					$author$project$Page$Register$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{C: username});
+							{username: username});
 					},
 					model);
-			case 1:
+			case 'EnteredEmail':
 				var email = msg.a;
 				return A2(
 					$author$project$Page$Register$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{x: email});
+							{email: email});
 					},
 					model);
-			case 3:
+			case 'EnteredPassword':
 				var password = msg.a;
 				return A2(
 					$author$project$Page$Register$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{A: password});
+							{password: password});
 					},
 					model);
-			case 4:
-				if (msg.a.$ === 1) {
+			case 'CompletedRegister':
+				if (msg.a.$ === 'Err') {
 					var error = msg.a.a;
 					var serverErrors = A2(
 						$elm$core$List$map,
@@ -10545,7 +10621,7 @@ var $author$project$Page$Register$update = F2(
 						_Utils_update(
 							model,
 							{
-								G: A2($elm$core$List$append, model.G, serverErrors)
+								problems: A2($elm$core$List$append, model.problems, serverErrors)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
@@ -10559,7 +10635,7 @@ var $author$project$Page$Register$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{aw: session}),
+						{session: session}),
 					A2(
 						$author$project$Route$replaceUrl,
 						$author$project$Session$navKey(session),
@@ -10567,15 +10643,15 @@ var $author$project$Page$Register$update = F2(
 		}
 	});
 var $author$project$Page$Settings$CompletedSave = function (a) {
-	return {$: 7, a: a};
+	return {$: 'CompletedSave', a: a};
 };
-var $author$project$Page$Settings$Failed = {$: 3};
+var $author$project$Page$Settings$Failed = {$: 'Failed'};
 var $author$project$Page$Settings$Loaded = function (a) {
-	return {$: 2, a: a};
+	return {$: 'Loaded', a: a};
 };
-var $author$project$Page$Settings$LoadingSlowly = {$: 1};
+var $author$project$Page$Settings$LoadingSlowly = {$: 'LoadingSlowly'};
 var $author$project$Page$Settings$ServerError = function (a) {
-	return {$: 1, a: a};
+	return {$: 'ServerError', a: a};
 };
 var $author$project$Api$settings = F3(
 	function (cred, body, decoder) {
@@ -10591,9 +10667,9 @@ var $author$project$Api$settings = F3(
 	});
 var $author$project$Page$Settings$edit = F2(
 	function (cred, _v0) {
-		var form = _v0;
+		var form = _v0.a;
 		var encodedAvatar = function () {
-			var _v2 = form.J;
+			var _v2 = form.avatar;
 			if (_v2 === '') {
 				return $elm$json$Json$Encode$null;
 			} else {
@@ -10605,18 +10681,18 @@ var $author$project$Page$Settings$edit = F2(
 			[
 				_Utils_Tuple2(
 				'username',
-				$elm$json$Json$Encode$string(form.C)),
+				$elm$json$Json$Encode$string(form.username)),
 				_Utils_Tuple2(
 				'email',
-				$elm$json$Json$Encode$string(form.x)),
+				$elm$json$Json$Encode$string(form.email)),
 				_Utils_Tuple2(
 				'bio',
-				$elm$json$Json$Encode$string(form.K)),
+				$elm$json$Json$Encode$string(form.bio)),
 				_Utils_Tuple2('image', encodedAvatar)
 			]);
 		var encodedUser = $elm$json$Json$Encode$object(
 			function () {
-				var _v1 = form.A;
+				var _v1 = form.password;
 				if (_v1 === '') {
 					return updates;
 				} else {
@@ -10639,14 +10715,14 @@ var $author$project$Page$Settings$edit = F2(
 	});
 var $author$project$Page$Settings$updateForm = F2(
 	function (transform, model) {
-		var _v0 = model.e;
-		if (_v0.$ === 2) {
+		var _v0 = model.status;
+		if (_v0.$ === 'Loaded') {
 			var form = _v0.a;
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
 					{
-						e: $author$project$Page$Settings$Loaded(
+						status: $author$project$Page$Settings$Loaded(
 							transform(form))
 					}),
 				$elm$core$Platform$Cmd$none);
@@ -10654,41 +10730,44 @@ var $author$project$Page$Settings$updateForm = F2(
 			return _Utils_Tuple2(model, $author$project$Log$error);
 		}
 	});
-var $author$project$Page$Settings$Email = 1;
-var $author$project$Page$Settings$Password = 2;
-var $author$project$Page$Settings$Username = 0;
+var $author$project$Page$Settings$Email = {$: 'Email'};
+var $author$project$Page$Settings$Password = {$: 'Password'};
+var $author$project$Page$Settings$Username = {$: 'Username'};
 var $author$project$Page$Settings$fieldsToValidate = _List_fromArray(
-	[0, 1, 2]);
-var $author$project$Page$Settings$Trimmed = $elm$core$Basics$identity;
+	[$author$project$Page$Settings$Username, $author$project$Page$Settings$Email, $author$project$Page$Settings$Password]);
+var $author$project$Page$Settings$Trimmed = function (a) {
+	return {$: 'Trimmed', a: a};
+};
 var $author$project$Page$Settings$trimFields = function (form) {
-	return {
-		J: $elm$core$String$trim(form.J),
-		K: $elm$core$String$trim(form.K),
-		x: $elm$core$String$trim(form.x),
-		A: $elm$core$String$trim(form.A),
-		C: $elm$core$String$trim(form.C)
-	};
+	return $author$project$Page$Settings$Trimmed(
+		{
+			avatar: $elm$core$String$trim(form.avatar),
+			bio: $elm$core$String$trim(form.bio),
+			email: $elm$core$String$trim(form.email),
+			password: $elm$core$String$trim(form.password),
+			username: $elm$core$String$trim(form.username)
+		});
 };
 var $author$project$Page$Settings$InvalidEntry = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'InvalidEntry', a: a, b: b};
 	});
 var $author$project$Page$Settings$validateField = F2(
 	function (_v0, field) {
-		var form = _v0;
+		var form = _v0.a;
 		return A2(
 			$elm$core$List$map,
 			$author$project$Page$Settings$InvalidEntry(field),
 			function () {
-				switch (field) {
-					case 0:
-						return $elm$core$String$isEmpty(form.C) ? _List_fromArray(
+				switch (field.$) {
+					case 'Username':
+						return $elm$core$String$isEmpty(form.username) ? _List_fromArray(
 							['username can\'t be blank.']) : _List_Nil;
-					case 1:
-						return $elm$core$String$isEmpty(form.x) ? _List_fromArray(
+					case 'Email':
+						return $elm$core$String$isEmpty(form.email) ? _List_fromArray(
 							['email can\'t be blank.']) : _List_Nil;
 					default:
-						var passwordLength = $elm$core$String$length(form.A);
+						var passwordLength = $elm$core$String$length(form.password);
 						return ((passwordLength > 0) && (_Utils_cmp(passwordLength, $author$project$Viewer$minPasswordChars) < 0)) ? _List_fromArray(
 							[
 								'password must be at least ' + ($elm$core$String$fromInt($author$project$Viewer$minPasswordChars) + ' characters long.')
@@ -10712,34 +10791,34 @@ var $author$project$Page$Settings$validate = function (form) {
 var $author$project$Page$Settings$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
-			case 6:
-				if (!msg.a.$) {
+			case 'CompletedFormLoad':
+				if (msg.a.$ === 'Ok') {
 					var form = msg.a.a;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
 							{
-								e: $author$project$Page$Settings$Loaded(form)
+								status: $author$project$Page$Settings$Loaded(form)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{e: $author$project$Page$Settings$Failed}),
+							{status: $author$project$Page$Settings$Failed}),
 						$elm$core$Platform$Cmd$none);
 				}
-			case 0:
+			case 'SubmittedForm':
 				var cred = msg.a;
 				var form = msg.b;
 				var _v1 = $author$project$Page$Settings$validate(form);
-				if (!_v1.$) {
+				if (_v1.$ === 'Ok') {
 					var validForm = _v1.a;
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
 							{
-								e: $author$project$Page$Settings$Loaded(form)
+								status: $author$project$Page$Settings$Loaded(form)
 							}),
 						A2(
 							$elm$http$Http$send,
@@ -10750,61 +10829,61 @@ var $author$project$Page$Settings$update = F2(
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{G: problems}),
+							{problems: problems}),
 						$elm$core$Platform$Cmd$none);
 				}
-			case 1:
+			case 'EnteredEmail':
 				var email = msg.a;
 				return A2(
 					$author$project$Page$Settings$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{x: email});
+							{email: email});
 					},
 					model);
-			case 2:
+			case 'EnteredUsername':
 				var username = msg.a;
 				return A2(
 					$author$project$Page$Settings$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{C: username});
+							{username: username});
 					},
 					model);
-			case 3:
+			case 'EnteredPassword':
 				var password = msg.a;
 				return A2(
 					$author$project$Page$Settings$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{A: password});
+							{password: password});
 					},
 					model);
-			case 4:
+			case 'EnteredBio':
 				var bio = msg.a;
 				return A2(
 					$author$project$Page$Settings$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{K: bio});
+							{bio: bio});
 					},
 					model);
-			case 5:
+			case 'EnteredAvatar':
 				var avatar = msg.a;
 				return A2(
 					$author$project$Page$Settings$updateForm,
 					function (form) {
 						return _Utils_update(
 							form,
-							{J: avatar});
+							{avatar: avatar});
 					},
 					model);
-			case 7:
-				if (msg.a.$ === 1) {
+			case 'CompletedSave':
+				if (msg.a.$ === 'Err') {
 					var error = msg.a.a;
 					var serverErrors = A2(
 						$elm$core$List$map,
@@ -10814,7 +10893,7 @@ var $author$project$Page$Settings$update = F2(
 						_Utils_update(
 							model,
 							{
-								G: A2($elm$core$List$append, model.G, serverErrors)
+								problems: A2($elm$core$List$append, model.problems, serverErrors)
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
@@ -10823,23 +10902,23 @@ var $author$project$Page$Settings$update = F2(
 						model,
 						$author$project$Viewer$store(viewer));
 				}
-			case 8:
+			case 'GotSession':
 				var session = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{aw: session}),
+						{session: session}),
 					A2(
 						$author$project$Route$replaceUrl,
 						$author$project$Session$navKey(session),
 						$author$project$Route$Home));
 			default:
-				var _v2 = model.e;
-				if (!_v2.$) {
+				var _v2 = model.status;
+				if (_v2.$ === 'Loading') {
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{e: $author$project$Page$Settings$LoadingSlowly}),
+							{status: $author$project$Page$Settings$LoadingSlowly}),
 						$elm$core$Platform$Cmd$none);
 				} else {
 					return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
@@ -10852,12 +10931,12 @@ var $author$project$Main$update = F2(
 		_v0$10:
 		while (true) {
 			switch (_v0.a.$) {
-				case 1:
+				case 'ClickedLink':
 					var urlRequest = _v0.a.a;
-					if (!urlRequest.$) {
+					if (urlRequest.$ === 'Internal') {
 						var url = urlRequest.a;
-						var _v2 = url.bD;
-						if (_v2.$ === 1) {
+						var _v2 = url.fragment;
+						if (_v2.$ === 'Nothing') {
 							return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 						} else {
 							return _Utils_Tuple2(
@@ -10874,14 +10953,14 @@ var $author$project$Main$update = F2(
 							model,
 							$elm$browser$Browser$Navigation$load(href));
 					}
-				case 0:
+				case 'ChangedUrl':
 					var url = _v0.a.a;
 					return A2(
 						$author$project$Main$changeRouteTo,
 						$author$project$Route$fromUrl(url),
 						model);
-				case 3:
-					if (_v0.b.$ === 3) {
+				case 'GotSettingsMsg':
+					if (_v0.b.$ === 'Settings') {
 						var subMsg = _v0.a.a;
 						var settings = _v0.b.a;
 						return A4(
@@ -10893,8 +10972,8 @@ var $author$project$Main$update = F2(
 					} else {
 						break _v0$10;
 					}
-				case 4:
-					if (_v0.b.$ === 4) {
+				case 'GotLoginMsg':
+					if (_v0.b.$ === 'Login') {
 						var subMsg = _v0.a.a;
 						var login = _v0.b.a;
 						return A4(
@@ -10906,8 +10985,8 @@ var $author$project$Main$update = F2(
 					} else {
 						break _v0$10;
 					}
-				case 5:
-					if (_v0.b.$ === 5) {
+				case 'GotRegisterMsg':
+					if (_v0.b.$ === 'Register') {
 						var subMsg = _v0.a.a;
 						var register = _v0.b.a;
 						return A4(
@@ -10919,8 +10998,8 @@ var $author$project$Main$update = F2(
 					} else {
 						break _v0$10;
 					}
-				case 2:
-					if (_v0.b.$ === 2) {
+				case 'GotHomeMsg':
+					if (_v0.b.$ === 'Home') {
 						var subMsg = _v0.a.a;
 						var home = _v0.b.a;
 						return A4(
@@ -10932,8 +11011,8 @@ var $author$project$Main$update = F2(
 					} else {
 						break _v0$10;
 					}
-				case 6:
-					if (_v0.b.$ === 6) {
+				case 'GotProfileMsg':
+					if (_v0.b.$ === 'Profile') {
 						var subMsg = _v0.a.a;
 						var _v3 = _v0.b;
 						var username = _v3.a;
@@ -10947,8 +11026,8 @@ var $author$project$Main$update = F2(
 					} else {
 						break _v0$10;
 					}
-				case 7:
-					if (_v0.b.$ === 7) {
+				case 'GotArticleMsg':
+					if (_v0.b.$ === 'Article') {
 						var subMsg = _v0.a.a;
 						var article = _v0.b.a;
 						return A4(
@@ -10960,8 +11039,8 @@ var $author$project$Main$update = F2(
 					} else {
 						break _v0$10;
 					}
-				case 8:
-					if (_v0.b.$ === 8) {
+				case 'GotEditorMsg':
+					if (_v0.b.$ === 'Editor') {
 						var subMsg = _v0.a.a;
 						var _v4 = _v0.b;
 						var slug = _v4.a;
@@ -10976,7 +11055,7 @@ var $author$project$Main$update = F2(
 						break _v0$10;
 					}
 				default:
-					if (!_v0.b.$) {
+					if (_v0.b.$ === 'Redirect') {
 						var session = _v0.a.a;
 						return _Utils_Tuple2(
 							$author$project$Main$Redirect(session),
@@ -10991,11 +11070,11 @@ var $author$project$Main$update = F2(
 		}
 		return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 	});
-var $author$project$Page$Home = {$: 1};
-var $author$project$Page$NewArticle = {$: 6};
-var $author$project$Page$Other = {$: 0};
+var $author$project$Page$Home = {$: 'Home'};
+var $author$project$Page$NewArticle = {$: 'NewArticle'};
+var $author$project$Page$Other = {$: 'Other'};
 var $author$project$Page$Profile = function (a) {
-	return {$: 5, a: a};
+	return {$: 'Profile', a: a};
 };
 var $elm$virtual_dom$VirtualDom$map = _VirtualDom_map;
 var $elm$html$Html$map = $elm$virtual_dom$VirtualDom$map;
@@ -11091,48 +11170,48 @@ var $author$project$Page$isActive = F2(
 		_v0$6:
 		while (true) {
 			switch (_v0.a.$) {
-				case 1:
-					if (!_v0.b.$) {
+				case 'Home':
+					if (_v0.b.$ === 'Home') {
 						var _v1 = _v0.a;
 						var _v2 = _v0.b;
 						return true;
 					} else {
 						break _v0$6;
 					}
-				case 2:
-					if (_v0.b.$ === 2) {
+				case 'Login':
+					if (_v0.b.$ === 'Login') {
 						var _v3 = _v0.a;
 						var _v4 = _v0.b;
 						return true;
 					} else {
 						break _v0$6;
 					}
-				case 3:
-					if (_v0.b.$ === 4) {
+				case 'Register':
+					if (_v0.b.$ === 'Register') {
 						var _v5 = _v0.a;
 						var _v6 = _v0.b;
 						return true;
 					} else {
 						break _v0$6;
 					}
-				case 4:
-					if (_v0.b.$ === 5) {
+				case 'Settings':
+					if (_v0.b.$ === 'Settings') {
 						var _v7 = _v0.a;
 						var _v8 = _v0.b;
 						return true;
 					} else {
 						break _v0$6;
 					}
-				case 5:
-					if (_v0.b.$ === 7) {
+				case 'Profile':
+					if (_v0.b.$ === 'Profile') {
 						var pageUsername = _v0.a.a;
 						var routeUsername = _v0.b.a;
 						return _Utils_eq(pageUsername, routeUsername);
 					} else {
 						break _v0$6;
 					}
-				case 6:
-					if (_v0.b.$ === 8) {
+				case 'NewArticle':
+					if (_v0.b.$ === 'NewArticle') {
 						var _v9 = _v0.a;
 						var _v10 = _v0.b;
 						return true;
@@ -11180,9 +11259,11 @@ var $author$project$Viewer$avatar = function (_v0) {
 };
 var $elm$html$Html$i = _VirtualDom_node('i');
 var $elm$html$Html$img = _VirtualDom_node('img');
-var $author$project$Asset$Image = $elm$core$Basics$identity;
+var $author$project$Asset$Image = function (a) {
+	return {$: 'Image', a: a};
+};
 var $author$project$Asset$image = function (filename) {
-	return '/assets/images/' + filename;
+	return $author$project$Asset$Image('/assets/images/' + filename);
 };
 var $author$project$Asset$defaultAvatar = $author$project$Asset$image('smiley-cyrus.jpg');
 var $elm$html$Html$Attributes$src = function (url) {
@@ -11192,12 +11273,12 @@ var $elm$html$Html$Attributes$src = function (url) {
 		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
 var $author$project$Asset$src = function (_v0) {
-	var url = _v0;
+	var url = _v0.a;
 	return $elm$html$Html$Attributes$src(url);
 };
 var $author$project$Avatar$src = function (_v0) {
-	var maybeUrl = _v0;
-	if (maybeUrl.$ === 1) {
+	var maybeUrl = _v0.a;
+	if (maybeUrl.$ === 'Nothing') {
 		return $author$project$Asset$src($author$project$Asset$defaultAvatar);
 	} else {
 		if (maybeUrl.a === '') {
@@ -11209,7 +11290,7 @@ var $author$project$Avatar$src = function (_v0) {
 	}
 };
 var $author$project$Username$toHtml = function (_v0) {
-	var username = _v0;
+	var username = _v0.a;
 	return $elm$html$Html$text(username);
 };
 var $author$project$Viewer$username = function (_v0) {
@@ -11219,7 +11300,7 @@ var $author$project$Viewer$username = function (_v0) {
 var $author$project$Page$viewMenu = F2(
 	function (page, maybeViewer) {
 		var linkTo = $author$project$Page$navbarLink(page);
-		if (!maybeViewer.$) {
+		if (maybeViewer.$ === 'Just') {
 			var viewer = maybeViewer.a;
 			var username = $author$project$Viewer$username(viewer);
 			var avatar = $author$project$Viewer$avatar(viewer);
@@ -11347,10 +11428,10 @@ var $author$project$Page$viewHeader = F2(
 	});
 var $author$project$Page$view = F3(
 	function (maybeViewer, page, _v0) {
-		var content = _v0.bt;
-		var title = _v0.bT;
+		var content = _v0.content;
+		var title = _v0.title;
 		return {
-			X: A2(
+			body: A2(
 				$elm$core$List$cons,
 				A2($author$project$Page$viewHeader, page, maybeViewer),
 				A2(
@@ -11358,17 +11439,17 @@ var $author$project$Page$view = F3(
 					content,
 					_List_fromArray(
 						[$author$project$Page$viewFooter]))),
-			bT: title + ' - Conduit'
+			title: title + ' - Conduit'
 		};
 	});
-var $author$project$Page$Article$ClickedDismissErrors = {$: 2};
+var $author$project$Page$Article$ClickedDismissErrors = {$: 'ClickedDismissErrors'};
 var $author$project$Article$author = function (_v0) {
 	var internals = _v0.a;
-	return internals.ag;
+	return internals.author;
 };
 var $author$project$Profile$avatar = function (_v0) {
-	var info = _v0;
-	return info.J;
+	var info = _v0.a;
+	return info.avatar;
 };
 var $author$project$Loading$error = function (str) {
 	return $elm$html$Html$text('Error loading ' + (str + '.'));
@@ -11401,10 +11482,10 @@ var $author$project$Loading$icon = A2(
 	_List_Nil);
 var $author$project$Author$profile = function (author) {
 	switch (author.$) {
-		case 2:
+		case 'IsViewer':
 			var val = author.b;
 			return val;
-		case 0:
+		case 'IsFollowing':
 			var _v1 = author.a;
 			var val = _v1.b;
 			return val;
@@ -11415,17 +11496,17 @@ var $author$project$Author$profile = function (author) {
 	}
 };
 var $elm_explorations$markdown$Markdown$defaultOptions = {
-	aF: $elm$core$Maybe$Nothing,
-	bE: $elm$core$Maybe$Just(
-		{bo: false, bR: false}),
-	bP: true,
-	bQ: false
+	defaultHighlighting: $elm$core$Maybe$Nothing,
+	githubFlavored: $elm$core$Maybe$Just(
+		{breaks: false, tables: false}),
+	sanitize: true,
+	smartypants: false
 };
 var $elm_explorations$markdown$Markdown$toHtmlWith = _Markdown_toHtml;
 var $elm_explorations$markdown$Markdown$toHtml = $elm_explorations$markdown$Markdown$toHtmlWith($elm_explorations$markdown$Markdown$defaultOptions);
 var $author$project$Article$Body$toHtml = F2(
 	function (_v0, attributes) {
-		var markdown = _v0;
+		var markdown = _v0.a;
 		return A2($elm_explorations$markdown$Markdown$toHtml, attributes, markdown);
 	});
 var $author$project$Author$view = function (uname) {
@@ -11447,7 +11528,7 @@ var $elm$time$Time$flooredDiv = F2(
 		return $elm$core$Basics$floor(numerator / denominator);
 	});
 var $elm$time$Time$posixToMillis = function (_v0) {
-	var millis = _v0;
+	var millis = _v0.a;
 	return millis;
 };
 var $elm$time$Time$toAdjustedMinutesHelp = F3(
@@ -11459,8 +11540,8 @@ var $elm$time$Time$toAdjustedMinutesHelp = F3(
 			} else {
 				var era = eras.a;
 				var olderEras = eras.b;
-				if (_Utils_cmp(era.ay, posixMinutes) < 0) {
-					return posixMinutes + era.b;
+				if (_Utils_cmp(era.start, posixMinutes) < 0) {
+					return posixMinutes + era.offset;
 				} else {
 					var $temp$defaultOffset = defaultOffset,
 						$temp$posixMinutes = posixMinutes,
@@ -11497,63 +11578,63 @@ var $elm$time$Time$toCivil = function (minutes) {
 	var month = mp + ((mp < 10) ? 3 : (-9));
 	var year = yearOfEra + (era * 400);
 	return {
-		aE: (dayOfYear - ((((153 * mp) + 2) / 5) | 0)) + 1,
-		aW: month,
-		bl: year + ((month <= 2) ? 1 : 0)
+		day: (dayOfYear - ((((153 * mp) + 2) / 5) | 0)) + 1,
+		month: month,
+		year: year + ((month <= 2) ? 1 : 0)
 	};
 };
 var $elm$time$Time$toDay = F2(
 	function (zone, time) {
 		return $elm$time$Time$toCivil(
-			A2($elm$time$Time$toAdjustedMinutes, zone, time)).aE;
+			A2($elm$time$Time$toAdjustedMinutes, zone, time)).day;
 	});
-var $elm$time$Time$Apr = 3;
-var $elm$time$Time$Aug = 7;
-var $elm$time$Time$Dec = 11;
-var $elm$time$Time$Feb = 1;
-var $elm$time$Time$Jan = 0;
-var $elm$time$Time$Jul = 6;
-var $elm$time$Time$Jun = 5;
-var $elm$time$Time$Mar = 2;
-var $elm$time$Time$May = 4;
-var $elm$time$Time$Nov = 10;
-var $elm$time$Time$Oct = 9;
-var $elm$time$Time$Sep = 8;
+var $elm$time$Time$Apr = {$: 'Apr'};
+var $elm$time$Time$Aug = {$: 'Aug'};
+var $elm$time$Time$Dec = {$: 'Dec'};
+var $elm$time$Time$Feb = {$: 'Feb'};
+var $elm$time$Time$Jan = {$: 'Jan'};
+var $elm$time$Time$Jul = {$: 'Jul'};
+var $elm$time$Time$Jun = {$: 'Jun'};
+var $elm$time$Time$Mar = {$: 'Mar'};
+var $elm$time$Time$May = {$: 'May'};
+var $elm$time$Time$Nov = {$: 'Nov'};
+var $elm$time$Time$Oct = {$: 'Oct'};
+var $elm$time$Time$Sep = {$: 'Sep'};
 var $elm$time$Time$toMonth = F2(
 	function (zone, time) {
 		var _v0 = $elm$time$Time$toCivil(
-			A2($elm$time$Time$toAdjustedMinutes, zone, time)).aW;
+			A2($elm$time$Time$toAdjustedMinutes, zone, time)).month;
 		switch (_v0) {
 			case 1:
-				return 0;
+				return $elm$time$Time$Jan;
 			case 2:
-				return 1;
+				return $elm$time$Time$Feb;
 			case 3:
-				return 2;
+				return $elm$time$Time$Mar;
 			case 4:
-				return 3;
+				return $elm$time$Time$Apr;
 			case 5:
-				return 4;
+				return $elm$time$Time$May;
 			case 6:
-				return 5;
+				return $elm$time$Time$Jun;
 			case 7:
-				return 6;
+				return $elm$time$Time$Jul;
 			case 8:
-				return 7;
+				return $elm$time$Time$Aug;
 			case 9:
-				return 8;
+				return $elm$time$Time$Sep;
 			case 10:
-				return 9;
+				return $elm$time$Time$Oct;
 			case 11:
-				return 10;
+				return $elm$time$Time$Nov;
 			default:
-				return 11;
+				return $elm$time$Time$Dec;
 		}
 	});
 var $elm$time$Time$toYear = F2(
 	function (zone, time) {
 		return $elm$time$Time$toCivil(
-			A2($elm$time$Time$toAdjustedMinutes, zone, time)).bl;
+			A2($elm$time$Time$toAdjustedMinutes, zone, time)).year;
 	});
 var $author$project$Timestamp$format = F2(
 	function (zone, time) {
@@ -11561,28 +11642,28 @@ var $author$project$Timestamp$format = F2(
 			A2($elm$time$Time$toYear, zone, time));
 		var month = function () {
 			var _v0 = A2($elm$time$Time$toMonth, zone, time);
-			switch (_v0) {
-				case 0:
+			switch (_v0.$) {
+				case 'Jan':
 					return 'January';
-				case 1:
+				case 'Feb':
 					return 'February';
-				case 2:
+				case 'Mar':
 					return 'March';
-				case 3:
+				case 'Apr':
 					return 'April';
-				case 4:
+				case 'May':
 					return 'May';
-				case 5:
+				case 'Jun':
 					return 'June';
-				case 6:
+				case 'Jul':
 					return 'July';
-				case 7:
+				case 'Aug':
 					return 'August';
-				case 8:
+				case 'Sep':
 					return 'September';
-				case 9:
+				case 'Oct':
 					return 'October';
-				case 10:
+				case 'Nov':
 					return 'November';
 				default:
 					return 'December';
@@ -11608,10 +11689,10 @@ var $author$project$Timestamp$view = F2(
 	});
 var $author$project$Page$Article$ClickedPostComment = F2(
 	function (a, b) {
-		return {$: 7, a: a, b: b};
+		return {$: 'ClickedPostComment', a: a, b: b};
 	});
 var $author$project$Page$Article$EnteredCommentText = function (a) {
-	return {$: 8, a: a};
+	return {$: 'EnteredCommentText', a: a};
 };
 var $elm$virtual_dom$VirtualDom$attribute = F2(
 	function (key, value) {
@@ -11636,7 +11717,7 @@ var $elm$html$Html$Events$alwaysStop = function (x) {
 	return _Utils_Tuple2(x, true);
 };
 var $elm$virtual_dom$VirtualDom$MayStopPropagation = function (a) {
-	return {$: 1, a: a};
+	return {$: 'MayStopPropagation', a: a};
 };
 var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
 var $elm$html$Html$Events$stopPropagationOn = F2(
@@ -11668,7 +11749,7 @@ var $elm$html$Html$Events$alwaysPreventDefault = function (msg) {
 	return _Utils_Tuple2(msg, true);
 };
 var $elm$virtual_dom$VirtualDom$MayPreventDefault = function (a) {
-	return {$: 2, a: a};
+	return {$: 'MayPreventDefault', a: a};
 };
 var $elm$html$Html$Events$preventDefaultOn = F2(
 	function (event, decoder) {
@@ -11692,12 +11773,12 @@ var $elm$html$Html$textarea = _VirtualDom_node('textarea');
 var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('value');
 var $author$project$Page$Article$viewAddComment = F3(
 	function (slug, commentText, maybeViewer) {
-		if (!maybeViewer.$) {
+		if (maybeViewer.$ === 'Just') {
 			var viewer = maybeViewer.a;
 			var cred = $author$project$Viewer$cred(viewer);
 			var avatar = $author$project$Viewer$avatar(viewer);
 			var _v1 = function () {
-				if (!commentText.$) {
+				if (commentText.$ === 'Editing') {
 					var str = commentText.a;
 					return _Utils_Tuple2(str, _List_Nil);
 				} else {
@@ -11803,18 +11884,18 @@ var $author$project$Page$Article$viewAddComment = F3(
 	});
 var $author$project$Page$Article$ClickedFollow = F2(
 	function (a, b) {
-		return {$: 5, a: a, b: b};
+		return {$: 'ClickedFollow', a: a, b: b};
 	});
 var $author$project$Page$Article$ClickedUnfollow = F2(
 	function (a, b) {
-		return {$: 6, a: a, b: b};
+		return {$: 'ClickedUnfollow', a: a, b: b};
 	});
 var $author$project$Page$Article$ClickedDeleteArticle = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'ClickedDeleteArticle', a: a, b: b};
 	});
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 0, a: a};
+	return {$: 'Normal', a: a};
 };
 var $elm$html$Html$Events$on = F2(
 	function (event, decoder) {
@@ -11878,11 +11959,11 @@ var $author$project$Page$Article$editButton = function (article) {
 };
 var $author$project$Page$Article$ClickedFavorite = F3(
 	function (a, b, c) {
-		return {$: 3, a: a, b: b, c: c};
+		return {$: 'ClickedFavorite', a: a, b: b, c: c};
 	});
 var $author$project$Page$Article$ClickedUnfavorite = F3(
 	function (a, b, c) {
-		return {$: 4, a: a, b: b, c: c};
+		return {$: 'ClickedUnfavorite', a: a, b: b, c: c};
 	});
 var $author$project$Article$onClickStopPropagation = function (msg) {
 	return A2(
@@ -11926,8 +12007,8 @@ var $author$project$Page$Article$favoriteButton = F2(
 		var slug = $author$project$Article$slug(article);
 		var body = $author$project$Article$body(article);
 		var _v0 = $author$project$Article$metadata(article);
-		var favorited = _v0.bB;
-		var favoritesCount = _v0.bC;
+		var favorited = _v0.favorited;
+		var favoritesCount = _v0.favoritesCount;
 		var kids = _List_fromArray(
 			[
 				$elm$html$Html$text(
@@ -11993,7 +12074,7 @@ var $author$project$Author$unfollowButton = F3(
 var $author$project$Page$Article$viewButtons = F3(
 	function (cred, article, author) {
 		switch (author.$) {
-			case 0:
+			case 'IsFollowing':
 				var followedAuthor = author.a;
 				return _List_fromArray(
 					[
@@ -12001,7 +12082,7 @@ var $author$project$Page$Article$viewButtons = F3(
 						$elm$html$Html$text(' '),
 						A2($author$project$Page$Article$favoriteButton, cred, article)
 					]);
-			case 1:
+			case 'IsNotFollowing':
 				var unfollowedAuthor = author.a;
 				return _List_fromArray(
 					[
@@ -12020,19 +12101,19 @@ var $author$project$Page$Article$viewButtons = F3(
 	});
 var $author$project$Page$Article$ClickedDeleteComment = F3(
 	function (a, b, c) {
-		return {$: 1, a: a, b: b, c: c};
+		return {$: 'ClickedDeleteComment', a: a, b: b, c: c};
 	});
 var $author$project$Article$Comment$author = function (_v0) {
-	var comment = _v0;
-	return comment.ag;
+	var comment = _v0.a;
+	return comment.author;
 };
 var $author$project$Article$Comment$body = function (_v0) {
-	var comment = _v0;
-	return comment.X;
+	var comment = _v0.a;
+	return comment.body;
 };
 var $author$project$Article$Comment$createdAt = function (_v0) {
-	var comment = _v0;
-	return comment.bv;
+	var comment = _v0.a;
+	return comment.createdAt;
 };
 var $author$project$Page$Article$viewComment = F3(
 	function (timeZone, slug, comment) {
@@ -12043,7 +12124,7 @@ var $author$project$Page$Article$viewComment = F3(
 		var author = $author$project$Article$Comment$author(comment);
 		var authorUsername = $author$project$Author$username(author);
 		var deleteCommentButton = function () {
-			if (author.$ === 2) {
+			if (author.$ === 'IsViewer') {
 				var cred = author.a;
 				var msg = A3(
 					$author$project$Page$Article$ClickedDeleteComment,
@@ -12206,7 +12287,7 @@ var $author$project$Page$viewErrors = F2(
 					])));
 	});
 var $author$project$Session$viewer = function (session) {
-	if (!session.$) {
+	if (session.$ === 'LoggedIn') {
 		var val = session.b;
 		return $elm$core$Maybe$Just(val);
 	} else {
@@ -12214,17 +12295,17 @@ var $author$project$Session$viewer = function (session) {
 	}
 };
 var $author$project$Page$Article$view = function (model) {
-	var _v0 = model.r;
+	var _v0 = model.article;
 	switch (_v0.$) {
-		case 2:
+		case 'Loaded':
 			var article = _v0.a;
 			var slug = $author$project$Article$slug(article);
 			var author = $author$project$Article$author(article);
 			var avatar = $author$project$Profile$avatar(
 				$author$project$Author$profile(author));
 			var buttons = function () {
-				var _v4 = $author$project$Session$cred(model.aw);
-				if (!_v4.$) {
+				var _v4 = $author$project$Session$cred(model.session);
+				if (_v4.$ === 'Just') {
 					var cred = _v4.a;
 					return A3($author$project$Page$Article$viewButtons, cred, article, author);
 				} else {
@@ -12233,9 +12314,9 @@ var $author$project$Page$Article$view = function (model) {
 			}();
 			var profile = $author$project$Author$profile(author);
 			var _v1 = $author$project$Article$metadata(article);
-			var title = _v1.bT;
+			var title = _v1.title;
 			return {
-				bt: A2(
+				content: A2(
 					$elm$html$Html$div,
 					_List_fromArray(
 						[
@@ -12307,12 +12388,12 @@ var $author$project$Page$Article$view = function (model) {
 																$author$project$Author$username(author)),
 																A2(
 																$author$project$Timestamp$view,
-																model.T,
-																$author$project$Article$metadata(article).bv)
+																model.timeZone,
+																$author$project$Article$metadata(article).createdAt)
 															]))
 													]),
 												buttons)),
-											A2($author$project$Page$viewErrors, $author$project$Page$Article$ClickedDismissErrors, model.M)
+											A2($author$project$Page$viewErrors, $author$project$Page$Article$ClickedDismissErrors, model.errors)
 										]))
 								])),
 							A2(
@@ -12394,8 +12475,8 @@ var $author$project$Page$Article$view = function (model) {
 																$author$project$Author$username(author)),
 																A2(
 																$author$project$Timestamp$view,
-																model.T,
-																$author$project$Article$metadata(article).bv)
+																model.timeZone,
+																$author$project$Article$metadata(article).createdAt)
 															]))
 													]),
 												buttons))
@@ -12415,14 +12496,14 @@ var $author$project$Page$Article$view = function (model) {
 													$elm$html$Html$Attributes$class('col-xs-12 col-md-8 offset-md-2')
 												]),
 											function () {
-												var _v2 = model.l;
+												var _v2 = model.comments;
 												switch (_v2.$) {
-													case 0:
+													case 'Loading':
 														return _List_Nil;
-													case 1:
+													case 'LoadingSlowly':
 														return _List_fromArray(
 															[$author$project$Loading$icon]);
-													case 2:
+													case 'Loaded':
 														var _v3 = _v2.a;
 														var commentText = _v3.a;
 														var comments = _v3.b;
@@ -12432,10 +12513,10 @@ var $author$project$Page$Article$view = function (model) {
 																$author$project$Page$Article$viewAddComment,
 																slug,
 																commentText,
-																$author$project$Session$viewer(model.aw)),
+																$author$project$Session$viewer(model.session)),
 															A2(
 																$elm$core$List$map,
-																A2($author$project$Page$Article$viewComment, model.T, slug),
+																A2($author$project$Page$Article$viewComment, model.timeZone, slug),
 																comments));
 													default:
 														return _List_fromArray(
@@ -12447,40 +12528,40 @@ var $author$project$Page$Article$view = function (model) {
 										]))
 								]))
 						])),
-				bT: title
+				title: title
 			};
-		case 0:
+		case 'Loading':
 			return {
-				bt: $elm$html$Html$text(''),
-				bT: 'Article'
+				content: $elm$html$Html$text(''),
+				title: 'Article'
 			};
-		case 1:
-			return {bt: $author$project$Loading$icon, bT: 'Article'};
+		case 'LoadingSlowly':
+			return {content: $author$project$Loading$icon, title: 'Article'};
 		default:
 			return {
-				bt: $author$project$Loading$error('article'),
-				bT: 'Article'
+				content: $author$project$Loading$error('article'),
+				title: 'Article'
 			};
 	}
 };
 var $author$project$Page$Article$Editor$getSlug = function (status) {
 	switch (status.$) {
-		case 0:
+		case 'Loading':
 			var slug = status.a;
 			return $elm$core$Maybe$Just(slug);
-		case 1:
+		case 'LoadingSlowly':
 			var slug = status.a;
 			return $elm$core$Maybe$Just(slug);
-		case 2:
+		case 'LoadingFailed':
 			var slug = status.a;
 			return $elm$core$Maybe$Just(slug);
-		case 3:
+		case 'Saving':
 			var slug = status.a;
 			return $elm$core$Maybe$Just(slug);
-		case 4:
+		case 'Editing':
 			var slug = status.a;
 			return $elm$core$Maybe$Just(slug);
-		case 5:
+		case 'EditingNew':
 			return $elm$core$Maybe$Nothing;
 		default:
 			return $elm$core$Maybe$Nothing;
@@ -12506,19 +12587,19 @@ var $author$project$Page$Article$Editor$newArticleSaveButton = function (extraAt
 	return A2($author$project$Page$Article$Editor$saveArticleButton, 'Publish Article', extraAttrs);
 };
 var $author$project$Page$Article$Editor$ClickedSave = function (a) {
-	return {$: 0, a: a};
+	return {$: 'ClickedSave', a: a};
 };
 var $author$project$Page$Article$Editor$EnteredBody = function (a) {
-	return {$: 1, a: a};
+	return {$: 'EnteredBody', a: a};
 };
 var $author$project$Page$Article$Editor$EnteredDescription = function (a) {
-	return {$: 2, a: a};
+	return {$: 'EnteredDescription', a: a};
 };
 var $author$project$Page$Article$Editor$EnteredTags = function (a) {
-	return {$: 3, a: a};
+	return {$: 'EnteredTags', a: a};
 };
 var $author$project$Page$Article$Editor$EnteredTitle = function (a) {
-	return {$: 4, a: a};
+	return {$: 'EnteredTitle', a: a};
 };
 var $elm$html$Html$fieldset = _VirtualDom_node('fieldset');
 var $elm$html$Html$input = _VirtualDom_node('input');
@@ -12553,7 +12634,7 @@ var $author$project$Page$Article$Editor$viewForm = F3(
 											$elm$html$Html$Attributes$class('form-control form-control-lg'),
 											$elm$html$Html$Attributes$placeholder('Article Title'),
 											$elm$html$Html$Events$onInput($author$project$Page$Article$Editor$EnteredTitle),
-											$elm$html$Html$Attributes$value(fields.bT)
+											$elm$html$Html$Attributes$value(fields.title)
 										]),
 									_List_Nil)
 								])),
@@ -12572,7 +12653,7 @@ var $author$project$Page$Article$Editor$viewForm = F3(
 											$elm$html$Html$Attributes$class('form-control'),
 											$elm$html$Html$Attributes$placeholder('What\'s this article about?'),
 											$elm$html$Html$Events$onInput($author$project$Page$Article$Editor$EnteredDescription),
-											$elm$html$Html$Attributes$value(fields.bw)
+											$elm$html$Html$Attributes$value(fields.description)
 										]),
 									_List_Nil)
 								])),
@@ -12592,7 +12673,7 @@ var $author$project$Page$Article$Editor$viewForm = F3(
 											$elm$html$Html$Attributes$placeholder('Write your article (in markdown)'),
 											A2($elm$html$Html$Attributes$attribute, 'rows', '8'),
 											$elm$html$Html$Events$onInput($author$project$Page$Article$Editor$EnteredBody),
-											$elm$html$Html$Attributes$value(fields.X)
+											$elm$html$Html$Attributes$value(fields.body)
 										]),
 									_List_Nil)
 								])),
@@ -12611,7 +12692,7 @@ var $author$project$Page$Article$Editor$viewForm = F3(
 											$elm$html$Html$Attributes$class('form-control'),
 											$elm$html$Html$Attributes$placeholder('Enter tags'),
 											$elm$html$Html$Events$onInput($author$project$Page$Article$Editor$EnteredTags),
-											$elm$html$Html$Attributes$value(fields.bS)
+											$elm$html$Html$Attributes$value(fields.tags)
 										]),
 									_List_Nil)
 								])),
@@ -12621,7 +12702,7 @@ var $author$project$Page$Article$Editor$viewForm = F3(
 	});
 var $author$project$Page$Article$Editor$viewProblem = function (problem) {
 	var errorMessage = function () {
-		if (!problem.$) {
+		if (problem.$ === 'InvalidEntry') {
 			var message = problem.b;
 			return message;
 		} else {
@@ -12649,14 +12730,14 @@ var $author$project$Page$Article$Editor$viewProblems = function (problems) {
 var $author$project$Page$Article$Editor$viewAuthenticated = F2(
 	function (cred, model) {
 		var formHtml = function () {
-			var _v0 = model.e;
+			var _v0 = model.status;
 			switch (_v0.$) {
-				case 0:
+				case 'Loading':
 					return _List_Nil;
-				case 1:
+				case 'LoadingSlowly':
 					return _List_fromArray(
 						[$author$project$Loading$icon]);
-				case 3:
+				case 'Saving':
 					var slug = _v0.a;
 					var form = _v0.b;
 					return _List_fromArray(
@@ -12671,7 +12752,7 @@ var $author$project$Page$Article$Editor$viewAuthenticated = F2(
 										$elm$html$Html$Attributes$disabled(true)
 									])))
 						]);
-				case 6:
+				case 'Creating':
 					var form = _v0.a;
 					return _List_fromArray(
 						[
@@ -12685,7 +12766,7 @@ var $author$project$Page$Article$Editor$viewAuthenticated = F2(
 										$elm$html$Html$Attributes$disabled(true)
 									])))
 						]);
-				case 4:
+				case 'Editing':
 					var slug = _v0.a;
 					var problems = _v0.b;
 					var form = _v0.c;
@@ -12698,7 +12779,7 @@ var $author$project$Page$Article$Editor$viewAuthenticated = F2(
 							form,
 							$author$project$Page$Article$Editor$editArticleSaveButton(_List_Nil))
 						]);
-				case 5:
+				case 'EditingNew':
 					var problems = _v0.a;
 					var form = _v0.b;
 					return _List_fromArray(
@@ -12754,18 +12835,18 @@ var $author$project$Page$Article$Editor$viewAuthenticated = F2(
 	});
 var $author$project$Page$Article$Editor$view = function (model) {
 	return {
-		bt: function () {
-			var _v0 = $author$project$Session$cred(model.aw);
-			if (!_v0.$) {
+		content: function () {
+			var _v0 = $author$project$Session$cred(model.session);
+			if (_v0.$ === 'Just') {
 				var cred = _v0.a;
 				return A2($author$project$Page$Article$Editor$viewAuthenticated, cred, model);
 			} else {
 				return $elm$html$Html$text('Sign in to edit this article.');
 			}
 		}(),
-		bT: function () {
-			var _v1 = $author$project$Page$Article$Editor$getSlug(model.e);
-			if (!_v1.$) {
+		title: function () {
+			var _v1 = $author$project$Page$Article$Editor$getSlug(model.status);
+			if (_v1.$ === 'Just') {
 				var slug = _v1.a;
 				return 'Edit Article - ' + $author$project$Article$Slug$toString(slug);
 			} else {
@@ -12775,24 +12856,24 @@ var $author$project$Page$Article$Editor$view = function (model) {
 	};
 };
 var $author$project$Page$Blank$view = {
-	bt: $elm$html$Html$text(''),
-	bT: ''
+	content: $elm$html$Html$text(''),
+	title: ''
 };
 var $author$project$Page$Home$ClickedFeedPage = function (a) {
-	return {$: 2, a: a};
+	return {$: 'ClickedFeedPage', a: a};
 };
-var $author$project$Article$Feed$ClickedDismissErrors = {$: 0};
+var $author$project$Article$Feed$ClickedDismissErrors = {$: 'ClickedDismissErrors'};
 var $author$project$PaginatedList$values = function (_v0) {
-	var info = _v0;
-	return info.aq;
+	var info = _v0.a;
+	return info.values;
 };
 var $author$project$Article$Feed$ClickedFavorite = F2(
 	function (a, b) {
-		return {$: 1, a: a, b: b};
+		return {$: 'ClickedFavorite', a: a, b: b};
 	});
 var $author$project$Article$Feed$ClickedUnfavorite = F2(
 	function (a, b) {
-		return {$: 2, a: a, b: b};
+		return {$: 'ClickedUnfavorite', a: a, b: b};
 	});
 var $author$project$Article$Feed$viewTag = function (tagName) {
 	return A2(
@@ -12810,11 +12891,11 @@ var $author$project$Article$Feed$viewPreview = F3(
 	function (maybeCred, timeZone, article) {
 		var slug = $author$project$Article$slug(article);
 		var faveButton = function () {
-			if (!maybeCred.$) {
+			if (maybeCred.$ === 'Just') {
 				var cred = maybeCred.a;
 				var _v2 = $author$project$Article$metadata(article);
-				var favorited = _v2.bB;
-				var favoritesCount = _v2.bC;
+				var favorited = _v2.favorited;
+				var favoritesCount = _v2.favoritesCount;
 				var viewButton = favorited ? A2(
 					$author$project$Article$unfavoriteButton,
 					cred,
@@ -12841,9 +12922,9 @@ var $author$project$Article$Feed$viewPreview = F3(
 		var profile = $author$project$Author$profile(author);
 		var username = $author$project$Author$username(author);
 		var _v0 = $author$project$Article$metadata(article);
-		var createdAt = _v0.bv;
-		var description = _v0.bw;
-		var title = _v0.bT;
+		var createdAt = _v0.createdAt;
+		var description = _v0.description;
+		var title = _v0.title;
 		return A2(
 			$elm$html$Html$div,
 			_List_fromArray(
@@ -12932,15 +13013,15 @@ var $author$project$Article$Feed$viewPreview = F3(
 							A2(
 								$elm$core$List$map,
 								$author$project$Article$Feed$viewTag,
-								$author$project$Article$metadata(article).bS))
+								$author$project$Article$metadata(article).tags))
 						]))
 				]));
 	});
 var $author$project$Article$Feed$viewArticles = F2(
 	function (timeZone, _v0) {
-		var errors = _v0.M;
-		var session = _v0.aw;
-		var articles = _v0.I;
+		var errors = _v0.a.errors;
+		var session = _v0.a.session;
+		var articles = _v0.a.articles;
 		var maybeCred = $author$project$Session$cred(session);
 		var articlesHtml = A2(
 			$elm$core$List$map,
@@ -13018,12 +13099,12 @@ var $author$project$Article$Feed$pageLink = F3(
 				]));
 	});
 var $author$project$PaginatedList$total = function (_v0) {
-	var info = _v0;
-	return info.bg;
+	var info = _v0.a;
+	return info.total;
 };
 var $author$project$Article$Feed$viewPagination = F3(
 	function (toMsg, page, _v0) {
-		var feed = _v0;
+		var feed = _v0.a;
 		var viewPageLink = function (currentPage) {
 			return A3(
 				$author$project$Article$Feed$pageLink,
@@ -13031,7 +13112,7 @@ var $author$project$Article$Feed$viewPagination = F3(
 				currentPage,
 				_Utils_eq(currentPage, page));
 		};
-		var totalPages = $author$project$PaginatedList$total(feed.I);
+		var totalPages = $author$project$PaginatedList$total(feed.articles);
 		return (totalPages > 1) ? A2(
 			$elm$html$Html$ul,
 			_List_fromArray(
@@ -13044,7 +13125,7 @@ var $author$project$Article$Feed$viewPagination = F3(
 				A2($elm$core$List$range, 1, totalPages))) : $elm$html$Html$text('');
 	});
 var $author$project$Page$Home$ClickedTab = function (a) {
-	return {$: 1, a: a};
+	return {$: 'ClickedTab', a: a};
 };
 var $author$project$Page$Home$globalFeed = _Utils_Tuple2(
 	'Global Feed',
@@ -13125,7 +13206,7 @@ var $author$project$Page$Home$yourFeed = function (cred) {
 var $author$project$Page$Home$viewTabs = F2(
 	function (maybeCred, tab) {
 		switch (tab.$) {
-			case 0:
+			case 'YourFeed':
 				var cred = tab.a;
 				return A3(
 					$author$project$Article$Feed$viewTabs,
@@ -13133,9 +13214,9 @@ var $author$project$Page$Home$viewTabs = F2(
 					$author$project$Page$Home$yourFeed(cred),
 					_List_fromArray(
 						[$author$project$Page$Home$globalFeed]));
-			case 1:
+			case 'GlobalFeed':
 				var otherTabs = function () {
-					if (!maybeCred.$) {
+					if (maybeCred.$ === 'Just') {
 						var cred = maybeCred.a;
 						return _List_fromArray(
 							[
@@ -13149,7 +13230,7 @@ var $author$project$Page$Home$viewTabs = F2(
 			default:
 				var tag = tab.a;
 				var otherTabs = function () {
-					if (!maybeCred.$) {
+					if (maybeCred.$ === 'Just') {
 						var cred = maybeCred.a;
 						return _List_fromArray(
 							[
@@ -13169,7 +13250,7 @@ var $author$project$Page$Home$viewTabs = F2(
 		}
 	});
 var $author$project$Page$Home$ClickedTag = function (a) {
-	return {$: 0, a: a};
+	return {$: 'ClickedTag', a: a};
 };
 var $author$project$Page$Home$viewTag = function (tagName) {
 	return A2(
@@ -13198,7 +13279,7 @@ var $author$project$Page$Home$viewTags = function (tags) {
 };
 var $author$project$Page$Home$view = function (model) {
 	return {
-		bt: A2(
+		content: A2(
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
@@ -13230,9 +13311,9 @@ var $author$project$Page$Home$view = function (model) {
 											$elm$html$Html$Attributes$class('col-md-9')
 										]),
 									function () {
-										var _v0 = model.t;
+										var _v0 = model.feed;
 										switch (_v0.$) {
-											case 2:
+											case 'Loaded':
 												var feed = _v0.a;
 												return _List_fromArray(
 													[
@@ -13249,22 +13330,22 @@ var $author$project$Page$Home$view = function (model) {
 																	[
 																		A2(
 																		$author$project$Page$Home$viewTabs,
-																		$author$project$Session$cred(model.aw),
-																		model.N)
+																		$author$project$Session$cred(model.session),
+																		model.feedTab)
 																	]),
 																	A2(
 																	$elm$core$List$map,
 																	$elm$html$Html$map($author$project$Page$Home$GotFeedMsg),
-																	A2($author$project$Article$Feed$viewArticles, model.T, feed)),
+																	A2($author$project$Article$Feed$viewArticles, model.timeZone, feed)),
 																	_List_fromArray(
 																	[
-																		A3($author$project$Article$Feed$viewPagination, $author$project$Page$Home$ClickedFeedPage, model.aj, feed)
+																		A3($author$project$Article$Feed$viewPagination, $author$project$Page$Home$ClickedFeedPage, model.feedPage, feed)
 																	])
 																])))
 													]);
-											case 0:
+											case 'Loading':
 												return _List_Nil;
-											case 1:
+											case 'LoadingSlowly':
 												return _List_fromArray(
 													[$author$project$Loading$icon]);
 											default:
@@ -13281,9 +13362,9 @@ var $author$project$Page$Home$view = function (model) {
 											$elm$html$Html$Attributes$class('col-md-3')
 										]),
 									function () {
-										var _v1 = model.bS;
+										var _v1 = model.tags;
 										switch (_v1.$) {
-											case 2:
+											case 'Loaded':
 												var tags = _v1.a;
 												return _List_fromArray(
 													[
@@ -13305,9 +13386,9 @@ var $author$project$Page$Home$view = function (model) {
 																$author$project$Page$Home$viewTags(tags)
 															]))
 													]);
-											case 0:
+											case 'Loading':
 												return _List_Nil;
-											case 1:
+											case 'LoadingSlowly':
 												return _List_fromArray(
 													[$author$project$Loading$icon]);
 											default:
@@ -13320,16 +13401,16 @@ var $author$project$Page$Home$view = function (model) {
 								]))
 						]))
 				])),
-		bT: 'Conduit'
+		title: 'Conduit'
 	};
 };
 var $author$project$Page$Login$EnteredEmail = function (a) {
-	return {$: 1, a: a};
+	return {$: 'EnteredEmail', a: a};
 };
 var $author$project$Page$Login$EnteredPassword = function (a) {
-	return {$: 2, a: a};
+	return {$: 'EnteredPassword', a: a};
 };
-var $author$project$Page$Login$SubmittedForm = {$: 0};
+var $author$project$Page$Login$SubmittedForm = {$: 'SubmittedForm'};
 var $elm$html$Html$Attributes$type_ = $elm$html$Html$Attributes$stringProperty('type');
 var $author$project$Page$Login$viewForm = function (form) {
 	return A2(
@@ -13355,7 +13436,7 @@ var $author$project$Page$Login$viewForm = function (form) {
 								$elm$html$Html$Attributes$class('form-control form-control-lg'),
 								$elm$html$Html$Attributes$placeholder('Email'),
 								$elm$html$Html$Events$onInput($author$project$Page$Login$EnteredEmail),
-								$elm$html$Html$Attributes$value(form.x)
+								$elm$html$Html$Attributes$value(form.email)
 							]),
 						_List_Nil)
 					])),
@@ -13375,7 +13456,7 @@ var $author$project$Page$Login$viewForm = function (form) {
 								$elm$html$Html$Attributes$type_('password'),
 								$elm$html$Html$Attributes$placeholder('Password'),
 								$elm$html$Html$Events$onInput($author$project$Page$Login$EnteredPassword),
-								$elm$html$Html$Attributes$value(form.A)
+								$elm$html$Html$Attributes$value(form.password)
 							]),
 						_List_Nil)
 					])),
@@ -13393,7 +13474,7 @@ var $author$project$Page$Login$viewForm = function (form) {
 };
 var $author$project$Page$Login$viewProblem = function (problem) {
 	var errorMessage = function () {
-		if (!problem.$) {
+		if (problem.$ === 'InvalidEntry') {
 			var str = problem.b;
 			return str;
 		} else {
@@ -13411,7 +13492,7 @@ var $author$project$Page$Login$viewProblem = function (problem) {
 };
 var $author$project$Page$Login$view = function (model) {
 	return {
-		bt: A2(
+		content: A2(
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
@@ -13478,13 +13559,13 @@ var $author$project$Page$Login$view = function (model) {
 												[
 													$elm$html$Html$Attributes$class('error-messages')
 												]),
-											A2($elm$core$List$map, $author$project$Page$Login$viewProblem, model.G)),
-											$author$project$Page$Login$viewForm(model.O)
+											A2($elm$core$List$map, $author$project$Page$Login$viewProblem, model.problems)),
+											$author$project$Page$Login$viewForm(model.form)
 										]))
 								]))
 						]))
 				])),
-		bT: 'Login'
+		title: 'Login'
 	};
 };
 var $author$project$Asset$error = $author$project$Asset$image('error.jpg');
@@ -13497,7 +13578,7 @@ var $elm$html$Html$Attributes$tabindex = function (n) {
 		$elm$core$String$fromInt(n));
 };
 var $author$project$Page$NotFound$view = {
-	bt: A2(
+	content: A2(
 		$elm$html$Html$main_,
 		_List_fromArray(
 			[
@@ -13531,30 +13612,30 @@ var $author$project$Page$NotFound$view = {
 						_List_Nil)
 					]))
 			])),
-	bT: 'Page Not Found'
+	title: 'Page Not Found'
 };
-var $author$project$Page$Profile$ClickedDismissErrors = {$: 0};
+var $author$project$Page$Profile$ClickedDismissErrors = {$: 'ClickedDismissErrors'};
 var $author$project$Page$Profile$ClickedFeedPage = function (a) {
-	return {$: 4, a: a};
+	return {$: 'ClickedFeedPage', a: a};
 };
 var $author$project$Page$Profile$ClickedFollow = F2(
 	function (a, b) {
-		return {$: 1, a: a, b: b};
+		return {$: 'ClickedFollow', a: a, b: b};
 	});
 var $author$project$Page$Profile$ClickedUnfollow = F2(
 	function (a, b) {
-		return {$: 2, a: a, b: b};
+		return {$: 'ClickedUnfollow', a: a, b: b};
 	});
 var $author$project$Profile$bio = function (_v0) {
-	var info = _v0;
-	return info.K;
+	var info = _v0.a;
+	return info.bio;
 };
 var $elm$html$Html$h4 = _VirtualDom_node('h4');
 var $author$project$Page$Profile$myProfileTitle = 'My Profile';
 var $author$project$Page$Profile$defaultTitle = 'Profile';
 var $author$project$Page$Profile$titleForMe = F2(
 	function (maybeCred, username) {
-		if (!maybeCred.$) {
+		if (maybeCred.$ === 'Just') {
 			var cred = maybeCred.a;
 			return _Utils_eq(
 				username,
@@ -13567,17 +13648,17 @@ var $author$project$Page$Profile$titleForOther = function (otherUsername) {
 	return 'Profile — ' + $author$project$Username$toString(otherUsername);
 };
 var $author$project$Page$Profile$ClickedTab = function (a) {
-	return {$: 3, a: a};
+	return {$: 'ClickedTab', a: a};
 };
-var $author$project$Page$Profile$FavoritedArticles = 1;
+var $author$project$Page$Profile$FavoritedArticles = {$: 'FavoritedArticles'};
 var $author$project$Page$Profile$favoritedArticles = _Utils_Tuple2(
 	'Favorited Articles',
-	$author$project$Page$Profile$ClickedTab(1));
+	$author$project$Page$Profile$ClickedTab($author$project$Page$Profile$FavoritedArticles));
 var $author$project$Page$Profile$myArticles = _Utils_Tuple2(
 	'My Articles',
-	$author$project$Page$Profile$ClickedTab(0));
+	$author$project$Page$Profile$ClickedTab($author$project$Page$Profile$MyArticles));
 var $author$project$Page$Profile$viewTabs = function (tab) {
-	if (!tab) {
+	if (tab.$ === 'MyArticles') {
 		return A3(
 			$author$project$Article$Feed$viewTabs,
 			_List_Nil,
@@ -13595,14 +13676,14 @@ var $author$project$Page$Profile$viewTabs = function (tab) {
 };
 var $author$project$Page$Profile$view = function (model) {
 	var title = function () {
-		var _v4 = model.ag;
+		var _v4 = model.author;
 		switch (_v4.$) {
-			case 2:
+			case 'Loaded':
 				switch (_v4.a.$) {
-					case 2:
+					case 'IsViewer':
 						var _v5 = _v4.a;
 						return $author$project$Page$Profile$myProfileTitle;
-					case 0:
+					case 'IsFollowing':
 						var author = _v4.a;
 						var followedAuthor = author.a;
 						return $author$project$Page$Profile$titleForOther(
@@ -13613,42 +13694,42 @@ var $author$project$Page$Profile$view = function (model) {
 						return $author$project$Page$Profile$titleForOther(
 							$author$project$Author$username(author));
 				}
-			case 0:
+			case 'Loading':
 				var username = _v4.a;
 				return A2(
 					$author$project$Page$Profile$titleForMe,
-					$author$project$Session$cred(model.aw),
+					$author$project$Session$cred(model.session),
 					username);
-			case 1:
+			case 'LoadingSlowly':
 				var username = _v4.a;
 				return A2(
 					$author$project$Page$Profile$titleForMe,
-					$author$project$Session$cred(model.aw),
+					$author$project$Session$cred(model.session),
 					username);
 			default:
 				var username = _v4.a;
 				return A2(
 					$author$project$Page$Profile$titleForMe,
-					$author$project$Session$cred(model.aw),
+					$author$project$Session$cred(model.session),
 					username);
 		}
 	}();
 	return {
-		bt: function () {
-			var _v0 = model.ag;
+		content: function () {
+			var _v0 = model.author;
 			switch (_v0.$) {
-				case 2:
+				case 'Loaded':
 					var author = _v0.a;
 					var username = $author$project$Author$username(author);
 					var profile = $author$project$Author$profile(author);
 					var followButton = function () {
-						var _v2 = $author$project$Session$cred(model.aw);
-						if (!_v2.$) {
+						var _v2 = $author$project$Session$cred(model.session);
+						if (_v2.$ === 'Just') {
 							var cred = _v2.a;
 							switch (author.$) {
-								case 2:
+								case 'IsViewer':
 									return $elm$html$Html$text('');
-								case 0:
+								case 'IsFollowing':
 									var followedAuthor = author.a;
 									return A3($author$project$Author$unfollowButton, $author$project$Page$Profile$ClickedUnfollow, cred, followedAuthor);
 								default:
@@ -13667,7 +13748,7 @@ var $author$project$Page$Profile$view = function (model) {
 							]),
 						_List_fromArray(
 							[
-								A2($author$project$Page$viewErrors, $author$project$Page$Profile$ClickedDismissErrors, model.M),
+								A2($author$project$Page$viewErrors, $author$project$Page$Profile$ClickedDismissErrors, model.errors),
 								A2(
 								$elm$html$Html$div,
 								_List_fromArray(
@@ -13733,9 +13814,9 @@ var $author$project$Page$Profile$view = function (model) {
 											]))
 									])),
 								function () {
-								var _v1 = model.t;
+								var _v1 = model.feed;
 								switch (_v1.$) {
-									case 2:
+									case 'Loaded':
 										var feed = _v1.a;
 										return A2(
 											$elm$html$Html$div,
@@ -13772,50 +13853,50 @@ var $author$project$Page$Profile$view = function (model) {
 																			[
 																				_List_fromArray(
 																				[
-																					$author$project$Page$Profile$viewTabs(model.N)
+																					$author$project$Page$Profile$viewTabs(model.feedTab)
 																				]),
 																				A2(
 																				$elm$core$List$map,
 																				$elm$html$Html$map($author$project$Page$Profile$GotFeedMsg),
-																				A2($author$project$Article$Feed$viewArticles, model.T, feed)),
+																				A2($author$project$Article$Feed$viewArticles, model.timeZone, feed)),
 																				_List_fromArray(
 																				[
-																					A3($author$project$Article$Feed$viewPagination, $author$project$Page$Profile$ClickedFeedPage, model.aj, feed)
+																					A3($author$project$Article$Feed$viewPagination, $author$project$Page$Profile$ClickedFeedPage, model.feedPage, feed)
 																				])
 																			])))
 																]))
 														]))
 												]));
-									case 0:
+									case 'Loading':
 										return $elm$html$Html$text('');
-									case 1:
+									case 'LoadingSlowly':
 										return $author$project$Loading$icon;
 									default:
 										return $author$project$Loading$error('feed');
 								}
 							}()
 							]));
-				case 0:
+				case 'Loading':
 					return $elm$html$Html$text('');
-				case 1:
+				case 'LoadingSlowly':
 					return $author$project$Loading$icon;
 				default:
 					return $author$project$Loading$error('profile');
 			}
 		}(),
-		bT: title
+		title: title
 	};
 };
 var $author$project$Page$Register$EnteredEmail = function (a) {
-	return {$: 1, a: a};
+	return {$: 'EnteredEmail', a: a};
 };
 var $author$project$Page$Register$EnteredPassword = function (a) {
-	return {$: 3, a: a};
+	return {$: 'EnteredPassword', a: a};
 };
 var $author$project$Page$Register$EnteredUsername = function (a) {
-	return {$: 2, a: a};
+	return {$: 'EnteredUsername', a: a};
 };
-var $author$project$Page$Register$SubmittedForm = {$: 0};
+var $author$project$Page$Register$SubmittedForm = {$: 'SubmittedForm'};
 var $author$project$Page$Register$viewForm = function (form) {
 	return A2(
 		$elm$html$Html$form,
@@ -13840,7 +13921,7 @@ var $author$project$Page$Register$viewForm = function (form) {
 								$elm$html$Html$Attributes$class('form-control form-control-lg'),
 								$elm$html$Html$Attributes$placeholder('Username'),
 								$elm$html$Html$Events$onInput($author$project$Page$Register$EnteredUsername),
-								$elm$html$Html$Attributes$value(form.C)
+								$elm$html$Html$Attributes$value(form.username)
 							]),
 						_List_Nil)
 					])),
@@ -13859,7 +13940,7 @@ var $author$project$Page$Register$viewForm = function (form) {
 								$elm$html$Html$Attributes$class('form-control form-control-lg'),
 								$elm$html$Html$Attributes$placeholder('Email'),
 								$elm$html$Html$Events$onInput($author$project$Page$Register$EnteredEmail),
-								$elm$html$Html$Attributes$value(form.x)
+								$elm$html$Html$Attributes$value(form.email)
 							]),
 						_List_Nil)
 					])),
@@ -13879,7 +13960,7 @@ var $author$project$Page$Register$viewForm = function (form) {
 								$elm$html$Html$Attributes$type_('password'),
 								$elm$html$Html$Attributes$placeholder('Password'),
 								$elm$html$Html$Events$onInput($author$project$Page$Register$EnteredPassword),
-								$elm$html$Html$Attributes$value(form.A)
+								$elm$html$Html$Attributes$value(form.password)
 							]),
 						_List_Nil)
 					])),
@@ -13897,7 +13978,7 @@ var $author$project$Page$Register$viewForm = function (form) {
 };
 var $author$project$Page$Register$viewProblem = function (problem) {
 	var errorMessage = function () {
-		if (!problem.$) {
+		if (problem.$ === 'InvalidEntry') {
 			var str = problem.b;
 			return str;
 		} else {
@@ -13915,7 +13996,7 @@ var $author$project$Page$Register$viewProblem = function (problem) {
 };
 var $author$project$Page$Register$view = function (model) {
 	return {
-		bt: A2(
+		content: A2(
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
@@ -13982,33 +14063,33 @@ var $author$project$Page$Register$view = function (model) {
 												[
 													$elm$html$Html$Attributes$class('error-messages')
 												]),
-											A2($elm$core$List$map, $author$project$Page$Register$viewProblem, model.G)),
-											$author$project$Page$Register$viewForm(model.O)
+											A2($elm$core$List$map, $author$project$Page$Register$viewProblem, model.problems)),
+											$author$project$Page$Register$viewForm(model.form)
 										]))
 								]))
 						]))
 				])),
-		bT: 'Register'
+		title: 'Register'
 	};
 };
 var $author$project$Page$Settings$EnteredAvatar = function (a) {
-	return {$: 5, a: a};
+	return {$: 'EnteredAvatar', a: a};
 };
 var $author$project$Page$Settings$EnteredBio = function (a) {
-	return {$: 4, a: a};
+	return {$: 'EnteredBio', a: a};
 };
 var $author$project$Page$Settings$EnteredEmail = function (a) {
-	return {$: 1, a: a};
+	return {$: 'EnteredEmail', a: a};
 };
 var $author$project$Page$Settings$EnteredPassword = function (a) {
-	return {$: 3, a: a};
+	return {$: 'EnteredPassword', a: a};
 };
 var $author$project$Page$Settings$EnteredUsername = function (a) {
-	return {$: 2, a: a};
+	return {$: 'EnteredUsername', a: a};
 };
 var $author$project$Page$Settings$SubmittedForm = F2(
 	function (a, b) {
-		return {$: 0, a: a, b: b};
+		return {$: 'SubmittedForm', a: a, b: b};
 	});
 var $author$project$Page$Settings$viewForm = F2(
 	function (cred, form) {
@@ -14040,7 +14121,7 @@ var $author$project$Page$Settings$viewForm = F2(
 										[
 											$elm$html$Html$Attributes$class('form-control'),
 											$elm$html$Html$Attributes$placeholder('URL of profile picture'),
-											$elm$html$Html$Attributes$value(form.J),
+											$elm$html$Html$Attributes$value(form.avatar),
 											$elm$html$Html$Events$onInput($author$project$Page$Settings$EnteredAvatar)
 										]),
 									_List_Nil)
@@ -14059,7 +14140,7 @@ var $author$project$Page$Settings$viewForm = F2(
 										[
 											$elm$html$Html$Attributes$class('form-control form-control-lg'),
 											$elm$html$Html$Attributes$placeholder('Username'),
-											$elm$html$Html$Attributes$value(form.C),
+											$elm$html$Html$Attributes$value(form.username),
 											$elm$html$Html$Events$onInput($author$project$Page$Settings$EnteredUsername)
 										]),
 									_List_Nil)
@@ -14079,7 +14160,7 @@ var $author$project$Page$Settings$viewForm = F2(
 											$elm$html$Html$Attributes$class('form-control form-control-lg'),
 											$elm$html$Html$Attributes$placeholder('Short bio about you'),
 											A2($elm$html$Html$Attributes$attribute, 'rows', '8'),
-											$elm$html$Html$Attributes$value(form.K),
+											$elm$html$Html$Attributes$value(form.bio),
 											$elm$html$Html$Events$onInput($author$project$Page$Settings$EnteredBio)
 										]),
 									_List_Nil)
@@ -14098,7 +14179,7 @@ var $author$project$Page$Settings$viewForm = F2(
 										[
 											$elm$html$Html$Attributes$class('form-control form-control-lg'),
 											$elm$html$Html$Attributes$placeholder('Email'),
-											$elm$html$Html$Attributes$value(form.x),
+											$elm$html$Html$Attributes$value(form.email),
 											$elm$html$Html$Events$onInput($author$project$Page$Settings$EnteredEmail)
 										]),
 									_List_Nil)
@@ -14118,7 +14199,7 @@ var $author$project$Page$Settings$viewForm = F2(
 											$elm$html$Html$Attributes$class('form-control form-control-lg'),
 											$elm$html$Html$Attributes$type_('password'),
 											$elm$html$Html$Attributes$placeholder('Password'),
-											$elm$html$Html$Attributes$value(form.A),
+											$elm$html$Html$Attributes$value(form.password),
 											$elm$html$Html$Events$onInput($author$project$Page$Settings$EnteredPassword)
 										]),
 									_List_Nil)
@@ -14138,7 +14219,7 @@ var $author$project$Page$Settings$viewForm = F2(
 	});
 var $author$project$Page$Settings$viewProblem = function (problem) {
 	var errorMessage = function () {
-		if (!problem.$) {
+		if (problem.$ === 'InvalidEntry') {
 			var message = problem.b;
 			return message;
 		} else {
@@ -14156,9 +14237,9 @@ var $author$project$Page$Settings$viewProblem = function (problem) {
 };
 var $author$project$Page$Settings$view = function (model) {
 	return {
-		bt: function () {
-			var _v0 = $author$project$Session$cred(model.aw);
-			if (!_v0.$) {
+		content: function () {
+			var _v0 = $author$project$Session$cred(model.session);
+			if (_v0.$ === 'Just') {
 				var cred = _v0.a;
 				return A2(
 					$elm$html$Html$div,
@@ -14208,16 +14289,16 @@ var $author$project$Page$Settings$view = function (model) {
 														[
 															$elm$html$Html$Attributes$class('error-messages')
 														]),
-													A2($elm$core$List$map, $author$project$Page$Settings$viewProblem, model.G)),
+													A2($elm$core$List$map, $author$project$Page$Settings$viewProblem, model.problems)),
 													function () {
-													var _v1 = model.e;
+													var _v1 = model.status;
 													switch (_v1.$) {
-														case 2:
+														case 'Loaded':
 															var form = _v1.a;
 															return A2($author$project$Page$Settings$viewForm, cred, form);
-														case 0:
+														case 'Loading':
 															return $elm$html$Html$text('');
-														case 1:
+														case 'LoadingSlowly':
 															return $author$project$Loading$icon;
 														default:
 															return $elm$html$Html$text('Error loading page.');
@@ -14231,7 +14312,7 @@ var $author$project$Page$Settings$view = function (model) {
 				return $elm$html$Html$text('Sign in to view your settings.');
 			}
 		}(),
-		bT: 'Settings'
+		title: 'Settings'
 	};
 };
 var $author$project$Main$view = function (model) {
@@ -14240,50 +14321,50 @@ var $author$project$Main$view = function (model) {
 	var viewPage = F3(
 		function (page, toMsg, config) {
 			var _v2 = A3($author$project$Page$view, viewer, page, config);
-			var body = _v2.X;
-			var title = _v2.bT;
+			var body = _v2.body;
+			var title = _v2.title;
 			return {
-				X: A2(
+				body: A2(
 					$elm$core$List$map,
 					$elm$html$Html$map(toMsg),
 					body),
-				bT: title
+				title: title
 			};
 		});
 	switch (model.$) {
-		case 0:
+		case 'Redirect':
 			return A3($author$project$Page$view, viewer, $author$project$Page$Other, $author$project$Page$Blank$view);
-		case 1:
+		case 'NotFound':
 			return A3($author$project$Page$view, viewer, $author$project$Page$Other, $author$project$Page$NotFound$view);
-		case 3:
+		case 'Settings':
 			var settings = model.a;
 			return A3(
 				viewPage,
 				$author$project$Page$Other,
 				$author$project$Main$GotSettingsMsg,
 				$author$project$Page$Settings$view(settings));
-		case 2:
+		case 'Home':
 			var home = model.a;
 			return A3(
 				viewPage,
 				$author$project$Page$Home,
 				$author$project$Main$GotHomeMsg,
 				$author$project$Page$Home$view(home));
-		case 4:
+		case 'Login':
 			var login = model.a;
 			return A3(
 				viewPage,
 				$author$project$Page$Other,
 				$author$project$Main$GotLoginMsg,
 				$author$project$Page$Login$view(login));
-		case 5:
+		case 'Register':
 			var register = model.a;
 			return A3(
 				viewPage,
 				$author$project$Page$Other,
 				$author$project$Main$GotRegisterMsg,
 				$author$project$Page$Register$view(register));
-		case 6:
+		case 'Profile':
 			var username = model.a;
 			var profile = model.b;
 			return A3(
@@ -14291,7 +14372,7 @@ var $author$project$Main$view = function (model) {
 				$author$project$Page$Profile(username),
 				$author$project$Main$GotProfileMsg,
 				$author$project$Page$Profile$view(profile));
-		case 7:
+		case 'Article':
 			var article = model.a;
 			return A3(
 				viewPage,
@@ -14299,7 +14380,7 @@ var $author$project$Main$view = function (model) {
 				$author$project$Main$GotArticleMsg,
 				$author$project$Page$Article$view(article));
 		default:
-			if (model.a.$ === 1) {
+			if (model.a.$ === 'Nothing') {
 				var _v1 = model.a;
 				var editor = model.b;
 				return A3(
@@ -14320,5 +14401,5 @@ var $author$project$Main$view = function (model) {
 var $author$project$Main$main = A2(
 	$author$project$Api$application,
 	$author$project$Viewer$decoder,
-	{aO: $author$project$Main$init, aY: $author$project$Main$ChangedUrl, aZ: $author$project$Main$ClickedLink, be: $author$project$Main$subscriptions, bi: $author$project$Main$update, bj: $author$project$Main$view});
+	{init: $author$project$Main$init, onUrlChange: $author$project$Main$ChangedUrl, onUrlRequest: $author$project$Main$ClickedLink, subscriptions: $author$project$Main$subscriptions, update: $author$project$Main$update, view: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main($elm$json$Json$Decode$value)(0)}});}(this));

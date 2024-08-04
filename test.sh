@@ -36,5 +36,8 @@ pushd test/dietvis
 ./test.sh
 popd
 
-snapshot_test elm-spa-example
+pushd test/elm-spa-example
+./test.sh
+popd
+
 snapshot_test elm-shared-state

@@ -8203,11 +8203,11 @@ var $elm$url$Url$Parser$Parser = function (a) {
 };
 var $elm$url$Url$Parser$mapState = F2(
 	function (func, _v0) {
-		var value = _v0.value;
-		var frag = _v0.frag;
-		var params = _v0.params;
-		var unvisited = _v0.unvisited;
 		var visited = _v0.visited;
+		var unvisited = _v0.unvisited;
+		var params = _v0.params;
+		var frag = _v0.frag;
+		var value = _v0.value;
 		return A5(
 			$elm$url$Url$Parser$State,
 			visited,
@@ -8221,11 +8221,11 @@ var $elm$url$Url$Parser$map = F2(
 		var parseArg = _v0.a;
 		return $elm$url$Url$Parser$Parser(
 			function (_v1) {
-				var value = _v1.value;
-				var frag = _v1.frag;
-				var params = _v1.params;
-				var unvisited = _v1.unvisited;
 				var visited = _v1.visited;
+				var unvisited = _v1.unvisited;
+				var params = _v1.params;
+				var frag = _v1.frag;
+				var value = _v1.value;
 				return A2(
 					$elm$core$List$map,
 					$elm$url$Url$Parser$mapState(value),
@@ -8264,11 +8264,11 @@ var $elm$url$Url$Parser$oneOf = function (parsers) {
 var $elm$url$Url$Parser$s = function (str) {
 	return $elm$url$Url$Parser$Parser(
 		function (_v0) {
-			var value = _v0.value;
-			var frag = _v0.frag;
-			var params = _v0.params;
-			var unvisited = _v0.unvisited;
 			var visited = _v0.visited;
+			var unvisited = _v0.unvisited;
+			var params = _v0.params;
+			var frag = _v0.frag;
+			var value = _v0.value;
 			if (!unvisited.b) {
 				return _List_Nil;
 			} else {
@@ -8308,11 +8308,11 @@ var $elm$url$Url$Parser$custom = F2(
 	function (tipe, stringToSomething) {
 		return $elm$url$Url$Parser$Parser(
 			function (_v0) {
-				var value = _v0.value;
-				var frag = _v0.frag;
-				var params = _v0.params;
-				var unvisited = _v0.unvisited;
 				var visited = _v0.visited;
+				var unvisited = _v0.unvisited;
+				var params = _v0.params;
+				var frag = _v0.frag;
+				var value = _v0.value;
 				if (!unvisited.b) {
 					return _List_Nil;
 				} else {
