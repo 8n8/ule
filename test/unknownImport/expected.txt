@@ -1,0 +1,18 @@
+Compiling ...-- MODULE NOT FOUND ----------------------------------------------- src/Main.elm
+
+You are trying to import a `A` module:
+
+4| import A
+          ^
+I checked the "dependencies" and "source-directories" listed in your elm.json,
+but I cannot find it! Maybe it is a typo for one of these names?
+
+    Main
+    Set
+    Task
+    Array
+
+Hint: If it is not a typo, check the "dependencies" and "source-directories" of
+your elm.json to make sure all the packages you need are listed there!
+
+Detected problems in 1 module.

@@ -32,3 +32,4 @@ oneTest elm-syntax
 oneTest missingCaseBranch
 oneTest typeMismatch
 oneTest unknownName
+oneTest unknownImport
