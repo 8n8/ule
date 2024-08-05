@@ -1,0 +1,17 @@
+Compiling ...-- TYPE MISMATCH -------------------------------------------------- src/Main.elm
+
+Something is off with the body of the `hello` definition:
+
+13|     42
+        ^^
+The body is a number of type:
+
+    number
+
+But the type annotation on `hello` says it should be:
+
+    String
+
+Hint: Try using String.fromInt to convert it to a string?
+
+Detected problems in 1 module.

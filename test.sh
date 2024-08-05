@@ -30,3 +30,4 @@ oneTest elm-markdown
 oneTest elm-csv
 oneTest elm-syntax
 oneTest missingCaseBranch
+oneTest typeMismatch
