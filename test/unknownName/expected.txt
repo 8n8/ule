@@ -1,0 +1,17 @@
+Compiling ...-- NAMING ERROR --------------------------------------------------- src/Main.elm
+
+I cannot find a `a` variable:
+
+4| main = a
+          ^
+These names seem close though:
+
+    e
+    abs
+    max
+    pi
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+Detected problems in 1 module.

@@ -31,3 +31,4 @@ oneTest elm-csv
 oneTest elm-syntax
 oneTest missingCaseBranch
 oneTest typeMismatch
+oneTest unknownName
