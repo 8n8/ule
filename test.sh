@@ -26,3 +26,4 @@ oneTest elm-shared-state
 oneTest elm-css
 oneTest elm-pages
 oneTest elm-review
+oneTest elm-markdown
