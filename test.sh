@@ -28,3 +28,4 @@ oneTest elm-pages
 oneTest elm-review
 oneTest elm-markdown
 oneTest elm-csv
+oneTest elm-syntax
